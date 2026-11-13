@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+@import 'tailwindcss';
+
+:root {
+  --color-primary: #2563EB;
+  --color-primary-hover: #1D4ED8;
+  --color-primary-light: #EFF6FF;
+  --color-accent: #38BDF8;
+  --color-navy: #113764;
+  --color-navy-dark: #0B2545;
+  --color-bg-main: #FFFFFF;
+  --color-bg-alt: #FFFFFF;
+  --font-jost: 'Jost', sans-serif;
+}
+
+body {
+  font-family: var(--font-jost);
+  background-color: var(--color-bg-main);
+  color: #475569;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Slim Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8FAFC;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563EB;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #CBD5E1 #F8FAFC;
+}
+
+/* Custom smooth dropdown & plus spin transitions */
+.plus-spin {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.group:hover .plus-spin {
+  transform: rotate(45deg);
+}
+
+/* Smooth horizontal swing / wave animation for floating rupee currency notes */
+@keyframes moneySwing {
+  0%, 100% {
+    transform: translateX(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-14px) rotate(-7deg);
+  }
+  75% {
+    transform: translateX(14px) rotate(7deg);
+  }
+}
+
+@keyframes moneySwingAlt {
+  0%, 100% {
+    transform: translateX(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateX(12px) rotate(6deg);
+  }
+  75% {
+    transform: translateX(-12px) rotate(-6deg);
+  }
+}
+
+.animate-money-swing {
+  animation: moneySwing 4.5s ease-in-out infinite;
+}
+
+.animate-money-swing-alt {
+  animation: moneySwingAlt 5.2s ease-in-out infinite;
+}
+
+/* Smooth horizontal floating / gliding animation for message bubble */
+@keyframes horizontalFloat {
+  0%, 100% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+}
+
+.animate-horizontal-float {
+  animation: horizontalFloat 3.8s ease-in-out infinite;
+}
+
+/* Smooth top-to-bottom slide animation for mobile menu */
+@keyframes slideDownFromTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-down {
+  animation: slideDownFromTop 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Slow continuous rotation for decorative Coin icon */
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 16s linear infinite;
+}
+
+/* Dropdown slide-down & fade animation */
+@keyframes dropdownFade {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-dropdown {
+  animation: dropdownFade 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Continuous smooth infinite marquee scroll for Bank & NBFC partners */
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marqueeScrollReverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 34s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-reverse {
+  display: flex;
+  width: max-content;
+  animation: marqueeScrollReverse 34s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee:hover,
+.animate-marquee-reverse:hover {
+  animation-play-state: paused !important;
+}
+
+/* 3D horizontal spin (left-to-right around Y axis) for decorative globe icon */
+@keyframes spin3DHorizontal {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+.animate-spin-3d {
+  animation: spin3DHorizontal 7s linear infinite;
+  transform-style: preserve-3d;
+}
+
+/* Gentle wave bobbing / floating animation without horizontal move */
+@keyframes waveBobbing {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+}
+
+.animate-wave-bob {
+  animation: waveBobbing 4.2s ease-in-out infinite;
+}
