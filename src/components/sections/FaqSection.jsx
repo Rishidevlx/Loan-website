@@ -110,15 +110,6 @@ export default function FaqSection() {
       className="py-16 md:py-24 bg-white relative overflow-hidden"
       style={{ fontFamily: themeConfig.typography.fontFamily }}
     >
-      {/* Decorative Wave-Bobbing Message Icon (Top-Left) */}
-      <img
-        src={msgIcon}
-        alt="Decorative Message Bubble"
-        draggable={false}
-        className="absolute top-5 left-5 sm:top-8 sm:left-8 lg:top-12 lg:left-14 w-12 sm:w-14 lg:w-16 h-auto object-contain select-none pointer-events-none opacity-80 z-10 animate-wave-bob hidden sm:block"
-        style={{ animation: 'waveBobbing 4.2s ease-in-out infinite' }}
-      />
-
       {/* Decorative Horizontally Gliding Question Mark Icon (Right-Bottom) */}
       <img
         src={questionIcon}
@@ -151,13 +142,24 @@ export default function FaqSection() {
             </span>
           </div>
 
-          {/* Main H2 Heading */}
-          <h2 
-            className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#222E48] leading-tight"
-            style={{ color: themeConfig.typography.sectionHeading.color }}
-          >
-            Find Answers to Common Questions
-          </h2>
+          {/* Main H2 Heading with Message Icon placed cross to letter 'F' in 'Find' */}
+          <div className="relative inline-block">
+            {/* Decorative Wave-Bobbing Message Icon placed diagonally to the letter 'F' */}
+            <img
+              src={msgIcon}
+              alt="Decorative Message Bubble"
+              draggable={false}
+              className="absolute -top-7 -left-10 sm:-top-8 sm:-left-12 lg:-top-9 lg:-left-14 w-10 sm:w-12 lg:w-14 h-auto object-contain select-none pointer-events-none opacity-85 z-10 animate-wave-bob hidden sm:block"
+              style={{ animation: 'waveBobbing 4.2s ease-in-out infinite' }}
+            />
+
+            <h2 
+              className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#222E48] leading-tight"
+              style={{ color: themeConfig.typography.sectionHeading.color }}
+            >
+              Find Answers to Common Questions
+            </h2>
+          </div>
 
           {/* Subtext */}
           <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto">
