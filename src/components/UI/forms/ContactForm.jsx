@@ -43,12 +43,17 @@ export default function ContactForm({
   const dropdownTimeoutRef = useRef(null);
   const dropdownContainerRef = useRef(null);
 
+  // Freeze form fields and interaction while submission request is in-flight
+  const isSubmitting = status.state === 'submitting';
+
   const handleDropdownMouseEnter = () => {
+    if (isSubmitting) return;
     if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
     setIsLoanDropdownOpen(true);
   };
 
   const handleDropdownMouseLeave = () => {
+    if (isSubmitting) return;
     dropdownTimeoutRef.current = setTimeout(() => {
       setIsLoanDropdownOpen(false);
     }, 150);
@@ -68,6 +73,7 @@ export default function ContactForm({
   }, []);
 
   const handleNameChange = (e) => {
+    if (isSubmitting) return;
     const val = e.target.value.slice(0, 50);
     setFormData((prev) => ({ ...prev, fullName: val }));
     if (errors.fullName) {
@@ -76,6 +82,7 @@ export default function ContactForm({
   };
 
   const handleEmailChange = (e) => {
+    if (isSubmitting) return;
     const val = e.target.value.slice(0, 50);
     setFormData((prev) => ({ ...prev, email: val }));
     if (errors.email) {
@@ -84,6 +91,7 @@ export default function ContactForm({
   };
 
   const handlePhoneChange = (e) => {
+    if (isSubmitting) return;
     // Only accept numeric digits, up to 10 characters
     const digitsOnly = e.target.value.replace(/\D/g, '').slice(0, 10);
     setFormData((prev) => ({ ...prev, phone: digitsOnly }));
@@ -93,6 +101,7 @@ export default function ContactForm({
   };
 
   const handleLoanSelect = (loanName) => {
+    if (isSubmitting) return;
     setFormData((prev) => ({ ...prev, loanType: loanName }));
     setIsLoanDropdownOpen(false);
     if (errors.loanType) {
@@ -101,6 +110,7 @@ export default function ContactForm({
   };
 
   const handleMessageChange = (e) => {
+    if (isSubmitting) return;
     const val = e.target.value.slice(0, 250);
     setFormData((prev) => ({ ...prev, message: val }));
     if (errors.message) {
@@ -110,6 +120,8 @@ export default function ContactForm({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isSubmitting) return;
+    setIsLoanDropdownOpen(false);
     
     // Comprehensive modular validation
     const { isValid, errors: validationErrors } = validateContactForm(formData);
@@ -195,11 +207,12 @@ export default function ContactForm({
               id="fullName"
               type="text"
               name="fullName"
+              disabled={isSubmitting}
               value={formData.fullName}
               onChange={handleNameChange}
               placeholder="Your Full Name"
               maxLength={50}
-              className={`w-full px-4 py-3.5 rounded-lg border bg-white text-slate-800 placeholder-slate-400 focus:outline-none transition-colors text-sm ${
+              className={`w-full px-4 py-3.5 rounded-lg border bg-white text-slate-800 placeholder-slate-400 focus:outline-none transition-colors text-sm disabled:bg-slate-50 disabled:text-slate-400 disabled:cursor-not-allowed disabled:border-slate-200 ${
                 errors.fullName 
                   ? 'border-rose-400 focus:border-rose-500 focus:ring-1 focus:ring-rose-500 bg-rose-50/20' 
                   : 'border-slate-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500'
@@ -222,11 +235,12 @@ export default function ContactForm({
               id="email"
               type="email"
               name="email"
+              disabled={isSubmitting}
               value={formData.email}
               onChange={handleEmailChange}
               placeholder="Your Email Address"
               maxLength={50}
-              className={`w-full px-4 py-3.5 rounded-lg border bg-white text-slate-800 placeholder-slate-400 focus:outline-none transition-colors text-sm ${
+              className={`w-full px-4 py-3.5 rounded-lg border bg-white text-slate-800 placeholder-slate-400 focus:outline-none transition-colors text-sm disabled:bg-slate-50 disabled:text-slate-400 disabled:cursor-not-allowed disabled:border-slate-200 ${
                 errors.email 
                   ? 'border-rose-400 focus:border-rose-500 focus:ring-1 focus:ring-rose-500 bg-rose-50/20' 
                   : 'border-slate-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500'
@@ -246,7 +260,7 @@ export default function ContactForm({
               Mobile Number <span className="text-rose-500">*</span>
             </label>
             <div className="relative">
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-slate-500 font-medium select-none">
+              <span className={`absolute left-4 top-1/2 -translate-y-1/2 text-sm font-medium select-none ${isSubmitting ? 'text-slate-400' : 'text-slate-500'}`}>
                 +91
               </span>
               <input
@@ -254,11 +268,12 @@ export default function ContactForm({
                 type="tel"
                 name="phone"
                 inputMode="numeric"
+                disabled={isSubmitting}
                 value={formData.phone}
                 onChange={handlePhoneChange}
                 placeholder="10-digit mobile number"
                 maxLength={10}
-                className={`w-full pl-14 pr-4 py-3.5 rounded-lg border bg-white text-slate-800 placeholder-slate-400 focus:outline-none transition-colors text-sm ${
+                className={`w-full pl-14 pr-4 py-3.5 rounded-lg border bg-white text-slate-800 placeholder-slate-400 focus:outline-none transition-colors text-sm disabled:bg-slate-50 disabled:text-slate-400 disabled:cursor-not-allowed disabled:border-slate-200 ${
                   errors.phone 
                     ? 'border-rose-400 focus:border-rose-500 focus:ring-1 focus:ring-rose-500 bg-rose-50/20' 
                     : 'border-slate-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500'
@@ -287,16 +302,19 @@ export default function ContactForm({
               {/* Interactive Field Button */}
               <button
                 type="button"
-                onClick={() => setIsLoanDropdownOpen(prev => !prev)}
-                className={`w-full flex items-center justify-between px-4 py-3.5 border bg-white transition-all text-sm cursor-pointer select-none text-left ${
-                  isLoanDropdownOpen 
-                    ? 'rounded-t-lg rounded-b-none border-blue-500 border-b-slate-100 shadow-xs' 
-                    : errors.loanType
-                      ? 'rounded-lg border-rose-400 bg-rose-50/20'
-                      : 'rounded-lg border-slate-200 hover:border-slate-300'
+                disabled={isSubmitting}
+                onClick={() => !isSubmitting && setIsLoanDropdownOpen(prev => !prev)}
+                className={`w-full flex items-center justify-between px-4 py-3.5 border transition-all text-sm select-none text-left ${
+                  isSubmitting
+                    ? 'bg-slate-50 text-slate-400 cursor-not-allowed border-slate-200 rounded-lg'
+                    : isLoanDropdownOpen 
+                      ? 'bg-white rounded-t-lg rounded-b-none border-blue-500 border-b-slate-100 shadow-xs cursor-pointer' 
+                      : errors.loanType
+                        ? 'bg-rose-50/20 rounded-lg border-rose-400 cursor-pointer'
+                        : 'bg-white rounded-lg border-slate-200 hover:border-slate-300 cursor-pointer'
                 }`}
               >
-                <span className={formData.loanType ? 'text-slate-800 font-medium' : 'text-slate-400'}>
+                <span className={formData.loanType ? (isSubmitting ? 'text-slate-500 font-medium' : 'text-slate-800 font-medium') : 'text-slate-400'}>
                   {formData.loanType || 'Select Loan Type'}
                 </span>
                 
@@ -311,7 +329,7 @@ export default function ContactForm({
               {/* Smooth Downward Animated Dropdown Menu (Attached directly with zero gap) */}
               <div 
                 className={`absolute left-0 right-0 top-full -mt-px z-50 bg-white rounded-b-lg shadow-xl border border-blue-500 border-t-0 py-1.5 transition-all duration-200 origin-top ${
-                  isLoanDropdownOpen 
+                  isLoanDropdownOpen && !isSubmitting
                     ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto' 
                     : 'opacity-0 scale-95 -translate-y-1 pointer-events-none'
                 }`}
@@ -389,11 +407,12 @@ export default function ContactForm({
             id="message"
             name="message"
             rows={3}
+            disabled={isSubmitting}
             value={formData.message}
             onChange={handleMessageChange}
             maxLength={250}
             placeholder="Briefly describe your loan requirement (optional)..."
-            className={`w-full px-4 py-3.5 rounded-lg border bg-white text-slate-800 placeholder-slate-400 focus:outline-none transition-colors text-sm resize-none ${
+            className={`w-full px-4 py-3.5 rounded-lg border bg-white text-slate-800 placeholder-slate-400 focus:outline-none transition-colors text-sm resize-none disabled:bg-slate-50 disabled:text-slate-400 disabled:cursor-not-allowed disabled:border-slate-200 ${
               errors.message 
                 ? 'border-rose-400 focus:border-rose-500 focus:ring-1 focus:ring-rose-500 bg-rose-50/20' 
                 : 'border-slate-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500'
