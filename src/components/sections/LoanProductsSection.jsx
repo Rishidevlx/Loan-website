@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { FiChevronLeft, FiChevronRight, FiArrowUpRight } from 'react-icons/fi';
+import { FiArrowUpRight } from 'react-icons/fi';
 import { themeConfig } from '../../config/themeconfig';
 import { loansProducts } from '../../data/loansData';
+import RoundArrowBtn from '../UI/btns/RoundArrowBtn';
 import coinImg from '../../assets/Vectors/Coin.png';
 import msgIconImg from '../../assets/Vectors/msg-icon.png';
 
@@ -330,23 +331,23 @@ export default function LoanProductsSection() {
         {/* Carousel Outer Container with Left and Right Solid Outlined Flanking Buttons */}
         <div className="relative px-4 sm:px-10 md:px-14 lg:px-16">
           
-          {/* Left Solid Outlined Flanking Button (Transparent Background, Moved further away) */}
-          <button
+          {/* Left Solid Outlined Flanking Button */}
+          <RoundArrowBtn
+            direction="left"
             onClick={prevSlide}
-            aria-label="Previous loan product"
-            className="hidden sm:flex absolute -left-2 sm:-left-3 md:-left-4 lg:-left-6 top-1/2 -translate-y-1/2 w-12 h-12 md:w-13 md:h-13 rounded-full border-2 border-solid border-blue-600 bg-transparent text-blue-600 hover:bg-blue-600 hover:text-white shadow-md hover:shadow-xl transition-all duration-300 items-center justify-center z-30 focus:outline-none transform hover:scale-105 active:scale-95 cursor-pointer"
-          >
-            <FiChevronLeft className="w-6 h-6 stroke-[2.5]" />
-          </button>
+            ariaLabel="Previous loan product"
+            className="hidden sm:flex absolute -left-2 sm:-left-3 md:-left-4 lg:-left-6 top-1/2 -translate-y-1/2 z-30"
+            size="w-12 h-12 md:w-13 md:h-13"
+          />
 
-          {/* Right Solid Outlined Flanking Button (Transparent Background, Moved further away) */}
-          <button
+          {/* Right Solid Outlined Flanking Button */}
+          <RoundArrowBtn
+            direction="right"
             onClick={nextSlide}
-            aria-label="Next loan product"
-            className="hidden sm:flex absolute -right-2 sm:-right-3 md:-right-4 lg:-right-6 top-1/2 -translate-y-1/2 w-12 h-12 md:w-13 md:h-13 rounded-full border-2 border-solid border-blue-600 bg-transparent text-blue-600 hover:bg-blue-600 hover:text-white shadow-md hover:shadow-xl transition-all duration-300 items-center justify-center z-30 focus:outline-none transform hover:scale-105 active:scale-95 cursor-pointer"
-          >
-            <FiChevronRight className="w-6 h-6 stroke-[2.5]" />
-          </button>
+            ariaLabel="Next loan product"
+            className="hidden sm:flex absolute -right-2 sm:-right-3 md:-right-4 lg:-right-6 top-1/2 -translate-y-1/2 z-30"
+            size="w-12 h-12 md:w-13 md:h-13"
+          />
 
           {/* Overflow Viewport */}
           <div className="overflow-hidden py-3 -my-3">
@@ -372,20 +373,18 @@ export default function LoanProductsSection() {
 
           {/* Mobile Bottom Move Buttons */}
           <div className="flex sm:hidden items-center justify-center gap-4 mt-7">
-            <button
+            <RoundArrowBtn
+              direction="left"
               onClick={prevSlide}
-              aria-label="Previous loan product"
-              className="w-11 h-11 rounded-full border-2 border-solid border-blue-600 bg-transparent text-blue-600 hover:bg-blue-600 hover:text-white shadow-md flex items-center justify-center transition-all cursor-pointer"
-            >
-              <FiChevronLeft className="w-5 h-5 stroke-[2.5]" />
-            </button>
-            <button
+              ariaLabel="Previous loan product"
+              size="w-11 h-11"
+            />
+            <RoundArrowBtn
+              direction="right"
               onClick={nextSlide}
-              aria-label="Next loan product"
-              className="w-11 h-11 rounded-full border-2 border-solid border-blue-600 bg-transparent text-blue-600 hover:bg-blue-600 hover:text-white shadow-md flex items-center justify-center transition-all cursor-pointer"
-            >
-              <FiChevronRight className="w-5 h-5 stroke-[2.5]" />
-            </button>
+              ariaLabel="Next loan product"
+              size="w-11 h-11"
+            />
           </div>
 
           {/* Pagination Indicator Dots */}

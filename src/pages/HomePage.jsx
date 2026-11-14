@@ -3,6 +3,7 @@ import HeroSection from '../components/sections/HeroSection';
 import LoanProductsSection from '../components/sections/LoanProductsSection';
 import StatsSection from '../components/sections/StatsSection';
 import PartnersSection from '../components/sections/PartnersSection';
+import TestimonialsSection from '../components/sections/TestimonialsSection';
 import FaqSection from '../components/sections/FaqSection';
 
 export default function HomePage() {
@@ -20,7 +21,10 @@ export default function HomePage() {
       {/* 4. Banking & NBFC Partners Continuous Marquee (#EDF0EC background) */}
       <PartnersSection />
 
-      {/* 5. Frequently Asked Questions (FAQ) Section (Pure White background) */}
+      {/* 5. Client Testimonials Carousel (Pure White background - LottoLend design) */}
+      <TestimonialsSection />
+
+      {/* 6. Frequently Asked Questions (FAQ) Section (Pure White background) */}
       <FaqSection />
     </>
   );
