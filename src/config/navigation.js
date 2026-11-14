@@ -62,6 +62,5 @@ export const footerQuickLinks = [
 
 export const footerLegalLinks = [
   { name: "Privacy Policy", path: "/privacy-policy" },
-  { name: "Terms & Conditions", path: "/terms-and-conditions" },
-  { name: "Disclaimer", path: "/disclaimer" }
+  { name: "Terms & Conditions", path: "/terms-and-conditions" }
 ];

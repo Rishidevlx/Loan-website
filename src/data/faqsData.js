@@ -12,7 +12,7 @@ export const faqsData = [
   {
     id: "faq-3",
     question: "What CIBIL credit score do I need for approval?",
-    answer: "A credit score of 700 and above is ideal for unlocking the lowest interest rates and highest loan limits. However, if your CIBIL score is lower, our team works with specialized partner NBFCs that consider alternative financial parameters and banking history."
+    answer: "A credit score of 650 and above is ideal for unlocking the lowest interest rates and highest loan limits. However, if your CIBIL score is lower, our team works with specialized partner NBFCs that consider alternative financial parameters and banking history."
   },
   {
     id: "faq-4",

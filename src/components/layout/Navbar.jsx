@@ -7,7 +7,7 @@ import OutlineBtn from '../UI/btns/OutlineBtn';
 import MobileNav from './MobileNav';
 import navLogoImg from '../../assets/logo/nav-logo.png';
 
-export default function Navbar() {
+export default function Navbar({ currentPath = '/' }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -82,14 +82,15 @@ export default function Navbar() {
                   );
                 }
 
+                const isActive = currentPath === link.path;
                 return (
                   <a
                     key={link.name}
                     href={link.path}
-                    className="text-[15px] font-medium transition-colors"
-                    style={{ color: themeConfig.colors.textHeading }}
+                    className={`text-[15px] transition-colors ${isActive ? 'font-semibold' : 'font-medium'}`}
+                    style={{ color: isActive ? themeConfig.colors.primary : themeConfig.colors.textHeading }}
                     onMouseEnter={(e) => e.currentTarget.style.color = themeConfig.colors.primary}
-                    onMouseLeave={(e) => e.currentTarget.style.color = themeConfig.colors.textHeading}
+                    onMouseLeave={(e) => e.currentTarget.style.color = isActive ? themeConfig.colors.primary : themeConfig.colors.textHeading}
                   >
                     {link.name}
                   </a>
@@ -128,6 +129,7 @@ export default function Navbar() {
       <MobileNav 
         isOpen={mobileMenuOpen} 
         onClose={() => setMobileMenuOpen(false)} 
+        currentPath={currentPath}
       />
     </>
   );

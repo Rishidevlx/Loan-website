@@ -1,9 +1,3 @@
-/**
- * Theme Configuration - Single Source of Truth for Bharath Finserv
- * 
- * Future-la colors or typography styles mathanum na, indha oru file-la matum
- * change panna podhum. Entire website-kum automatically apply aagum!
- */
 
 export const themeConfig = {
   // 🎨 Color Palette (From Theme.md & Logo)

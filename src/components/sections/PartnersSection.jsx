@@ -16,12 +16,12 @@ export default function PartnersSection() {
         fontFamily: themeConfig.typography.fontFamily 
       }}
     >
-      {/* Decorative 3D Spinning Globe Icon (Top-Right) */}
+      {/* Decorative 3D Spinning Globe Icon (Top-Right) - Nicely proportioned on mobile */}
       <img
         src={worldIcon}
         alt="Decorative 3D World Globe"
         draggable={false}
-        className="absolute top-5 right-5 sm:top-7 sm:right-8 lg:top-8 lg:right-12 w-12 sm:w-14 lg:w-16 h-auto object-contain select-none pointer-events-none opacity-85 z-10 animate-spin-3d"
+        className="absolute top-3 right-3 sm:top-7 sm:right-8 lg:top-8 lg:right-12 w-10 sm:w-13 lg:w-16 h-auto object-contain select-none pointer-events-none opacity-85 z-10 animate-spin-3d"
         style={{ animation: 'spin3DHorizontal 7s linear infinite' }}
       />
 

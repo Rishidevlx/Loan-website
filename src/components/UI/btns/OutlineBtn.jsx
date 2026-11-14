@@ -53,26 +53,31 @@ export default function OutlineBtn({
     transform: isHovered ? 'translateY(-1px)' : 'translateY(0)',
   };
 
-  // Expanding Circle overlay element
+  // Expanding Circle overlay element (sized generously with slow, graceful 1.5s (1500ms) radial expansion)
   const ExpandingCircle = (
     <span
-      className="absolute rounded-full pointer-events-none transition-transform duration-500 ease-out"
+      className="absolute rounded-full pointer-events-none transition-transform ease-out"
       style={{
         left: `${coords.x}px`,
         top: `${coords.y}px`,
-        width: '320px',
-        height: '320px',
+        width: '950px',
+        height: '950px',
         backgroundColor: themeConfig.colors.primary,
         transform: isHovered 
           ? 'translate(-50%, -50%) scale(1)' 
           : 'translate(-50%, -50%) scale(0)',
         willChange: 'transform',
+        transitionDuration: '1500ms',
+        transitionTimingFunction: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
       }}
     />
   );
 
   const InnerContent = (
-    <span className="relative z-10 flex items-center gap-2 transition-colors duration-200">
+    <span 
+      className="relative z-10 flex items-center gap-2 transition-colors"
+      style={{ transitionDuration: '800ms' }}
+    >
       {Icon && <Icon className="w-4 h-4 shrink-0" />}
       <span>{children}</span>
       {EndIcon && <EndIcon className="w-4 h-4 shrink-0 opacity-80" />}

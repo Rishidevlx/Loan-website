@@ -110,12 +110,12 @@ export default function FaqSection() {
       className="py-16 md:py-24 bg-white relative overflow-hidden"
       style={{ fontFamily: themeConfig.typography.fontFamily }}
     >
-      {/* Decorative Horizontally Gliding Question Mark Icon (Right-Bottom) */}
+      {/* Decorative Horizontally Gliding Question Mark Icon (Right-Bottom) - Well-proportioned on mobile */}
       <img
         src={questionIcon}
         alt="Decorative Question Mark"
         draggable={false}
-        className="absolute bottom-4 right-4 sm:bottom-6 sm:right-8 lg:bottom-10 lg:right-14 w-12 sm:w-14 lg:w-16 h-auto object-contain select-none pointer-events-none opacity-80 z-10 animate-horizontal-float"
+        className="absolute bottom-3 right-3 sm:bottom-6 sm:right-8 lg:bottom-10 lg:right-14 w-10 sm:w-13 lg:w-16 h-auto object-contain select-none pointer-events-none opacity-80 z-10 animate-horizontal-float"
         style={{ animation: 'horizontalFloat 3.8s ease-in-out infinite' }}
       />
 
@@ -144,7 +144,7 @@ export default function FaqSection() {
 
           {/* Main H2 Heading with Message Icon placed cross to letter 'F' in 'Find' */}
           <div className="relative inline-block">
-            {/* Decorative Wave-Bobbing Message Icon placed diagonally to the letter 'F' */}
+            {/* Decorative Wave-Bobbing Message Icon placed diagonally to the letter 'F' - Desktop only, hidden on mobile */}
             <img
               src={msgIcon}
               alt="Decorative Message Bubble"

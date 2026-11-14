@@ -133,6 +133,7 @@ function LoanCard({ loan }) {
 }
 
 export default function LoanProductsSection() {
+  const sectionRef = useRef(null);
   const totalItems = loansProducts.length;
   // 5x duplication (30 items total) ensures abundant buffer so cards are NEVER empty
   const extendedSlides = [
@@ -149,6 +150,8 @@ export default function LoanProductsSection() {
   const [enableTransition, setEnableTransition] = useState(true);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const [hasTriggeredFirst, setHasTriggeredFirst] = useState(false);
 
   // Responsive cards per view calculation
   useEffect(() => {
@@ -179,17 +182,53 @@ export default function LoanProductsSection() {
     }
   }, [enableTransition]);
 
-  // Autoplay: Automatically move by 1 card every 5 seconds (pauses on user hover)
+  // Observer to trigger first slide immediately when user enters section, then continuous 2s autoplay
   useEffect(() => {
-    if (isPaused) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          if (!hasTriggeredFirst) {
+            setHasTriggeredFirst(true);
+            // Immediate first scroll upon scrolling into view
+            const timer = setTimeout(() => {
+              setIsAnimating(true);
+              setEnableTransition(true);
+              setCurrentIndex((prev) => prev + 1);
+            }, 300);
+            return () => clearTimeout(timer);
+          }
+        } else {
+          setIsInView(false);
+        }
+      },
+      { 
+        threshold: 0.25 
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, [hasTriggeredFirst]);
+
+  // Autoplay: Slower, silky-smooth continuous movement (pauses on user hover)
+  useEffect(() => {
+    if (isPaused || !isInView) return;
     const timer = setInterval(() => {
       setIsAnimating(true);
       setEnableTransition(true);
       setCurrentIndex((prev) => prev + 1);
-    }, 5000);
+    }, 2800);
 
     return () => clearInterval(timer);
-  }, [isPaused, totalItems]);
+  }, [isPaused, isInView, totalItems]);
 
   const nextSlide = () => {
     if (isAnimating) return;
@@ -222,6 +261,7 @@ export default function LoanProductsSection() {
 
   return (
     <section 
+      ref={sectionRef}
       className="py-16 md:py-20 relative overflow-hidden"
       style={{ 
         backgroundColor: themeConfig.colors.sectionProductsBg,
@@ -230,21 +270,21 @@ export default function LoanProductsSection() {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Decorative Spinning Coin Icon (Top-Right) - Enlarged */}
+      {/* Decorative Spinning Coin Icon (Top-Right) - Well-proportioned on mobile */}
       <img
         src={coinImg}
         alt="Decorative Coin"
         draggable={false}
-        className="absolute top-4 right-4 sm:top-6 sm:right-8 lg:top-8 lg:right-12 w-20 sm:w-24 lg:w-28 h-auto object-contain select-none pointer-events-none opacity-90 z-10 animate-spin-slow"
+        className="absolute top-3 right-3 sm:top-6 sm:right-8 lg:top-8 lg:right-12 w-14 sm:w-18 md:w-22 lg:w-26 h-auto object-contain select-none pointer-events-none opacity-90 z-10 animate-spin-slow"
         style={{ animation: 'spinSlow 14s linear infinite' }}
       />
 
-      {/* Decorative Floating Message Bubble (Bottom-Left) - Enlarged */}
+      {/* Decorative Floating Message Bubble (Bottom-Left) - Clearly visible and nicely sized on mobile */}
       <img
         src={msgIconImg}
         alt="Decorative Message Bubble"
         draggable={false}
-        className="absolute bottom-4 left-4 sm:bottom-6 sm:left-8 lg:bottom-10 lg:left-12 w-16 sm:w-20 lg:w-24 h-auto object-contain select-none pointer-events-none opacity-90 z-10 hidden sm:block animate-horizontal-float"
+        className="absolute bottom-3 left-3 sm:bottom-6 sm:left-8 lg:bottom-10 lg:left-12 w-12 sm:w-16 md:w-20 lg:w-24 h-auto object-contain select-none pointer-events-none opacity-90 z-10 block animate-horizontal-float"
         style={{ animation: 'horizontalFloat 3.8s ease-in-out infinite' }}
       />
 
@@ -315,7 +355,7 @@ export default function LoanProductsSection() {
               className="flex"
               style={{
                 transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)`,
-                transition: enableTransition ? 'transform 650ms cubic-bezier(0.25, 1, 0.5, 1)' : 'none',
+                transition: enableTransition ? 'transform 1000ms cubic-bezier(0.25, 1, 0.35, 1)' : 'none',
               }}
             >
               {extendedSlides.map((loan, idx) => (

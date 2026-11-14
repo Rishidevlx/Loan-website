@@ -9,7 +9,7 @@ export const siteConfig = {
   phoneRaw: "+919944400022",
   phoneDisplay: "99444 00022",
   whatsapp: "+919944400022",
-  email: "support@bharathfinserve.com",
+  email: "bharathfinser@gmail.com",
   
   address: {
     line1: "481/1, Thilakar Street, Thelugupalayam",

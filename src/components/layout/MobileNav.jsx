@@ -5,7 +5,7 @@ import { siteConfig } from '../../config/siteConfig';
 import OutlineBtn from '../UI/btns/OutlineBtn';
 import navLogoImg from '../../assets/logo/nav-logo.png';
 
-export default function MobileNav({ isOpen, onClose }) {
+export default function MobileNav({ isOpen, onClose, currentPath = '/' }) {
   const [loansOpen, setLoansOpen] = useState(false);
 
   if (!isOpen) return null;
@@ -55,31 +55,40 @@ export default function MobileNav({ isOpen, onClose }) {
                     />
                   </button>
 
-                  {/* Clean Simple Loans Accordion with Pure White Background */}
-                  {loansOpen && (
-                    <div className="pl-3 pr-2 py-1 space-y-1 bg-white border border-slate-100 rounded-lg mb-2 shadow-xs">
-                      {loansDropdownItems.map((loan) => (
-                        <a
-                          key={loan.name}
-                          href={loan.slug}
-                          onClick={onClose}
-                          className="block px-3 py-2 rounded-md text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-all"
-                        >
-                          {loan.name}
-                        </a>
-                      ))}
+                  {/* Smooth Nested Loans Sub-menu (No Card Box, Butter-smooth Accordion) */}
+                  <div 
+                    className={`grid transition-all duration-300 ease-in-out ${
+                      loansOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="pl-4 pb-2 pt-1 space-y-0.5">
+                        {loansDropdownItems.map((loan) => (
+                          <a
+                            key={loan.name}
+                            href={loan.slug}
+                            onClick={onClose}
+                            className="block py-2 text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors"
+                          >
+                            {loan.name}
+                          </a>
+                        ))}
+                      </div>
                     </div>
-                  )}
+                  </div>
                 </div>
               );
             }
 
+            const isActive = currentPath === link.path;
             return (
               <a
                 key={link.name}
                 href={link.path}
                 onClick={onClose}
-                className="block py-2.5 text-base font-semibold text-slate-800 hover:text-blue-600 border-b border-slate-100 transition-colors"
+                className={`block py-2.5 text-base font-semibold border-b border-slate-100 transition-colors ${
+                  isActive ? 'text-blue-600 font-bold' : 'text-slate-800 hover:text-blue-600'
+                }`}
               >
                 {link.name}
               </a>
