@@ -3,10 +3,12 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import HomePage from './pages/HomePage';
 import ContactPage from './pages/ContactPage';
+import LoanDetailPage from './pages/LoanDetailPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsPage from './pages/TermsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import { themeConfig } from './config/themeconfig';
+import { getLoanBySlug } from './data/loansDetailsData';
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(() => {
@@ -66,7 +68,7 @@ export default function App() {
 
   // Determine active view
   const renderCurrentPage = () => {
-    if (currentPath === '/' || currentPath === '') {
+    if (currentPath === '/' || currentPath === '' || currentPath === '/loans' || currentPath === '/loans/') {
       return <HomePage />;
     }
     if (currentPath === '/contact') {
@@ -78,6 +80,13 @@ export default function App() {
     if (currentPath === '/terms-and-conditions') {
       return <TermsPage />;
     }
+
+    // Check if the route matches any of the 6 Loan detail pages
+    const loan = getLoanBySlug(currentPath);
+    if (loan) {
+      return <LoanDetailPage loan={loan} />;
+    }
+
     return <NotFoundPage />;
   };
 

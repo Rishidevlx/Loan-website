@@ -45,10 +45,14 @@ export default function Navbar({ currentPath = '/' }) {
                 if (link.hasDropdown) {
                   return (
                     <div key={link.name} className="relative group py-2">
-                      {/* Nav link with Spinning Plus Icon */}
-                      <a
-                        href={link.path}
-                        className="flex items-center gap-1.5 text-[15px] font-medium transition-colors cursor-pointer select-none"
+                      {/* Nav link with Spinning Plus Icon (Button that opens dropdown, does not navigate to /loans) */}
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                        }}
+                        className="flex items-center gap-1.5 text-[15px] font-medium transition-colors cursor-pointer select-none focus:outline-none"
                         style={{ color: themeConfig.colors.textHeading }}
                         onMouseEnter={(e) => e.currentTarget.style.color = themeConfig.colors.primary}
                         onMouseLeave={(e) => e.currentTarget.style.color = themeConfig.colors.textHeading}
@@ -57,21 +61,28 @@ export default function Navbar({ currentPath = '/' }) {
                         <span className="inline-flex items-center justify-center w-4 h-4 text-slate-400 group-hover:text-blue-600 plus-spin font-semibold">
                           <FiPlus className="w-3.5 h-3.5 stroke-[2.5]" />
                         </span>
-                      </a>
+                      </button>
 
                       {/* Dropdown Menu (Starts right from the start of the Loans word with left-0) */}
-                      <div className="absolute top-full left-0 pt-2.5 w-56 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 ease-out pointer-events-none group-hover:pointer-events-auto">
-                        <div className="bg-white rounded-lg shadow-lg border border-slate-200/80 p-2 overflow-hidden ring-1 ring-black/5">
+                      <div className="absolute top-full left-0 pt-2.5 w-60 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 ease-out pointer-events-none group-hover:pointer-events-auto">
+                        <div className="bg-white rounded-xl shadow-xl border border-slate-200/80 p-2 overflow-hidden ring-1 ring-black/5">
                           <div className="space-y-1">
                             {loansDropdownItems.map((item) => (
                               <a
                                 key={item.name}
                                 href={item.slug}
-                                className="group/item flex items-center justify-between px-3 py-2 text-sm font-semibold text-slate-700 hover:text-blue-600 transition-colors duration-200"
+                                className="group/item flex items-center justify-between px-3 py-2 text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg transition-all duration-200"
                               >
-                                <span className="inline-block transition-transform duration-200 group-hover/item:translate-x-1.5">
-                                  {item.name}
-                                </span>
+                                <div className="flex items-center gap-2.5 transition-transform duration-200 group-hover/item:translate-x-1">
+                                  {item.icon && (
+                                    <img 
+                                      src={item.icon} 
+                                      alt="" 
+                                      className="w-4 h-4 object-contain shrink-0" 
+                                    />
+                                  )}
+                                  <span>{item.name}</span>
+                                </div>
                                 <FiArrowUpRight className="w-3.5 h-3.5 text-blue-600 opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" />
                               </a>
                             ))}

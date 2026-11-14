@@ -68,9 +68,16 @@ export default function MobileNav({ isOpen, onClose, currentPath = '/' }) {
                             key={loan.name}
                             href={loan.slug}
                             onClick={onClose}
-                            className="block py-2 text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors"
+                            className="flex items-center gap-2.5 py-2 text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors"
                           >
-                            {loan.name}
+                            {loan.icon && (
+                              <img 
+                                src={loan.icon} 
+                                alt="" 
+                                className="w-4 h-4 object-contain shrink-0" 
+                              />
+                            )}
+                            <span>{loan.name}</span>
                           </a>
                         ))}
                       </div>
