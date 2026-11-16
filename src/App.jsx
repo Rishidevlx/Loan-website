@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
+import ScrollToTopBtn from './components/UI/ScrollToTopBtn';
+import FloatingContactWidget from './components/UI/FloatingContactWidget';
+import ClickSparkEffect from './components/UI/ClickSparkEffect';
 import HomePage from './pages/HomePage';
 import ContactPage from './pages/ContactPage';
 import LoanDetailPage from './pages/LoanDetailPage';
@@ -92,7 +95,7 @@ export default function App() {
 
   return (
     <div 
-      className="min-h-screen flex flex-col antialiased selection:bg-blue-100 selection:text-blue-700 bg-white"
+      className="min-h-screen flex flex-col antialiased selection:bg-blue-600 selection:text-white bg-white"
       style={{ 
         fontFamily: themeConfig.typography.fontFamily 
       }}
@@ -107,6 +110,13 @@ export default function App() {
 
       {/* 3. Contrast Footer */}
       <Footer currentPath={currentPath} />
+
+      {/* 4. Floating Scroll-To-Top Button & Floating Contact Speed-Dial */}
+      <ScrollToTopBtn />
+      <FloatingContactWidget />
+
+      {/* 5. Global Click Lines Burst Effect */}
+      <ClickSparkEffect />
     </div>
   );
 }

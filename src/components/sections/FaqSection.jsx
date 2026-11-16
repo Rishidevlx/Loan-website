@@ -1,31 +1,48 @@
 import React, { useState, useEffect } from 'react';
 import { themeConfig } from '../../config/themeconfig';
-import { faqsData } from '../../data/faqsData';
+import { faqsData as defaultFaqsData } from '../../data/faqsData';
 import { FiPlus, FiMinus } from 'react-icons/fi';
 import msgIcon from '../../assets/Vectors/msg-icon.png';
 import questionIcon from '../../assets/Vectors/FAQs/icons8-question-mark-100.png';
 
-export default function FaqSection() {
+export default function FaqSection({
+  faqs,
+  eyebrow = "Frequently Asked Questions",
+  title = "Find Answers to Common Questions",
+  subtitle = "We have compiled answers to common questions on loan eligibility, documents, interest rates, and approval timelines to guide your financial decisions.",
+  bgClass = "bg-white",
+}) {
+  const activeFaqs = (faqs && faqs.length > 0) ? faqs : defaultFaqsData;
+
   // Mobile view: only 1st question open initially; Desktop view: 1 in left col + 1 in right col open
-  const [openLeftId, setOpenLeftId] = useState('faq-1');
+  const [openLeftId, setOpenLeftId] = useState(() => activeFaqs[0]?.id || null);
   const [openRightId, setOpenRightId] = useState(() => {
     if (typeof window !== 'undefined' && window.innerWidth < 1024) {
       return null;
     }
-    return 'faq-5';
+    const mid = Math.ceil(activeFaqs.length / 2);
+    return activeFaqs[mid]?.id || null;
   });
 
-  // Responsive check ensuring mobile only has at most 1 question open
+  // Responsive check & handle activeFaqs prop changes (e.g., when switching between loan pages)
   useEffect(() => {
+    const isMobile = window.innerWidth < 1024;
+    setOpenLeftId(activeFaqs[0]?.id || null);
+    if (!isMobile) {
+      const mid = Math.ceil(activeFaqs.length / 2);
+      setOpenRightId(activeFaqs[mid]?.id || null);
+    } else {
+      setOpenRightId(null);
+    }
+
     const handleResize = () => {
       if (window.innerWidth < 1024) {
         setOpenRightId(null);
       }
     };
-    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [activeFaqs]);
 
   const handleToggleLeft = (id) => {
     const isMobile = window.innerWidth < 1024;
@@ -49,10 +66,10 @@ export default function FaqSection() {
     }
   };
 
-  // Split into 2 balanced columns (4 items each) for desktop layout
-  const midPoint = Math.ceil(faqsData.length / 2);
-  const leftColumnFaqs = faqsData.slice(0, midPoint);
-  const rightColumnFaqs = faqsData.slice(midPoint);
+  // Split into 2 balanced columns for desktop layout
+  const midPoint = Math.ceil(activeFaqs.length / 2);
+  const leftColumnFaqs = activeFaqs.slice(0, midPoint);
+  const rightColumnFaqs = activeFaqs.slice(midPoint);
 
   const renderFaqCard = (faq, isOpen, onToggle) => {
     return (
@@ -113,7 +130,7 @@ export default function FaqSection() {
 
   return (
     <section 
-      className="py-16 md:py-24 bg-white relative overflow-hidden"
+      className={`py-16 md:py-24 ${bgClass} relative overflow-hidden`}
       style={{ fontFamily: themeConfig.typography.fontFamily }}
     >
       {/* Decorative Horizontally Gliding Question Mark Icon (Right-Bottom) - Well-proportioned on mobile */}
@@ -130,44 +147,48 @@ export default function FaqSection() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3.5 mb-12 md:mb-16">
           
-          {/* Eyebrow Tagline with Spark Icon */}
-          <div className="inline-flex items-center gap-2">
-            <svg 
-              className="w-4 h-4 text-blue-600 shrink-0" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path 
-                d="M12 2L13.8 8.2C14.3 9.7 15.5 10.9 17 11.4L23.2 13.2L17 15C15.5 15.5 14.3 16.7 13.8 18.2L12 24.4L10.2 18.2C9.7 16.7 8.5 15.5 7 15L0.8 13.2L7 11.4C8.5 10.9 9.7 9.7 10.2 8.2L12 2Z" 
-                fill="currentColor"
-              />
-            </svg>
-            <span 
-              className="text-xs sm:text-sm font-medium tracking-wider uppercase"
-              style={{ color: themeConfig.colors.textHeading }}
-            >
-              Frequently Asked Questions
-            </span>
+          {/* Eyebrow Tagline with Spark Icon - Separated onto its own top row */}
+          <div className="flex justify-center">
+            <div className="inline-flex items-center gap-2">
+              <svg 
+                className="w-4 h-4 text-blue-600 shrink-0" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path 
+                  d="M12 2L13.8 8.2C14.3 9.7 15.5 10.9 17 11.4L23.2 13.2L17 15C15.5 15.5 14.3 16.7 13.8 18.2L12 24.4L10.2 18.2C9.7 16.7 8.5 15.5 7 15L0.8 13.2L7 11.4C8.5 10.9 9.7 9.7 10.2 8.2L12 2Z" 
+                  fill="currentColor"
+                />
+              </svg>
+              <span 
+                className="text-xs sm:text-sm font-medium tracking-wider uppercase"
+                style={{ color: themeConfig.colors.textHeading }}
+              >
+                {eyebrow}
+              </span>
+            </div>
           </div>
 
           {/* Main H2 Heading with Message Icon placed cross to letter 'F' in 'Find' */}
-          <div className="relative inline-block">
-            {/* Decorative Wave-Bobbing Message Icon placed diagonally to the letter 'F' - Desktop only, hidden on mobile */}
-            <img
-              src={msgIcon}
-              alt="Decorative Message Bubble"
-              draggable={false}
-              className="absolute -top-7 -left-10 sm:-top-8 sm:-left-12 lg:-top-9 lg:-left-14 w-10 sm:w-12 lg:w-14 h-auto object-contain select-none pointer-events-none opacity-85 z-10 animate-wave-bob hidden sm:block"
-              style={{ animation: 'waveBobbing 4.2s ease-in-out infinite' }}
-            />
+          <div className="flex justify-center">
+            <div className="relative inline-block">
+              {/* Decorative Wave-Bobbing Message Icon placed diagonally to the letter 'F' - Desktop only, hidden on mobile */}
+              <img
+                src={msgIcon}
+                alt="Decorative Message Bubble"
+                draggable={false}
+                className="absolute -top-7 -left-10 sm:-top-8 sm:-left-12 lg:-top-9 lg:-left-14 w-10 sm:w-12 lg:w-14 h-auto object-contain select-none pointer-events-none opacity-85 z-10 animate-wave-bob hidden sm:block"
+                style={{ animation: 'waveBobbing 4.2s ease-in-out infinite' }}
+              />
 
-            <h2 
-              className="text-2xl sm:text-3xl md:text-[28px] font-normal tracking-tight leading-tight"
-              style={{ color: themeConfig.colors.textHeading }}
-            >
-              Find Answers to Common Questions
-            </h2>
+              <h2 
+                className="text-2xl sm:text-3xl md:text-[28px] font-normal tracking-tight leading-tight"
+                style={{ color: themeConfig.colors.textHeading }}
+              >
+                {title}
+              </h2>
+            </div>
           </div>
 
           {/* Subtext */}
@@ -175,7 +196,7 @@ export default function FaqSection() {
             className="text-base sm:text-[18.45px] font-light leading-relaxed max-w-2xl mx-auto"
             style={{ color: themeConfig.colors.textBody }}
           >
-            We have compiled answers to common questions on loan eligibility, documents, interest rates, and approval timelines to guide your financial decisions.
+            {subtitle}
           </p>
 
         </div>

@@ -19,6 +19,14 @@ export default function Navbar({ currentPath = '/' }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Normalize path for accurate active matching
+  const normalizedPath = (currentPath || '/').trim().replace(/\/$/, '') || '/';
+
+  // Check if current route is ANY loan detail page
+  const isAnyLoanActive = loansDropdownItems.some(
+    (item) => item.slug === normalizedPath || normalizedPath.startsWith(item.slug)
+  ) || normalizedPath.includes('-loan') || normalizedPath.includes('/loan') || normalizedPath === '/loans';
+
   return (
     <>
       <header 
@@ -30,7 +38,7 @@ export default function Navbar({ currentPath = '/' }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
           <div className="flex items-center justify-between gap-6 md:gap-10">
             
-            {/* 1. Brand Logo (Increased size) */}
+            {/* 1. Brand Logo */}
             <a href="/" className="inline-block shrink-0 focus:outline-none">
               <img 
                 src={navLogoImg} 
@@ -39,31 +47,44 @@ export default function Navbar({ currentPath = '/' }) {
               />
             </a>
 
-            {/* 2. Desktop Navigation Menu */}
+            {/* 2. Desktop Navigation Menu with Active Blue Underline */}
             <nav className="hidden lg:flex items-center gap-9">
               {mainNavLinks.map((link) => {
+                // Dropdown link ("Loans +")
                 if (link.hasDropdown) {
                   return (
                     <div key={link.name} className="relative group py-2">
-                      {/* Nav link with Spinning Plus Icon (Button that opens dropdown, does not navigate to /loans) */}
+                      {/* Nav link with Spinning Plus Icon & Active Blue Underline */}
                       <button
                         type="button"
                         onClick={(e) => {
                           e.preventDefault();
                           e.stopPropagation();
                         }}
-                        className="flex items-center gap-1.5 text-[15px] font-medium transition-colors cursor-pointer select-none focus:outline-none"
-                        style={{ color: themeConfig.colors.textHeading }}
+                        className={`relative flex items-center gap-1.5 text-[15px] transition-colors cursor-pointer select-none focus:outline-none ${
+                          isAnyLoanActive ? 'font-semibold' : 'font-medium'
+                        }`}
+                        style={{ color: isAnyLoanActive ? themeConfig.colors.primary : themeConfig.colors.textHeading }}
                         onMouseEnter={(e) => e.currentTarget.style.color = themeConfig.colors.primary}
-                        onMouseLeave={(e) => e.currentTarget.style.color = themeConfig.colors.textHeading}
+                        onMouseLeave={(e) => e.currentTarget.style.color = isAnyLoanActive ? themeConfig.colors.primary : themeConfig.colors.textHeading}
                       >
                         <span>{link.name}</span>
-                        <span className="inline-flex items-center justify-center w-4 h-4 text-slate-400 group-hover:text-blue-600 plus-spin font-semibold">
+                        <span className={`inline-flex items-center justify-center w-4 h-4 ${
+                          isAnyLoanActive ? 'text-blue-600' : 'text-slate-400'
+                        } group-hover:text-blue-600 plus-spin font-semibold`}>
                           <FiPlus className="w-3.5 h-3.5 stroke-[2.5]" />
                         </span>
+
+                        {/* Active Indicator Underline - Only in main navbar, not in sub-menus */}
+                        {isAnyLoanActive && (
+                          <span 
+                            className="absolute -bottom-1 left-0 right-0 h-[2.5px] bg-blue-600 rounded-full" 
+                            aria-hidden="true"
+                          />
+                        )}
                       </button>
 
-                      {/* Dropdown Menu (Starts right from the start of the Loans word with left-0) */}
+                      {/* Dropdown Menu (Strictly clean without underline inside submenu items) */}
                       <div className="absolute top-full left-0 pt-2.5 w-60 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 ease-out pointer-events-none group-hover:pointer-events-auto">
                         <div className="bg-white rounded-xl shadow-xl border border-slate-200/80 p-2 overflow-hidden ring-1 ring-black/5">
                           <div className="space-y-1">
@@ -93,17 +114,29 @@ export default function Navbar({ currentPath = '/' }) {
                   );
                 }
 
-                const isActive = currentPath === link.path;
+                // Standard Nav Links (Home, About, Contact)
+                const isActive = link.path === '/'
+                  ? (normalizedPath === '/' || normalizedPath === '')
+                  : (normalizedPath === link.path || (link.path === '/about-us' && (normalizedPath === '/about' || normalizedPath === '/about-us')));
+
                 return (
                   <a
                     key={link.name}
                     href={link.path}
-                    className={`text-[15px] transition-colors ${isActive ? 'font-semibold' : 'font-medium'}`}
+                    className={`relative py-2 text-[15px] transition-colors ${isActive ? 'font-semibold' : 'font-medium'}`}
                     style={{ color: isActive ? themeConfig.colors.primary : themeConfig.colors.textHeading }}
                     onMouseEnter={(e) => e.currentTarget.style.color = themeConfig.colors.primary}
                     onMouseLeave={(e) => e.currentTarget.style.color = isActive ? themeConfig.colors.primary : themeConfig.colors.textHeading}
                   >
-                    {link.name}
+                    <span>{link.name}</span>
+
+                    {/* Active Indicator Underline */}
+                    {isActive && (
+                      <span 
+                        className="absolute -bottom-1 left-0 right-0 h-[2.5px] bg-blue-600 rounded-full" 
+                        aria-hidden="true"
+                      />
+                    )}
                   </a>
                 );
               })}
