@@ -32,21 +32,27 @@ export default function HeroSection() {
                   fill="currentColor"
                 />
               </svg>
-              <span className="text-sm font-semibold tracking-wide text-slate-800 uppercase">
+              <span 
+                className="text-sm font-medium tracking-wide uppercase"
+                style={{ color: themeConfig.colors.textHeading }}
+              >
                 {siteConfig.tagline}
               </span>
             </div>
 
-            {/* 2. Main H1 Heading */}
+            {/* 2. Main H1 Heading (49.2px, weight 500, color #262626) */}
             <h1 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-[46px] font-semibold leading-[1.16] tracking-tight"
-              style={{ color: themeConfig.typography.sectionHeading.color }}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[49.2px] font-medium leading-[1.2] tracking-tight"
+              style={{ color: themeConfig.colors.textHeading }}
             >
               Your Trusted Loan Partner in Coimbatore
             </h1>
 
-            {/* 3. Sub-text from Official Requirement Doc */}
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl">
+            {/* 3. Sub-text from Official Requirement Doc (18.45px, weight 300, color #262626) */}
+            <p 
+              className="text-base sm:text-[18.45px] font-light leading-relaxed max-w-xl"
+              style={{ color: themeConfig.colors.textBody }}
+            >
               Business, property, car and personal loans from 16+ leading banks and NBFCs. 
               One application, honest guidance, transparent process.
             </p>

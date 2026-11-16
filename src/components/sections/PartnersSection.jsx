@@ -40,21 +40,27 @@ export default function PartnersSection() {
               fill="currentColor"
             />
           </svg>
-          <span className="text-xs sm:text-sm font-semibold tracking-wider text-slate-800 uppercase">
+          <span 
+            className="text-xs sm:text-sm font-medium tracking-wider uppercase"
+            style={{ color: themeConfig.colors.textHeading }}
+          >
             16+ Banking & NBFC Partners
           </span>
         </div>
 
-        {/* Section Heading */}
+        {/* Section Heading (24.6px - 28px, weight 400, color #262626) */}
         <h2 
-          className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#222E48] leading-tight mb-3.5"
-          style={{ color: themeConfig.typography.sectionHeading.color }}
+          className="text-2xl sm:text-3xl md:text-[28px] font-normal tracking-tight leading-tight mb-3.5"
+          style={{ color: themeConfig.colors.textHeading }}
         >
           Our Lending Network
         </h2>
 
-        {/* Subtitle from Official Documentation */}
-        <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto">
+        {/* Subtitle (18.45px, weight 300, color #262626) */}
+        <p 
+          className="text-base sm:text-[18.45px] font-light leading-relaxed max-w-2xl mx-auto"
+          style={{ color: themeConfig.colors.textBody }}
+        >
           We compare offers across India's premier commercial banks and leading NBFCs to ensure you secure the lowest interest margins and fastest approvals.
         </p>
 

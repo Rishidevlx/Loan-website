@@ -65,22 +65,25 @@ export default function LoanHeroSection({ loanData }) {
                   fill="currentColor"
                 />
               </svg>
-              <span className="text-sm font-semibold tracking-wide text-slate-800 uppercase">
+              <span 
+                className="text-sm font-medium tracking-wide uppercase"
+                style={{ color: themeConfig.colors.textHeading }}
+              >
                 {badge || `SPECIAL OFFERS • ${name.toUpperCase()}`}
               </span>
             </div>
 
-            {/* 2. Main Hero Headline */}
+            {/* 2. Main Hero Headline (49.2px, weight 500, color #262626) */}
             <h1 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-semibold tracking-tight text-[#222E48] leading-[1.18] mb-4 sm:mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[49.2px] font-medium tracking-tight leading-[1.2] mb-4 sm:mb-6"
               style={{ color: themeConfig.colors.textHeading }}
             >
               {headline}
             </h1>
 
-            {/* 3. Subtitle Description */}
+            {/* 3. Subtitle Description (18.45px, weight 300, color #262626) */}
             <p 
-              className="text-base sm:text-lg text-slate-600 leading-relaxed mb-6 sm:mb-8 max-w-2xl font-normal"
+              className="text-base sm:text-[18.45px] font-light leading-relaxed mb-6 sm:mb-8 max-w-2xl"
               style={{ color: themeConfig.colors.textBody }}
             >
               {subtitle}

@@ -109,9 +109,9 @@ export default function StatsSection() {
 
                   {/* Right Typography Content */}
                   <div>
-                    {/* Stat Headline */}
+                    {/* Stat Headline (weight 500) */}
                     <div 
-                      className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#222E48] flex items-center gap-1.5 leading-none mb-1.5"
+                      className="text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tight flex items-center gap-1.5 leading-none mb-1.5"
                       style={{ color: themeConfig.colors.textHeading }}
                     >
                       <span>{displayValue}</span>
@@ -122,8 +122,8 @@ export default function StatsSection() {
                       )}
                     </div>
 
-                    {/* Stat Subtext */}
-                    <p className="text-xs sm:text-sm font-semibold text-slate-500 uppercase tracking-wider">
+                    {/* Stat Subtext (weight 400/300) */}
+                    <p className="text-xs sm:text-sm font-normal text-slate-500 uppercase tracking-wider">
                       {stat.subtitle}
                     </p>
                   </div>

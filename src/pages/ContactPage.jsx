@@ -214,25 +214,28 @@ export default function ContactPage() {
                     fill="currentColor"
                   />
                 </svg>
-                <span className="text-xs sm:text-sm font-semibold tracking-wider text-slate-800 uppercase">
+                <span 
+                  className="text-xs sm:text-sm font-medium tracking-wider uppercase"
+                  style={{ color: themeConfig.colors.textHeading }}
+                >
                   Contact Bharath Finserv
                 </span>
               </div>
 
-              {/* Main H1 Heading - Solid black/navy matching themeConfig sectionHeading */}
+              {/* Main H1 Heading (49.2px, weight 500, color #262626) */}
               <h1 
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-[46px] font-semibold leading-[1.16] tracking-tight"
-                style={{ 
-                  color: themeConfig.typography.sectionHeading.color,
-                  fontFamily: themeConfig.typography.fontFamily 
-                }}
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-[49.2px] font-medium leading-[1.2] tracking-tight"
+                style={{ color: themeConfig.colors.textHeading }}
               >
                 Empowering <br className="hidden sm:block" />
                 Your Every Step.
               </h1>
 
-              {/* Subtitle matching themeConfig body styling */}
-              <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl">
+              {/* Subtitle matching themeConfig body styling (18.45px, weight 300, color #262626) */}
+              <p 
+                className="text-base sm:text-[18.45px] font-light leading-relaxed max-w-xl"
+                style={{ color: themeConfig.colors.textBody }}
+              >
                 Have questions about loan eligibility, interest rates, or fast documentation? 
                 Speak directly with Velandipalayam's trusted loan advisors helping borrowers across 16+ banks.
               </p>
@@ -288,17 +291,24 @@ export default function ContactPage() {
                   fill="currentColor"
                 />
               </svg>
-              <span className="text-xs sm:text-sm font-semibold tracking-wider text-slate-700 uppercase">
+              <span 
+                className="text-xs sm:text-sm font-medium tracking-wider uppercase"
+                style={{ color: themeConfig.colors.textHeading }}
+              >
                 Direct Loan Consultation
               </span>
             </div>
+            {/* Section Heading (24.6px - 28px, weight 400, color #262626) */}
             <h2 
-              className="text-3xl sm:text-4xl font-bold tracking-tight text-[#222E48]"
-              style={{ color: themeConfig.typography.sectionHeading.color }}
+              className="text-2xl sm:text-3xl md:text-[28px] font-normal tracking-tight"
+              style={{ color: themeConfig.colors.textHeading }}
             >
               Get in Touch with Our Advisors
             </h2>
-            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            <p 
+              className="text-base sm:text-[18.45px] font-light leading-relaxed"
+              style={{ color: themeConfig.colors.textBody }}
+            >
               Submit your enquiry below or contact us directly via call or WhatsApp. We reply promptly during office hours.
             </p>
           </div>

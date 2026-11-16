@@ -88,7 +88,10 @@ export default function TestimonialsSection() {
               key={currentReview.id} 
               className="animate-fade-in transition-all duration-500 max-w-3xl mx-auto"
             >
-              <blockquote className="text-base sm:text-lg md:text-xl lg:text-[22px] font-medium text-[#222E48] leading-relaxed mb-8 px-2 sm:px-4">
+              <blockquote 
+                className="text-base sm:text-lg md:text-xl lg:text-[21px] font-light leading-relaxed mb-8 px-2 sm:px-4"
+                style={{ color: themeConfig.colors.textHeading }}
+              >
                 &ldquo;{currentReview.quote}&rdquo;
               </blockquote>
 
@@ -101,11 +104,14 @@ export default function TestimonialsSection() {
                   className="w-13 h-13 rounded-full object-cover ring-3 ring-blue-100 shadow-sm"
                 />
                 <div>
-                  <h4 className="text-base sm:text-lg font-bold text-[#222E48] tracking-tight">
+                  <h4 
+                    className="text-base sm:text-lg font-medium tracking-tight"
+                    style={{ color: themeConfig.colors.textHeading }}
+                  >
                     {currentReview.name}
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-500 font-medium">
-                    {currentReview.location} • <span className="text-blue-600 font-semibold">{currentReview.loanType}</span>
+                  <p className="text-xs sm:text-sm text-slate-500 font-light">
+                    {currentReview.location} • <span className="text-blue-600 font-medium">{currentReview.loanType}</span>
                   </p>
                 </div>
               </div>

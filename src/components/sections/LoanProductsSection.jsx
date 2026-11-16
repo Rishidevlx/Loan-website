@@ -92,9 +92,9 @@ function LoanCard({ loan }) {
               )}
             </div>
 
-            {/* Loan Title */}
+            {/* Loan Title (Card Heading: 24.6px, weight 400, color #262626) */}
             <h3 
-              className="text-xl sm:text-2xl font-bold mb-2 tracking-tight transition-colors duration-300"
+              className="text-xl sm:text-[23px] font-normal mb-2 tracking-tight transition-colors duration-300"
               style={{ 
                 color: isHovered ? '#FFFFFF' : themeConfig.colors.textHeading 
               }}
@@ -102,11 +102,11 @@ function LoanCard({ loan }) {
               {loan.name}
             </h3>
 
-            {/* Short Elaborated Description (compact height) */}
+            {/* Short Elaborated Description (weight 300) */}
             <p 
-              className="text-xs sm:text-sm leading-relaxed px-1 mb-5 min-h-[48px] transition-colors duration-300"
+              className="text-xs sm:text-sm font-light leading-relaxed px-1 mb-5 min-h-[48px] transition-colors duration-300"
               style={{ 
-                color: isHovered ? 'rgba(255, 255, 255, 0.9)' : '#64748B' 
+                color: isHovered ? 'rgba(255, 255, 255, 0.9)' : '#666666' 
               }}
             >
               {loan.desc}
@@ -307,21 +307,27 @@ export default function LoanProductsSection() {
                 fill="currentColor"
               />
             </svg>
-            <span className="text-xs sm:text-sm font-semibold tracking-wider text-slate-800 uppercase">
+            <span 
+              className="text-xs sm:text-sm font-medium tracking-wider uppercase"
+              style={{ color: themeConfig.colors.textHeading }}
+            >
               Our Loan Products
             </span>
           </div>
 
-          {/* Main H2 Heading */}
+          {/* Main H2 Heading (24.6px - 28px, weight 400, color #262626) */}
           <h2 
-            className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#222E48] leading-tight"
-            style={{ color: themeConfig.typography.sectionHeading.color }}
+            className="text-2xl sm:text-3xl md:text-[28px] font-normal tracking-tight leading-tight"
+            style={{ color: themeConfig.colors.textHeading }}
           >
             Loans for Every Need
           </h2>
 
-          {/* Sub-text from Official Requirement Document */}
-          <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto">
+          {/* Sub-text from Official Requirement Document (18.45px, weight 300, color #262626) */}
+          <p 
+            className="text-base sm:text-[18.45px] font-light leading-relaxed max-w-2xl mx-auto"
+            style={{ color: themeConfig.colors.textBody }}
+          >
             Funding solutions tailored to your unique personal and business goals. 
             Compare offers from 16+ leading banks and NBFCs with zero upfront fees.
           </p>

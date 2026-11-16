@@ -1,6 +1,6 @@
 
 export const themeConfig = {
-  // 🎨 Color Palette (From Theme.md & Logo)
+ 
   colors: {
     primary: "#2563EB",            // Bright Vibrant Light Blue
     primaryHover: "#1D4ED8",       // Primary Hover Blue
@@ -20,10 +20,10 @@ export const themeConfig = {
     sectionProductsBg: "#EDF0EC",  // Loan Products Section Background
     cardBg: "#FFFFFF",
     
-    // Text Colors
-    textHeading: "#222E48",        // From Theme.md Section Heading
-    textBody: "#475569",           // Slate 600 - High readability
-    textMuted: "#64748B",          // Slate 500
+    // Text Colors (Exact #262626 Soft Charcoal from inspection)
+    textHeading: "#262626",        // Primary Headings
+    textBody: "#262626",           // High readability body text
+    textMuted: "#666666",          // Subtle secondary text
     textLight: "#F8FAFC",          // Light text for dark/contrast backgrounds
     
     // Borders & Dividers
@@ -31,36 +31,45 @@ export const themeConfig = {
     borderNavy: "#1E3A5F",
   },
 
-  // ✍️ Typography (From Theme.md)
+ 
   typography: {
-    fontFamily: "'Jost', sans-serif",
+    fontFamily: "'Poppins', sans-serif",
     
-    // Section Heading (Theme.md)
-    sectionHeading: {
-      fontFamily: "'Jost', sans-serif",
-      fontSize: "40px",
-      fontWeight: "600",
-      color: "#222E48",
+    // Hero & Main Headings (H1: 49.2px, weight 500)
+    heroHeading: {
+      fontFamily: "'Poppins', sans-serif",
+      fontSize: "49.2px",
+      fontWeight: "500",
+      color: "#262626",
       lineHeight: "1.2",
     },
-    
-    // Content / Body Style (Theme.md)
-    body: {
-      fontFamily: "'Jost', sans-serif",
-      fontSize: "14px",
+
+    // Section Headings (H2 / Cards: 24.6px, weight 400)
+    sectionHeading: {
+      fontFamily: "'Poppins', sans-serif",
+      fontSize: "24.6px",
       fontWeight: "400",
-      color: "#475569",
+      color: "#262626",
+      lineHeight: "1.35",
+    },
+    
+    // Body / Paragraphs (18.45px, weight 300)
+    body: {
+      fontFamily: "'Poppins', sans-serif",
+      fontSize: "18.45px",
+      fontWeight: "300",
+      color: "#262626",
       lineHeight: "1.6",
     },
   },
 
-  // 📐 Layout & Dimensions
+
   layout: {
     containerMaxWidth: "1380px",
     headerHeight: "80px",
   },
 
-  // 🪄 Animation Timings
+
   transitions: {
     fast: "150ms ease-in-out",
     normal: "300ms cubic-bezier(0.4, 0, 0.2, 1)",

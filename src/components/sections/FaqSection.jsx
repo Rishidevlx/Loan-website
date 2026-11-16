@@ -67,7 +67,10 @@ export default function FaqSection() {
       >
         {/* Question Row */}
         <div className="flex items-center justify-between gap-4">
-          <h3 className="text-base sm:text-lg font-semibold text-[#222E48] tracking-tight leading-snug">
+          <h3 
+            className="text-base sm:text-[17px] font-normal tracking-tight leading-snug"
+            style={{ color: themeConfig.colors.textHeading }}
+          >
             {faq.question}
           </h3>
 
@@ -96,7 +99,10 @@ export default function FaqSection() {
           }`}
         >
           <div className="overflow-hidden">
-            <p className="text-sm text-slate-600 leading-relaxed">
+            <p 
+              className="text-sm font-light leading-relaxed"
+              style={{ color: themeConfig.colors.textBody }}
+            >
               {faq.answer}
             </p>
           </div>
@@ -137,7 +143,10 @@ export default function FaqSection() {
                 fill="currentColor"
               />
             </svg>
-            <span className="text-xs sm:text-sm font-semibold tracking-wider text-slate-800 uppercase">
+            <span 
+              className="text-xs sm:text-sm font-medium tracking-wider uppercase"
+              style={{ color: themeConfig.colors.textHeading }}
+            >
               Frequently Asked Questions
             </span>
           </div>
@@ -154,15 +163,18 @@ export default function FaqSection() {
             />
 
             <h2 
-              className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#222E48] leading-tight"
-              style={{ color: themeConfig.typography.sectionHeading.color }}
+              className="text-2xl sm:text-3xl md:text-[28px] font-normal tracking-tight leading-tight"
+              style={{ color: themeConfig.colors.textHeading }}
             >
               Find Answers to Common Questions
             </h2>
           </div>
 
           {/* Subtext */}
-          <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto">
+          <p 
+            className="text-base sm:text-[18.45px] font-light leading-relaxed max-w-2xl mx-auto"
+            style={{ color: themeConfig.colors.textBody }}
+          >
             We have compiled answers to common questions on loan eligibility, documents, interest rates, and approval timelines to guide your financial decisions.
           </p>
 
