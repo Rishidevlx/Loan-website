@@ -1,4 +1,14 @@
 import React, { useEffect, useRef } from 'react';
+
+/**
+ * High-Performance Global Click Spark / Radiating Lines Effect
+ * - System / Desktop Only: Disabled completely on mobile screens and touch devices.
+ * - Zero DOM pollution: renders via a lightweight transparent HTML5 Canvas overlay.
+ * - Single window-level event listener (Industry-standard global event delegation).
+ * - Spawns 8 crisp radiating lines expanding outward from click position (e.clientX, e.clientY).
+ * - Automatic sleep mode: animation loop stops immediately when no bursts are active (0% CPU idle).
+ * - pointer-events: none ensures zero interference with user interactions, clicks, and scrolling.
+ */
 export default function ClickSparkEffect() {
   const canvasRef = useRef(null);
 
@@ -14,6 +24,9 @@ export default function ClickSparkEffect() {
 
     // Sync canvas resolution with viewport & device pixel ratio
     const resizeCanvas = () => {
+      // Skip if on mobile view
+      if (window.innerWidth < 768) return;
+
       const dpr = window.devicePixelRatio || 1;
       canvas.width = window.innerWidth * dpr;
       canvas.height = window.innerHeight * dpr;
@@ -73,8 +86,13 @@ export default function ClickSparkEffect() {
       }
     };
 
-    // Global click trigger
+    // Global click trigger (System / Desktop only)
     const handlePointerDown = (e) => {
+      // Disable completely on mobile devices or touch screens
+      if (e.pointerType === 'touch' || window.innerWidth < 768) {
+        return;
+      }
+
       // Create new burst object
       bursts.push({
         x: e.clientX,
@@ -107,7 +125,7 @@ export default function ClickSparkEffect() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-[99999]"
+      className="hidden md:block fixed inset-0 pointer-events-none z-[99999]"
       style={{
         width: '100vw',
         height: '100vh',

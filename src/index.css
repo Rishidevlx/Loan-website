@@ -26,22 +26,24 @@ body {
 }
 
 /* ======================================================== */
-/* Custom Cursor & Pointer Global System                    */
+/* Custom Cursor & Pointer Global System (Desktop / Mouse)  */
 /* ======================================================== */
-html, body {
-  cursor: url('./assets/cursor-sm.png') 3 2, url('./assets/cursor.png') 10 7, auto;
-}
+@media (hover: hover) and (pointer: fine) {
+  html, body {
+    cursor: url('./assets/cursor-sm.png') 3 2, url('./assets/cursor.png') 10 7, auto;
+  }
 
-/* Interactive elements also use the same custom cursor */
-a, 
-button, 
-[role="button"], 
-input[type="submit"], 
-input[type="button"], 
-select, 
-summary,
-.cursor-pointer {
-  cursor: url('./assets/cursor-sm.png') 3 2, url('./assets/cursor.png') 10 7, pointer !important;
+  /* Interactive elements also use the same custom cursor */
+  a, 
+  button, 
+  [role="button"], 
+  input[type="submit"], 
+  input[type="button"], 
+  select, 
+  summary,
+  .cursor-pointer {
+    cursor: url('./assets/cursor-sm.png') 3 2, url('./assets/cursor.png') 10 7, pointer !important;
+  }
 }
 
 /* Form input elements retain native text-editing cursor */
