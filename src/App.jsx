@@ -5,6 +5,7 @@ import ScrollToTopBtn from './components/UI/ScrollToTopBtn';
 import FloatingContactWidget from './components/UI/FloatingContactWidget';
 import ClickSparkEffect from './components/UI/ClickSparkEffect';
 import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import LoanDetailPage from './pages/LoanDetailPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
@@ -71,21 +72,39 @@ export default function App() {
 
   // Determine active view
   const renderCurrentPage = () => {
-    if (currentPath === '/' || currentPath === '' || currentPath === '/loans' || currentPath === '/loans/') {
+    let cleanPath = '';
+    try {
+      cleanPath = decodeURIComponent(currentPath).toLowerCase().trim().replace(/\/+$/, '') || '/';
+    } catch {
+      cleanPath = (currentPath || '/').toLowerCase().trim().replace(/\/+$/, '') || '/';
+    }
+
+    if (cleanPath === '/' || cleanPath === '' || cleanPath === '/loans') {
       return <HomePage />;
     }
-    if (currentPath === '/contact') {
+    
+    // About page handles all slug variations: /about, /about-us, /about us, /about%20us
+    if (
+      cleanPath === '/about' || 
+      cleanPath === '/about-us' || 
+      cleanPath === '/about us' ||
+      cleanPath.startsWith('/about')
+    ) {
+      return <AboutPage />;
+    }
+
+    if (cleanPath === '/contact' || cleanPath.startsWith('/contact')) {
       return <ContactPage />;
     }
-    if (currentPath === '/privacy-policy') {
+    if (cleanPath === '/privacy-policy') {
       return <PrivacyPolicyPage />;
     }
-    if (currentPath === '/terms-and-conditions') {
+    if (cleanPath === '/terms-and-conditions' || cleanPath === '/terms') {
       return <TermsPage />;
     }
 
     // Check if the route matches any of the 6 Loan detail pages
-    const loan = getLoanBySlug(currentPath);
+    const loan = getLoanBySlug(currentPath) || getLoanBySlug(cleanPath);
     if (loan) {
       return <LoanDetailPage loan={loan} />;
     }

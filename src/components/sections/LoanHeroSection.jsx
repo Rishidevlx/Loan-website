@@ -3,6 +3,7 @@ import { FiArrowUpRight, FiZap, FiFileText, FiShield, FiPhoneCall } from 'react-
 import { themeConfig } from '../../config/themeconfig';
 import { siteConfig } from '../../config/siteConfig';
 import OutlineBtn from '../UI/btns/OutlineBtn';
+import OrangeRaysAccent from '../UI/OrangeRaysAccent';
 import msgIconImg from '../../assets/Vectors/msg-icon.png';
 
 /**
@@ -91,15 +92,18 @@ export default function LoanHeroSection({ loanData }) {
 
             {/* 4. Action Buttons (Identical to Homepage Hero Section) */}
             <div className="flex flex-wrap items-center gap-4 mb-8 sm:mb-10">
-              {/* Primary Filled CTA */}
-              <a
-                href={contactUrl}
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold text-white shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0"
-                style={{ backgroundColor: themeConfig.colors.primary }}
-              >
-                <span>{primaryCtaText || `Apply for ${name}`}</span>
-                <FiArrowUpRight className="w-4 h-4" />
-              </a>
+              {/* Primary Filled CTA with Orange Rays */}
+              <div className="relative inline-flex items-center">
+                <OrangeRaysAccent />
+                <a
+                  href={contactUrl}
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold text-white shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 relative z-0"
+                  style={{ backgroundColor: themeConfig.colors.primary }}
+                >
+                  <span>{primaryCtaText || `Apply for ${name}`}</span>
+                  <FiArrowUpRight className="w-4 h-4" />
+                </a>
+              </div>
 
               {/* Secondary Outline CTA with Cursor-aware Radial Expansion (Direct Call matching Homepage) */}
               <OutlineBtn

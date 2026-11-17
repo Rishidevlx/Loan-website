@@ -3,6 +3,7 @@ import LoanHeroSection from '../components/sections/LoanHeroSection';
 import LoanProcessSection from '../components/sections/LoanProcessSection';
 import LoanTypicalProcessSection from '../components/sections/LoanTypicalProcessSection';
 import LoanDocumentsSection from '../components/sections/LoanDocumentsSection';
+import LoanTermsChargesSection from '../components/sections/LoanTermsChargesSection';
 import LoanCtaBanner from '../components/sections/LoanCtaBanner';
 import FaqSection from '../components/sections/FaqSection';
 import { getLoanFaqs } from '../data/loansFaqData';
@@ -12,11 +13,12 @@ import { themeConfig } from '../config/themeconfig';
  * Reusable Master Loan Detail Page
  * Sequence:
  * 1. Hero Section (White)
- * 2. "How We Help You" Process Section (#EDF0EC) - Unaltered
+ * 2. "How We Help You" Process Section (#EDF0EC)
  * 3. Typical Loan Workflow Process Section (White)
- * 4. Documents Required by Business Type Section (#EDF0EC) - New Dedicated Component
- * 5. Rectangular CTA Banner Card (White)
- * 6. FAQ Section (White)
+ * 4. Documents Required by Business Type Section (#EDF0EC)
+ * 5. Loan Terms & Associated Charges Section (White - FINVIEW 2-Column Layout)
+ * 6. Rectangular CTA Banner Card (White with #EDF0EC card)
+ * 7. FAQ Section (White)
  */
 export default function LoanDetailPage({ loan }) {
   useEffect(() => {
@@ -31,8 +33,8 @@ export default function LoanDetailPage({ loan }) {
       <div className="py-20 text-center bg-white">
         <h2 className="text-2xl font-bold text-slate-800 mb-2">Loan Product Not Found</h2>
         <p className="text-slate-500 mb-6">The loan product you requested does not exist or has been moved.</p>
-        <a 
-          href="/" 
+        <a
+          href="/"
           className="inline-flex px-6 py-2.5 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition-colors"
         >
           Return to Home
@@ -45,7 +47,7 @@ export default function LoanDetailPage({ loan }) {
   const loanFaqs = getLoanFaqs(loan);
 
   return (
-    <div 
+    <div
       className="bg-white min-h-[70vh]"
       style={{ fontFamily: themeConfig.typography.fontFamily }}
     >
@@ -58,14 +60,17 @@ export default function LoanDetailPage({ loan }) {
       {/* 3. Typical Loan Workflow Process Section (Pure White Background) */}
       <LoanTypicalProcessSection loan={loan} />
 
-      {/* 4. 3-Column Entity Document Section (#EDF0EC Background) - New Component */}
+      {/* 4. 3-Column Entity Document Section (#EDF0EC Background) */}
       <LoanDocumentsSection loan={loan} />
 
-      {/* 5. Rectangular CTA Banner Card (#EDF0EC Card with Outlined / Action Buttons & Hero Image) */}
+      {/* 5. FINVIEW-Style 2-Column Loan Terms & Charges Section (Pure White Background) */}
+      <LoanTermsChargesSection loan={loan} />
+
+      {/* 6. Rectangular CTA Banner Card (#EDF0EC Card with Outlined / Action Buttons & Hero Image) */}
       <LoanCtaBanner loan={loan} />
 
-      {/* 6. Frequently Asked Questions (FAQ) Section loaded with tailored loan questions */}
-      <FaqSection 
+      {/* 7. Frequently Asked Questions (FAQ) Section loaded with tailored loan questions */}
+      <FaqSection
         faqs={loanFaqs}
         title={`Find Answers to ${loan.name} Questions`}
         subtitle={`We have compiled answers to common questions on ${loan.name.toLowerCase()} eligibility, doorstep verification, interest rates, and approval timelines across India.`}

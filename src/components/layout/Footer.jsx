@@ -55,24 +55,32 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Quick Navigation */}
+          {/* Column 3: Legal & Compliance (Privacy Policy & Terms) */}
           <div>
             <div className="mb-5">
               <h3 className="text-white font-semibold text-base tracking-wide">
-                Quick Navigation
+                Legal & Compliance
               </h3>
             </div>
             <ul className="space-y-3 text-sm">
-              {footerQuickLinks.map((link) => (
-                <li key={link.name}>
-                  <a 
-                    href={link.path}
-                    className="inline-flex items-center gap-1.5 text-slate-300 hover:text-white hover:translate-x-1.5 transition-all duration-200"
-                  >
-                    <span>{link.name}</span>
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a 
+                  href="/privacy-policy"
+                  className="inline-flex items-center gap-1.5 text-slate-300 hover:text-white hover:translate-x-1.5 transition-all duration-200"
+                >
+                  <span>Privacy Policy</span>
+                  <FiArrowUpRight className="w-3.5 h-3.5 opacity-60" />
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="/terms-and-conditions"
+                  className="inline-flex items-center gap-1.5 text-slate-300 hover:text-white hover:translate-x-1.5 transition-all duration-200"
+                >
+                  <span>Terms & Conditions</span>
+                  <FiArrowUpRight className="w-3.5 h-3.5 opacity-60" />
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -124,19 +132,19 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Bottom Copyright & Legal Links */}
+        {/* Bottom Copyright & Credit Links */}
         <div className="mt-6 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <p>{siteConfig.copyright}</p>
-          <div className="flex items-center gap-6">
-            {footerLegalLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.path}
-                className="hover:text-slate-200 transition-colors"
-              >
-                {link.name}
-              </a>
-            ))}
+          <div className="text-slate-400 text-xs text-center sm:text-right">
+            <span>This Website is Designed & Developed By - </span>
+            <a 
+              href="https://shadowarrow.com/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white hover:text-blue-400 font-medium underline underline-offset-2 transition-colors"
+            >
+              Shadow Arrow🎯
+            </a>
           </div>
         </div>
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { themeConfig } from '../../config/themeconfig';
 import { trustStats } from '../../data/statsData';
 
-export default function StatsSection() {
+export default function StatsSection({ borderBottom = true }) {
   const sectionRef = useRef(null);
   const [hasAnimated, setHasAnimated] = useState(false);
   const [counts, setCounts] = useState({
@@ -64,7 +64,7 @@ export default function StatsSection() {
   return (
     <section 
       ref={sectionRef}
-      className="bg-white py-12 sm:py-16 md:py-20 border-b border-slate-100 relative z-10"
+      className={`bg-white py-12 sm:py-16 md:py-20 relative z-10 ${borderBottom ? 'border-b border-slate-100' : ''}`}
       style={{ fontFamily: themeConfig.typography.fontFamily }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

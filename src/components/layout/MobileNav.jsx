@@ -87,7 +87,13 @@ export default function MobileNav({ isOpen, onClose, currentPath = '/' }) {
               );
             }
 
-            const isActive = currentPath === link.path;
+            let cleanMobilePath = '';
+            try {
+              cleanMobilePath = decodeURIComponent(currentPath).toLowerCase();
+            } catch {
+              cleanMobilePath = (currentPath || '').toLowerCase();
+            }
+            const isActive = currentPath === link.path || (link.path === '/about-us' && cleanMobilePath.startsWith('/about'));
             return (
               <a
                 key={link.name}

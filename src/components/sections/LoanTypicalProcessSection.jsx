@@ -6,6 +6,10 @@ import speakIcon from '../../assets/loans/icons8-speak-100.png';
 import docIcon from '../../assets/loans/loan-coln-2.png';
 import verifyIcon from '../../assets/loans/icons8-verify-100.png';
 
+// User-specified Money Bag and Coin vectors from assets/Vectors
+import moneyBagImg from '../../assets/Vectors/icons8-dollar-bag-100.png';
+import dollarCoinImg from '../../assets/Vectors/icons8-dollar-coin-100.png';
+
 /**
  * Typical Process Flow Steps
  * Requirement --> Prepare Documents --> Decision
@@ -45,8 +49,80 @@ export default function LoanTypicalProcessSection({ loan }) {
   return (
     <section 
       className="py-16 md:py-24 bg-white relative overflow-hidden"
-      style={{ fontFamily: themeConfig.typography.fontFamily }}
+      style={{ 
+        fontFamily: themeConfig.typography.fontFamily 
+      }}
     >
+      {/* Scoped CSS for minimal, smooth slow wave and 3D coin spin animations */}
+      <style>{`
+        @keyframes slowWaveMotion {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          25% {
+            transform: translateY(-5px) rotate(-6deg);
+          }
+          50% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          75% {
+            transform: translateY(5px) rotate(6deg);
+          }
+        }
+        .animate-slow-wave {
+          animation: slowWaveMotion 6.5s ease-in-out infinite;
+          transform-origin: center bottom;
+          will-change: transform;
+        }
+
+        @keyframes spin3DCoin {
+          0% {
+            transform: perspective(600px) rotateY(0deg);
+          }
+          100% {
+            transform: perspective(600px) rotateY(360deg);
+          }
+        }
+        .animate-coin-spin-3d {
+          animation: spin3DCoin 4.5s linear infinite;
+          transform-style: preserve-3d;
+          will-change: transform;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .animate-slow-wave,
+          .animate-coin-spin-3d {
+            animation: none !important;
+          }
+        }
+      `}</style>
+
+      {/* Decorative Money Bag Icon in Left Top Corner (icons8-dollar-bag-100 with Slow Wave Motion) */}
+      <div 
+        className="absolute top-4 left-4 sm:top-8 sm:left-8 lg:top-10 lg:left-12 pointer-events-none select-none z-10 animate-slow-wave opacity-80 hover:opacity-100 transition-opacity"
+        aria-hidden="true"
+      >
+        <img 
+          src={moneyBagImg} 
+          alt="Money Bag Decor" 
+          draggable={false}
+          className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 object-contain drop-shadow-sm select-none"
+        />
+      </div>
+
+      {/* Decorative 3D Spinning Coin in Right Bottom Corner (icons8-dollar-coin-100 with 3D Spin) */}
+      <div 
+        className="absolute bottom-4 right-4 sm:bottom-8 sm:right-8 lg:bottom-10 lg:right-12 pointer-events-none select-none z-10 opacity-85 hover:opacity-100 transition-opacity"
+        aria-hidden="true"
+      >
+        <img 
+          src={dollarCoinImg} 
+          alt="Spinning Dollar Coin" 
+          draggable={false}
+          className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 object-contain drop-shadow-sm select-none animate-coin-spin-3d"
+        />
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* ======================================================== */}

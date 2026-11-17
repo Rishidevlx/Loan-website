@@ -3,6 +3,7 @@ import { FiPhoneCall, FiArrowUpRight, FiMapPin, FiClock, FiShield, FiCheckCircle
 import { siteConfig } from '../../config/siteConfig';
 import { themeConfig } from '../../config/themeconfig';
 import OutlineBtn from '../UI/btns/OutlineBtn';
+import OrangeRaysAccent from '../UI/OrangeRaysAccent';
 import heroImg from '../../assets/Vectors/Hero-sections.png';
 import moneyFallImg from '../../assets/Vectors/Money-fall.png';
 import msgIconImg from '../../assets/Vectors/msg-icon.png';
@@ -59,15 +60,18 @@ export default function HeroSection() {
 
             {/* 4. Action Buttons */}
             <div className="flex flex-wrap items-center gap-4 pt-1">
-              {/* Primary Filled CTA */}
-              <a
-                href="/apply-now"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold text-white shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0"
-                style={{ backgroundColor: themeConfig.colors.primary }}
-              >
-                <span>Apply for Loan Now</span>
-                <FiArrowUpRight className="w-4 h-4" />
-              </a>
+              {/* Primary Filled CTA with Orange Rays */}
+              <div className="relative inline-flex items-center">
+                <OrangeRaysAccent />
+                <a
+                  href="/apply-now"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold text-white shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 relative z-0"
+                  style={{ backgroundColor: themeConfig.colors.primary }}
+                >
+                  <span>Apply for Loan Now</span>
+                  <FiArrowUpRight className="w-4 h-4" />
+                </a>
+              </div>
 
               {/* Secondary Outline CTA with Cursor-aware Radial Expansion */}
               <OutlineBtn

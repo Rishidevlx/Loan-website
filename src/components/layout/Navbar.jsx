@@ -115,9 +115,10 @@ export default function Navbar({ currentPath = '/' }) {
                 }
 
                 // Standard Nav Links (Home, About, Contact)
+                const decodedPath = decodeURIComponent(normalizedPath).toLowerCase();
                 const isActive = link.path === '/'
                   ? (normalizedPath === '/' || normalizedPath === '')
-                  : (normalizedPath === link.path || (link.path === '/about-us' && (normalizedPath === '/about' || normalizedPath === '/about-us')));
+                  : (normalizedPath === link.path || (link.path === '/about-us' && (decodedPath.startsWith('/about'))));
 
                 return (
                   <a

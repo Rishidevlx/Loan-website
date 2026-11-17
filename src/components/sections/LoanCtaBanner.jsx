@@ -3,6 +3,7 @@ import { FiPhoneCall, FiArrowRight, FiArrowUpRight } from 'react-icons/fi';
 import { themeConfig } from '../../config/themeconfig';
 import { siteConfig } from '../../config/siteConfig';
 import OutlineBtn from '../UI/btns/OutlineBtn';
+import OrangeRaysAccent from '../UI/OrangeRaysAccent';
 
 /**
  * Rectangular CTA Banner Card
@@ -55,14 +56,17 @@ export default function LoanCtaBanner({ loan }) {
               {/* Action Buttons (Option 2: Primary Solid Blue + OutlineBtn) */}
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4">
                 
-                {/* 1. Primary Solid Blue Button */}
-                <a
-                  href="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-2.5 sm:py-3 rounded-full text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 select-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
-                >
-                  <span>Apply for {loanName}</span>
-                  <FiArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
-                </a>
+                {/* 1. Primary Solid Blue Button with Orange Rays */}
+                <div className="relative inline-flex items-center">
+                  <OrangeRaysAccent />
+                  <a
+                    href="/contact"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-2.5 sm:py-3 rounded-full text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 select-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 relative z-0"
+                  >
+                    <span>Apply for {loanName}</span>
+                    <FiArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+                  </a>
+                </div>
 
                 {/* 2. Direct Call OutlineBtn with Mouse-aware Radial Expand */}
                 <OutlineBtn
