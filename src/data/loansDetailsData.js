@@ -37,7 +37,7 @@ export const loansDetailsData = {
       },
       {
         title: 'Hassle-Free Doorstep Documentation',
-        description: 'Zero bank branch visits. Our Coimbatore loan experts collect required GST, ITR, and banking papers right from your business premises.'
+        description: 'Zero bank branch visits. Our dedicated loan experts collect required GST, ITR, and banking papers right from your business premises across India.'
       },
       {
         title: 'Fast Sanction & Direct Disbursal',
@@ -88,7 +88,7 @@ export const loansDetailsData = {
     slugs: ['/car-loan-coimbatore', '/loans/car-loan', '/car-loan'],
     badge: 'UP TO 100% ON-ROAD FUNDING • NEW & USED CARS',
     headline: 'Drive Your Dream Car with Fast Loan Approvals',
-    subtitle: 'Get hassle-free auto loans for brand new and pre-owned passenger vehicles. Enjoy instant approvals, minimal processing fees, and doorstep documentation support across Coimbatore.',
+    subtitle: 'Get hassle-free auto loans for brand new and pre-owned passenger vehicles. Enjoy instant approvals, minimal processing fees, and doorstep documentation support across India.',
     image: carLoanImg,
     primaryCtaText: 'Apply for Car Loan',
     secondaryCtaText: 'Check Eligibility',

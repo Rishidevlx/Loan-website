@@ -16,7 +16,7 @@ const defaultSteps = [
   {
     stepNumber: '01',
     title: 'Check Eligibility & Compare 16+ Banks',
-    description: 'Tell us your funding requirement. We analyze your credit profile across 16+ top banks & NBFCs in Coimbatore to secure the highest loan amount at lowest interest rates.',
+    description: 'Tell us your funding requirement. We analyze your credit profile across 16+ top banks & NBFCs across India to secure the highest loan amount at lowest interest rates.',
     icon: step1Icon,
   },
   {

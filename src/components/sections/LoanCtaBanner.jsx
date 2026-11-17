@@ -49,7 +49,7 @@ export default function LoanCtaBanner({ loan }) {
                 className="text-2xl sm:text-3xl md:text-[28px] lg:text-[30px] font-normal tracking-tight leading-tight mb-6"
                 style={{ color: themeConfig.colors.textHeading }}
               >
-                Ready to Secure Your {loanName} in Coimbatore?
+                Ready to Secure Your {loanName} Across India?
               </h3>
 
               {/* Action Buttons (Option 2: Primary Solid Blue + OutlineBtn) */}

@@ -7,7 +7,7 @@ export const faqsData = [
   {
     id: "faq-2",
     question: "Are you a bank or direct lender?",
-    answer: "No, Bharath Finserv is an authorized loan advisory and facilitation consultancy based in Velandipalayam, Coimbatore. We connect you directly with 16+ premier scheduled commercial banks and RBI-registered NBFCs who sanction and disburse your funds."
+    answer: "No, Bharath Finserv is an authorized loan advisory and facilitation consultancy headquartered in Coimbatore, serving borrowers across India. We connect you directly with 16+ premier scheduled commercial banks and RBI-registered NBFCs who sanction and disburse your funds."
   },
   {
     id: "faq-3",
@@ -31,13 +31,13 @@ export const faqsData = [
   },
   {
     id: "faq-7",
-    question: "Which areas in Coimbatore do you serve?",
-    answer: "We serve clients across the entire Coimbatore district—including Velandipalayam, RS Puram, Gandhipuram, Peelamedu, Saibaba Colony, Saravanampatti, Pollachi, Tirupur, and surrounding industrial belts across Tamil Nadu."
+    question: "Which locations do you serve across India?",
+    answer: "While headquartered in Coimbatore, we facilitate loans for borrowers, businesses, and MSMEs across all major cities and industrial hubs throughout India, partnering with leading national banks and NBFCs."
   },
   {
     id: "faq-8",
     question: "Can self-employed individuals and MSME owners apply?",
-    answer: "Yes, absolutely! A significant portion of our advisory practice is dedicated to Coimbatore's MSMEs, textile manufacturers, engineering workshops, traders, and self-employed professionals seeking customized working capital and asset financing."
+    answer: "Yes, absolutely! A significant portion of our advisory practice is dedicated to MSMEs, manufacturers, engineering workshops, traders, and self-employed professionals across India seeking customized working capital and asset financing."
   }
 ];
 

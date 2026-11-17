@@ -31,7 +31,7 @@ const privacySections = [
         <ul className="space-y-2.5 text-slate-600 text-sm">
           <li className="flex items-start gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0 mt-2" />
-            <span><strong className="text-slate-800">Identity & Contact Details:</strong> Full name, mobile number, email address, and residential/business address in Coimbatore or surrounding regions.</span>
+            <span><strong className="text-slate-800">Identity & Contact Details:</strong> Full name, mobile number, email address, and residential/business address across India.</span>
           </li>
           <li className="flex items-start gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0 mt-2" />

@@ -33,7 +33,7 @@ export default function FloatingContactWidget() {
   }, [isOpen]);
 
   const whatsappUrl = `https://wa.me/919944400022?text=${encodeURIComponent(
-    'Hello Bharath Finserv, I would like to know more about your loan services in Coimbatore.'
+    'Hello Bharath Finserv, I would like to know more about your loan services across India.'
   )}`;
 
   return (

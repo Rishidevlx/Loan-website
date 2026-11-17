@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import LoanHeroSection from '../components/sections/LoanHeroSection';
 import LoanProcessSection from '../components/sections/LoanProcessSection';
 import LoanTypicalProcessSection from '../components/sections/LoanTypicalProcessSection';
+import LoanDocumentsSection from '../components/sections/LoanDocumentsSection';
 import LoanCtaBanner from '../components/sections/LoanCtaBanner';
 import FaqSection from '../components/sections/FaqSection';
 import { getLoanFaqs } from '../data/loansFaqData';
@@ -9,8 +10,13 @@ import { themeConfig } from '../config/themeconfig';
 
 /**
  * Reusable Master Loan Detail Page
- * Features the pristine dynamic LoanHeroSection followed by the 3-column LoanProcessSection,
- * the Typical Loan Workflow Process Section, the Rectangular CTA Banner Card, and the Loan FAQ Section.
+ * Sequence:
+ * 1. Hero Section (White)
+ * 2. "How We Help You" Process Section (#EDF0EC) - Unaltered
+ * 3. Typical Loan Workflow Process Section (White)
+ * 4. Documents Required by Business Type Section (#EDF0EC) - New Dedicated Component
+ * 5. Rectangular CTA Banner Card (White)
+ * 6. FAQ Section (White)
  */
 export default function LoanDetailPage({ loan }) {
   useEffect(() => {
@@ -46,20 +52,23 @@ export default function LoanDetailPage({ loan }) {
       {/* 1. Dynamic Reusable Hero Section (Pure White Background) */}
       <LoanHeroSection loanData={loan} />
 
-      {/* 2. 3-Column "How We Help You" Process Section (#EDF0EC Background) */}
+      {/* 2. 3-Column "How We Help You" Process Section (#EDF0EC Background) - Untouched */}
       <LoanProcessSection loan={loan} />
 
       {/* 3. Typical Loan Workflow Process Section (Pure White Background) */}
       <LoanTypicalProcessSection loan={loan} />
 
-      {/* 4. Rectangular CTA Banner Card (#EDF0EC Background with Outlined / Action Buttons & Hero Image) */}
+      {/* 4. 3-Column Entity Document Section (#EDF0EC Background) - New Component */}
+      <LoanDocumentsSection loan={loan} />
+
+      {/* 5. Rectangular CTA Banner Card (#EDF0EC Card with Outlined / Action Buttons & Hero Image) */}
       <LoanCtaBanner loan={loan} />
 
-      {/* 5. Frequently Asked Questions (FAQ) Section loaded with tailored loan questions */}
+      {/* 6. Frequently Asked Questions (FAQ) Section loaded with tailored loan questions */}
       <FaqSection 
         faqs={loanFaqs}
         title={`Find Answers to ${loan.name} Questions`}
-        subtitle={`We have compiled answers to common questions on ${loan.name.toLowerCase()} eligibility, doorstep verification, interest rates, and approval timelines in Coimbatore.`}
+        subtitle={`We have compiled answers to common questions on ${loan.name.toLowerCase()} eligibility, doorstep verification, interest rates, and approval timelines across India.`}
       />
     </div>
   );

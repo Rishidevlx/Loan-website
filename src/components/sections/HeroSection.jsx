@@ -45,7 +45,7 @@ export default function HeroSection() {
               className="text-3xl sm:text-4xl md:text-5xl lg:text-[49.2px] font-medium leading-[1.2] tracking-tight"
               style={{ color: themeConfig.colors.textHeading }}
             >
-              Your Trusted Loan Partner in Coimbatore
+              Your Trusted Loan Partner Across India
             </h1>
 
             {/* 3. Sub-text from Official Requirement Doc (18.45px, weight 300, color #262626) */}
@@ -136,7 +136,7 @@ export default function HeroSection() {
               {/* Main Hero Vector Illustration (Enlarged scale, zero hover effects) */}
               <img
                 src={heroImg}
-                alt="Bharath Finserv Loan Consultation in Coimbatore"
+                alt="Bharath Finserv Loan Consultation Across India"
                 draggable={false}
                 className="w-full h-auto object-contain select-none pointer-events-none scale-105 sm:scale-110 lg:scale-115 origin-center"
               />

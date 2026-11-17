@@ -2,14 +2,14 @@ import { faqsData as defaultFaqs } from './faqsData';
 
 /**
  * Tailored FAQs for all 6 Loan Products
- * Specifically crafted for Coimbatore borrowers, businesses, and MSMEs.
+ * Specifically crafted for Indian borrowers, businesses, and MSMEs across all sectors.
  * Exactly 8 FAQs per loan type (4 left, 4 right) for balanced 2-column layout.
  */
 export const loansFaqData = {
   'business-loan': [
     {
       id: 'bl-1',
-      question: 'What is the maximum business loan amount I can avail in Coimbatore?',
+      question: 'What is the maximum business loan amount I can avail across India?',
       answer: 'Through our network of 16+ banking and NBFC partners, you can secure collateral-free business loans up to ₹50 Lakhs, and secured business loans up to ₹5 Crores depending on your annual turnover and profitability.'
     },
     {
@@ -20,7 +20,7 @@ export const loansFaqData = {
     {
       id: 'bl-3',
       question: 'What is the minimum business vintage and turnover required?',
-      answer: 'Most of our lending partners require a minimum operating vintage of 2 to 3 years and an annual turnover of ₹25 Lakhs or above. However, for promising MSMEs in Coimbatore, we also partner with lenders who accommodate 1-year vintage with solid bank cash flow.'
+      answer: 'Most of our lending partners require a minimum operating vintage of 2 to 3 years and an annual turnover of ₹25 Lakhs or above. However, for promising MSMEs across India, we also partner with lenders who accommodate 1-year vintage with solid bank cash flow.'
     },
     {
       id: 'bl-4',
@@ -40,7 +40,7 @@ export const loansFaqData = {
     {
       id: 'bl-7',
       question: 'Can partnership firms, LLPs, and private limited companies apply?',
-      answer: 'Yes. We cater to sole proprietorships, partnership firms, LLPs, and Private Limited companies across Coimbatore, Tirupur, and the western Tamil Nadu industrial corridor.'
+      answer: 'Yes. We cater to sole proprietorships, partnership firms, LLPs, and Private Limited companies across India.'
     },
     {
       id: 'bl-8',
@@ -53,7 +53,7 @@ export const loansFaqData = {
     {
       id: 'ml-1',
       question: 'What types of property can be pledged for a Mortgage Loan (LAP)?',
-      answer: 'You can pledge self-occupied or rented residential houses, apartments, commercial shops, office spaces, industrial buildings, or approved commercial land parcels located in and around Coimbatore.'
+      answer: 'You can pledge self-occupied or rented residential houses, apartments, commercial shops, office spaces, industrial buildings, or approved commercial land parcels across India.'
     },
     {
       id: 'ml-2',
@@ -78,7 +78,7 @@ export const loansFaqData = {
     {
       id: 'ml-6',
       question: 'How long does legal verification and property valuation take?',
-      answer: 'Property valuation and title deed legal scrutiny typically take 3 to 5 business days. Our local Coimbatore team coordinates directly with bank empanelled lawyers and technical valuers to expedite clearance.'
+      answer: 'Property valuation and title deed legal scrutiny typically take 3 to 5 business days. Our dedicated loan advisory team coordinates directly with bank empanelled lawyers and technical valuers to expedite clearance across India.'
     },
     {
       id: 'ml-7',
@@ -96,7 +96,7 @@ export const loansFaqData = {
     {
       id: 'cl-1',
       question: 'Can I get up to 100% on-road funding for a new car?',
-      answer: 'Yes! Selected partner banks offer up to 100% on-road financing (including registration, road tax, and insurance) for eligible salaried individuals and established business owners in Coimbatore.'
+      answer: 'Yes! Selected partner banks offer up to 100% on-road financing (including registration, road tax, and insurance) for eligible salaried individuals and established business owners across India.'
     },
     {
       id: 'cl-2',
@@ -121,7 +121,7 @@ export const loansFaqData = {
     {
       id: 'cl-6',
       question: 'How fast is car loan approval and dealer payout?',
-      answer: 'Preliminary sanction takes just 2 to 4 hours with digital KYC verification. Once you finalize the proforma invoice from the Coimbatore car showroom, formal disbursement to the dealer happens within 24 to 48 hours.'
+      answer: 'Preliminary sanction takes just 2 to 4 hours with digital KYC verification. Once you finalize the proforma invoice from your chosen car showroom anywhere in India, formal disbursement to the dealer happens within 24 to 48 hours.'
     },
     {
       id: 'cl-7',
@@ -163,13 +163,13 @@ export const loansFaqData = {
     },
     {
       id: 'ccl-6',
-      question: 'What is the typical CC credit limit range in Coimbatore?',
+      question: 'What is the typical CC credit limit range across India?',
       answer: 'Limits typically range from ₹10 Lakhs up to ₹15 Crores depending on your projected annual turnover, operating cycle, drawing power, and eligible current asset margins.'
     },
     {
       id: 'ccl-7',
-      question: 'Can Coimbatore textile manufacturers, foundries, and traders apply?',
-      answer: 'Yes. Cash Credit is the primary working capital lifeline for Coimbatore’s textile spinning mills, foundries, CNC machining job shops, pump manufacturers, and wholesale trading enterprises.'
+      question: 'Can MSME manufacturers, foundries, and traders across India apply?',
+      answer: 'Yes. Cash Credit is the primary working capital lifeline for MSME manufacturers, spinning mills, foundries, CNC machining job shops, pump makers, and wholesale trading enterprises across India.'
     },
     {
       id: 'ccl-8',
@@ -259,8 +259,8 @@ export const loansFaqData = {
     },
     {
       id: 'mcl-8',
-      question: 'What industries in Coimbatore can avail machinery financing?',
-      answer: 'Textile spinning & weaving units, automotive foundries, CNC precision engineering workshops, plastic injection molding plants, solar & electrical manufacturers, and packaging industries.'
+      question: 'What industries across India can avail machinery financing?',
+      answer: 'Textile spinning & weaving units, automotive foundries, CNC precision engineering workshops, plastic injection molding plants, solar & electrical manufacturers, food processing, and packaging industries across India.'
     }
   ]
 };

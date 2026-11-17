@@ -3,7 +3,7 @@
 export const siteConfig = {
   name: "Bharath Finserv",
   tagline: "Finance • Trust • Strength",
-  description: "Velandipalayam, Coimbatore based loan advisory and facilitation service helping you get business, property, car, personal, and term loans from 16+ leading banks and NBFCs.",
+  description: "Headquartered in Coimbatore, Bharath Finserv is a premier loan advisory and facilitation service helping borrowers across India secure business, property, car, machinery, and term loans from 16+ leading banks and NBFCs.",
   
   phone: "+91 99444 00022",
   phoneRaw: "+919944400022",

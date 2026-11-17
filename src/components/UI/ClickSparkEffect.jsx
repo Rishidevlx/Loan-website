@@ -1,14 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 
-/**
- * High-Performance Global Click Spark / Radiating Lines Effect
- * - System / Desktop Only: Disabled completely on mobile screens and touch devices.
- * - Zero DOM pollution: renders via a lightweight transparent HTML5 Canvas overlay.
- * - Single window-level event listener (Industry-standard global event delegation).
- * - Spawns 8 crisp radiating lines expanding outward from click position (e.clientX, e.clientY).
- * - Automatic sleep mode: animation loop stops immediately when no bursts are active (0% CPU idle).
- * - pointer-events: none ensures zero interference with user interactions, clicks, and scrolling.
- */
 export default function ClickSparkEffect() {
   const canvasRef = useRef(null);
 
