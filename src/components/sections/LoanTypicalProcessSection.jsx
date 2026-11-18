@@ -1,5 +1,6 @@
 import React from 'react';
 import { themeConfig } from '../../config/themeconfig';
+import ScrollReveal from '../common/ScrollReveal';
 
 // User-specified process icons from assets/loans
 import speakIcon from '../../assets/loans/icons8-speak-100.png';
@@ -19,7 +20,7 @@ const processSteps = [
   {
     stepNumber: '01',
     title: 'Share Your Requirement',
-    description: 'Tell us your funding requirement and preferred tenure. We assess your profile across 16+ top banks for maximum loan eligibility.',
+    description: 'Tell us your funding requirement and preferred tenure. We assess your profile across all top banks for maximum loan eligibility.',
     icon: speakIcon,
   },
   {
@@ -128,7 +129,7 @@ export default function LoanTypicalProcessSection({ loan }) {
         {/* ======================================================== */}
         {/* SECTION HEADER (Centered matching reference screenshot)  */}
         {/* ======================================================== */}
-        <div className="text-center max-w-3xl mx-auto space-y-3.5 mb-14 md:mb-20">
+        <ScrollReveal variant="fade-up" className="text-center max-w-3xl mx-auto space-y-3.5 mb-14 md:mb-20">
           
           {/* Eyebrow Tagline with Spark Icon - Matching above sections */}
           <div className="flex justify-center">
@@ -170,12 +171,12 @@ export default function LoanTypicalProcessSection({ loan }) {
             A transparent 3-step path from requirement definition to doorstep document verification and official lender sanction.
           </p>
 
-        </div>
+        </ScrollReveal>
 
         {/* ======================================================== */}
         {/* 3-COLUMN PROCESS WORKFLOW WITH BRAND BLUE ARCHED ARROWS   */}
         {/* ======================================================== */}
-        <div className="relative">
+        <ScrollReveal variant="fade-up" delay={150} className="relative">
           
           {/* Desktop Arched Connecting Arrow 1 (Step 1 -> Step 2) */}
           {/* Positioned between Col 1 and Col 2 with generous breathing space from both icons */}
@@ -283,7 +284,7 @@ export default function LoanTypicalProcessSection({ loan }) {
             ))}
           </div>
 
-        </div>
+        </ScrollReveal>
 
       </div>
     </section>

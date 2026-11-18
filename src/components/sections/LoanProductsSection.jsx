@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { FiArrowUpRight } from 'react-icons/fi';
 import { themeConfig } from '../../config/themeconfig';
 import { loansProducts } from '../../data/loansData';
 import RoundArrowBtn from '../UI/btns/RoundArrowBtn';
+import ScrollReveal from '../common/ScrollReveal';
 import coinImg from '../../assets/Vectors/Coin.png';
 import msgIconImg from '../../assets/Vectors/msg-icon.png';
 
@@ -39,12 +41,12 @@ function LoanCard({ loan }) {
     // Outer Dashed Frame without hover color change
     <div className="border-2 border-dashed border-slate-300 rounded-3xl p-2 sm:p-2.5 transition-all duration-300 h-full">
       {/* Inner White Card with cursor-aware expanding ripple */}
-      <a
+      <Link
         ref={cardRef}
-        href={loan.slug}
+        to={loan.slug}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="relative overflow-hidden block bg-white rounded-2xl p-5 sm:p-6 md:p-7 text-center h-full flex flex-col justify-between shadow-xs transition-all duration-300 cursor-pointer"
+        className="relative overflow-hidden block bg-white rounded-2xl p-5 sm:p-6 md:p-7 text-center h-full flex flex-col justify-between shadow-xs transition-all duration-300 cursor-pointer text-inherit no-underline"
         style={{
           boxShadow: isHovered ? '0 16px 36px rgba(37, 99, 235, 0.22)' : 'none',
           transform: isHovered ? 'translateY(-2px)' : 'translateY(0)',
@@ -128,7 +130,7 @@ function LoanCard({ loan }) {
             </div>
           </div>
         </div>
-      </a>
+      </Link>
     </div>
   );
 }
@@ -292,7 +294,7 @@ export default function LoanProductsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-10 md:mb-14">
+        <ScrollReveal variant="fade-up" className="text-center max-w-3xl mx-auto space-y-3 mb-10 md:mb-14">
           
           {/* Eyebrow Tagline with Loan Spark Icon */}
           <div className="inline-flex items-center gap-2">
@@ -329,13 +331,13 @@ export default function LoanProductsSection() {
             style={{ color: themeConfig.colors.textBody }}
           >
             Funding solutions tailored to your unique personal and business goals. 
-            Compare offers from 16+ leading banks and NBFCs with zero upfront fees.
+            Compare offers from all leading banks and NBFCs with zero upfront fees.
           </p>
 
-        </div>
+        </ScrollReveal>
 
         {/* Carousel Outer Container with Left and Right Solid Outlined Flanking Buttons */}
-        <div className="relative px-4 sm:px-10 md:px-14 lg:px-16">
+        <ScrollReveal variant="fade-up" delay={150} className="relative px-4 sm:px-10 md:px-14 lg:px-16">
           
           {/* Left Solid Outlined Flanking Button */}
           <RoundArrowBtn
@@ -414,7 +416,7 @@ export default function LoanProductsSection() {
             ))}
           </div>
 
-        </div>
+        </ScrollReveal>
 
       </div>
     </section>

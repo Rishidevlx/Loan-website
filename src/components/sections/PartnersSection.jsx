@@ -1,6 +1,7 @@
 import React from 'react';
 import { themeConfig } from '../../config/themeconfig';
 import { partnersRow1, partnersRow2 } from '../../data/partnersData';
+import ScrollReveal from '../common/ScrollReveal';
 import worldIcon from '../../assets/Vectors/stats/icons8-world-64.png';
 
 export default function PartnersSection() {
@@ -25,7 +26,7 @@ export default function PartnersSection() {
         style={{ animation: 'spin3DHorizontal 7s linear infinite' }}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 md:mb-14 text-center">
+      <ScrollReveal variant="fade-up" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 md:mb-14 text-center">
         
         {/* Eyebrow Tagline with Spark Icon */}
         <div className="inline-flex items-center gap-2 mb-3">
@@ -44,7 +45,7 @@ export default function PartnersSection() {
             className="text-xs sm:text-sm font-medium tracking-wider uppercase"
             style={{ color: themeConfig.colors.textHeading }}
           >
-            16+ Banking & NBFC Partners
+            All Banking & NBFC Partners
           </span>
         </div>
 
@@ -64,10 +65,10 @@ export default function PartnersSection() {
           We compare offers across India's premier commercial banks and leading NBFCs to ensure you secure the lowest interest margins and fastest approvals.
         </p>
 
-      </div>
+      </ScrollReveal>
 
       {/* Dual Row Marquee Viewport with Left and Right Edge Gradient Masks */}
-      <div className="relative w-full overflow-hidden space-y-5 sm:space-y-6 py-2">
+      <ScrollReveal variant="fade-up" delay={150} className="relative w-full overflow-hidden space-y-5 sm:space-y-6 py-2">
         
         {/* Left Gradient Fade Mask */}
         <div 
@@ -125,7 +126,7 @@ export default function PartnersSection() {
           ))}
         </div>
 
-      </div>
+      </ScrollReveal>
 
     </section>
   );

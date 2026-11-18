@@ -4,6 +4,7 @@ import { themeConfig } from '../config/themeconfig';
 import { siteConfig } from '../config/siteConfig';
 import ContactForm from '../components/UI/forms/ContactForm';
 import OutlineBtn from '../components/UI/btns/OutlineBtn';
+import ScrollReveal from '../components/common/ScrollReveal';
 import stairsImg from '../assets/contact/stairs.webp';
 import phoneIcon from '../assets/contact/icons8-phone-100.png';
 import mailIcon from '../assets/contact/icons8-mail-100.png';
@@ -13,7 +14,7 @@ import addressIcon from '../assets/contact/icons8-address-100.png';
  * ContactDetailCard - Features a continuous dashed outer border with a smooth downward scoop curve
  * perfectly concentric around the floating top icon, with matching inner card clip and cursor-aware blue ripple.
  */
-function ContactDetailCard({ id, icon, heading, value, href, isMultiline = false }) {
+function ContactDetailCard({ id, icon, heading, value, href, phones, isMultiline = false }) {
   const containerRef = useRef(null);
   const cardRef = useRef(null);
   const [size, setSize] = useState({ w: 460, h: 155 });
@@ -148,7 +149,30 @@ function ContactDetailCard({ id, icon, heading, value, href, isMultiline = false
           >
             {heading}
           </span>
-          {href ? (
+          {phones && phones.length >= 2 ? (
+            <div 
+              className="text-sm sm:text-base md:text-lg font-bold transition-colors duration-300 flex flex-wrap items-center justify-center gap-1.5"
+              style={{
+                color: isHovered ? '#FFFFFF' : '#0F172A'
+              }}
+            >
+              <a 
+                href={`tel:${phones[0].raw}`} 
+                className="hover:underline transition-colors"
+                onClick={(e) => e.stopPropagation()}
+              >
+                +91 {phones[0].display}
+              </a>
+              <span className="opacity-60 font-normal">/</span>
+              <a 
+                href={`tel:${phones[1].raw}`} 
+                className="hover:underline transition-colors"
+                onClick={(e) => e.stopPropagation()}
+              >
+                +91 {phones[1].display}
+              </a>
+            </div>
+          ) : href ? (
             <a 
               href={href}
               className="text-base sm:text-lg font-bold transition-colors duration-300 block"
@@ -175,6 +199,21 @@ function ContactDetailCard({ id, icon, heading, value, href, isMultiline = false
 }
 
 export default function ContactPage() {
+  const handleScrollToForm = (e) => {
+    if (e) e.preventDefault();
+    const formElement = document.getElementById('contact-form');
+    if (formElement) {
+      const headerOffset = 80; // offset for sticky navigation header
+      const elementPosition = formElement.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div 
       className="min-h-screen bg-white"
@@ -199,7 +238,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             {/* Left Content Area: Styled identically to Home Page Typography & Star Spark */}
-            <div className="lg:col-span-7 space-y-6 max-w-2xl">
+            <ScrollReveal variant="fade-right" duration={700} className="lg:col-span-7 space-y-6 max-w-2xl">
               
               {/* Eyebrow with Home Page Loan Spark SVG Icon */}
               <div className="flex items-center gap-2.5">
@@ -237,21 +276,21 @@ export default function ContactPage() {
                 style={{ color: themeConfig.colors.textBody }}
               >
                 Have questions about loan eligibility, interest rates, or fast documentation? 
-                Speak directly with Velandipalayam's trusted loan advisors helping borrowers across 16+ banks.
+                Speak directly with Velandipalayam's trusted loan advisors helping borrowers across all major banks.
               </p>
 
-              {/* Action Button: Outlined Btn with Smooth Radial Entry Hover Expansion */}
+              {/* Action Button: Outlined Btn with Smooth Deceleration Scroll Animation */}
               <div className="pt-2">
                 <OutlineBtn
-                  href="#contact-form"
+                  onClick={handleScrollToForm}
                   endIcon={FiArrowDown}
-                  className="py-3.5 px-7"
+                  className="py-3.5 px-7 cursor-pointer"
                 >
                   Send an Enquiry
                 </OutlineBtn>
               </div>
 
-            </div>
+            </ScrollReveal>
 
             {/* Mobile/Tablet Stairs Display (Hanging on the right edge, flush to bottom) */}
             <div className="lg:hidden flex justify-end mt-4 -mr-4 sm:-mr-6 pointer-events-none select-none overflow-hidden -mb-px">
@@ -272,13 +311,13 @@ export default function ContactPage() {
       {/* ========================================================= */}
       <section 
         id="contact-form" 
-        className="pt-15 pb-16 sm:py-24 relative"
+        className="pt-15 pb-16 sm:py-24 relative scroll-mt-20"
         style={{ backgroundColor: themeConfig.colors.sectionProductsBg }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Section Header with Loan Spark Star SVG Icon */}
-          <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16 space-y-3">
+          <ScrollReveal variant="fade-up" className="text-center max-w-2xl mx-auto mb-12 sm:mb-16 space-y-3">
             <div className="inline-flex items-center gap-2">
               <svg 
                 className="w-4 h-4 text-blue-600 shrink-0" 
@@ -311,26 +350,28 @@ export default function ContactPage() {
             >
               Submit your enquiry below or contact us directly via call or WhatsApp. We reply promptly during office hours.
             </p>
-          </div>
+          </ScrollReveal>
 
           {/* 2-Column Grid: Form (Left) & Contact Info Cards (Right) */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
             
             {/* Left Column: Reusable Interactive Contact Form (7 cols) */}
-            <div className="lg:col-span-7">
+            <ScrollReveal variant="fade-right" delay={100} className="lg:col-span-7">
               <ContactForm />
-            </div>
+            </ScrollReveal>
 
             {/* Right Column: One-by-One Rectangular Contact Cards with Outer Dashed Border & Floating Icons (5 cols) */}
-            <div className="lg:col-span-5 space-y-9 sm:space-y-10 pt-7">
+            <ScrollReveal variant="fade-left" delay={150} className="lg:col-span-5 space-y-9 sm:space-y-10 pt-7">
               
-              {/* Card 1: Direct Phone */}
+              {/* Card 1: Direct Phone (Old / New Numbers) */}
               <ContactDetailCard
                 id="phone"
                 icon={phoneIcon}
                 heading="Call Now"
-                value={`+91 ${siteConfig.phoneDisplay}`}
-                href={`tel:${siteConfig.phoneRaw}`}
+                phones={[
+                  { raw: siteConfig.phoneRaw, display: siteConfig.phoneDisplay },
+                  { raw: siteConfig.phone2Raw, display: siteConfig.phone2Display },
+                ]}
               />
 
               {/* Card 2: Email */}
@@ -351,7 +392,7 @@ export default function ContactPage() {
                 isMultiline={true}
               />
 
-            </div>
+            </ScrollReveal>
 
           </div>
         </div>

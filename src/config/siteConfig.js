@@ -3,11 +3,17 @@
 export const siteConfig = {
   name: "Bharath Finserv",
   tagline: "Finance • Trust • Strength",
-  description: "Headquartered in Coimbatore, Bharath Finserv is a premier loan advisory and facilitation service helping borrowers across India secure business, property, car, machinery, and term loans from 16+ leading banks and NBFCs.",
+  description: "Headquartered in Coimbatore, Bharath Finserv is a premier loan advisory and facilitation service helping borrowers across India secure business, property, car, machinery, and term loans from all leading banks and NBFCs.",
   
   phone: "+91 99444 00022",
   phoneRaw: "+919944400022",
   phoneDisplay: "99444 00022",
+  
+  phone2: "+91 99444 71707",
+  phone2Raw: "+919944471707",
+  phone2Display: "99444 71707",
+  
+  phonesDisplay: "99444 00022 / 99444 71707",
   whatsapp: "+919944400022",
   email: "bharathfinser@gmail.com",
   

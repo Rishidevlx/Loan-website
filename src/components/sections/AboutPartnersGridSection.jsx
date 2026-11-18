@@ -1,10 +1,11 @@
 import React from 'react';
 import { themeConfig } from '../../config/themeconfig';
 import { allPartners } from '../../data/partnersData';
+import ScrollReveal from '../common/ScrollReveal';
 
 /**
  * AboutPartnersGridSection
- * Displays all 16+ banking & NBFC partner logos in a clean, high-impact grid
+ * Displays banking & NBFC partner logos in a clean, high-impact grid
  * on Pure White background (inspired by Digiloans reference screenshot).
  */
 export default function AboutPartnersGridSection() {
@@ -18,7 +19,7 @@ export default function AboutPartnersGridSection() {
         {/* ======================================================== */}
         {/* SECTION HEADER                                           */}
         {/* ======================================================== */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+        <ScrollReveal variant="fade-up" className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           
           {/* Eyebrow Tagline with Spark Icon */}
           <div className="inline-flex items-center gap-2 mb-3">
@@ -47,7 +48,7 @@ export default function AboutPartnersGridSection() {
             className="text-2xl sm:text-3xl md:text-[34px] font-normal tracking-tight leading-tight mb-3"
             style={{ color: themeConfig.colors.textHeading }}
           >
-            Direct Channel Partners with India's Top 16+ Institutions
+            Direct Channel Partners with All Major Financial Institutions
           </h2>
 
           {/* Subtitle */}
@@ -56,15 +57,17 @@ export default function AboutPartnersGridSection() {
           >
             Direct tie-ups with India's premier scheduled commercial banks and RBI-registered NBFCs ensuring competitive interest rates, maximum loan limits, and fast doorstep disbursals.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* ======================================================== */}
         {/* PARTNERS LOGO GRID (Matching DIGILOANS Reference)        */}
         {/* ======================================================== */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 sm:gap-6">
-          {allPartners.map((partner) => (
-            <div 
+          {allPartners.map((partner, idx) => (
+            <ScrollReveal 
               key={partner.id}
+              variant="fade-up"
+              delay={Math.min(idx * 40, 400)}
               className="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200/90 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex items-center justify-center min-h-[96px] sm:min-h-[110px] group cursor-pointer"
             >
               <img 
@@ -73,8 +76,20 @@ export default function AboutPartnersGridSection() {
                 draggable={false}
                 className="max-h-10 sm:max-h-12 w-auto max-w-[85%] object-contain transition-transform duration-300 group-hover:scale-105 select-none"
               />
-            </div>
+            </ScrollReveal>
           ))}
+        </div>
+
+        {/* ======================================================== */}
+        {/* AND MORE PARTNERS (Clean Heading Font, Zero Background)  */}
+        {/* ======================================================== */}
+        <div className="mt-10 sm:mt-14 text-center">
+          <p 
+            className="text-xl sm:text-2xl font-normal tracking-tight"
+            style={{ color: themeConfig.colors.textHeading }}
+          >
+            ...and more
+          </p>
         </div>
 
       </div>

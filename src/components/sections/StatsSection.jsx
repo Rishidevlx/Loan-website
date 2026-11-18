@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { themeConfig } from '../../config/themeconfig';
 import { trustStats } from '../../data/statsData';
+import ScrollReveal from '../common/ScrollReveal';
 
 export default function StatsSection({ borderBottom = true }) {
   const sectionRef = useRef(null);
@@ -82,8 +83,10 @@ export default function StatsSection({ borderBottom = true }) {
             }
 
             return (
-              <div 
+              <ScrollReveal 
                 key={stat.id || idx}
+                variant="fade-up"
+                delay={idx * 120}
                 className={`py-6 md:py-4 px-4 sm:px-6 lg:px-10 flex items-center justify-center group ${
                   idx === 0 ? 'md:pl-0' : idx === trustStats.length - 1 ? 'md:pr-0' : ''
                 }`}
@@ -129,7 +132,7 @@ export default function StatsSection({ borderBottom = true }) {
                   </div>
 
                 </div>
-              </div>
+              </ScrollReveal>
             );
           })}
 

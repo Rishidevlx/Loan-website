@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FiCheck, FiArrowUpRight, FiLayers, FiFileText, FiTrendingUp, FiShield } from 'react-icons/fi';
 import { themeConfig } from '../../config/themeconfig';
 import OutlineBtn from '../UI/btns/OutlineBtn';
+import ScrollReveal from '../common/ScrollReveal';
 import dollarCoinImg from '../../assets/Vectors/icons8-dollar-coin-100.png';
 import whyUsImg from '../../assets/Vectors/why-us.png';
 
@@ -17,7 +19,7 @@ export default function AboutWhyChooseUsSection() {
   const highlights = [
     'Doorstep Documentation',
     'Expert Guidance & Insights',
-    '16+ Bank & NBFC Comparison',
+    'All Bank & NBFC Comparison',
     '100% Transparent Terms',
   ];
 
@@ -70,7 +72,7 @@ export default function AboutWhyChooseUsSection() {
           {/* ======================================================== */}
           {/* LEFT COLUMN: Why Choose Us Illustration                  */}
           {/* ======================================================== */}
-          <div className="lg:col-span-6 flex justify-center items-center">
+          <ScrollReveal variant="fade-right" className="lg:col-span-6 flex justify-center items-center">
             <div className="relative w-full max-w-lg flex justify-center items-center">
               <img 
                 src={whyUsImg}
@@ -79,12 +81,12 @@ export default function AboutWhyChooseUsSection() {
                 className="w-full h-auto max-h-[380px] sm:max-h-[420px] object-contain select-none pointer-events-none drop-shadow-sm"
               />
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* ======================================================== */}
           {/* RIGHT COLUMN: FINVIEW Content in Brand Style             */}
           {/* ======================================================== */}
-          <div className="lg:col-span-6 space-y-6">
+          <ScrollReveal variant="fade-left" delay={150} className="lg:col-span-6 space-y-6">
             
             {/* 1. Eyebrow Tagline with Spark SVG */}
             <div className="inline-flex items-center gap-2">
@@ -120,7 +122,7 @@ export default function AboutWhyChooseUsSection() {
             <p 
               className="text-sm sm:text-base font-light leading-relaxed text-[#666666] max-w-xl"
             >
-              Our dedicated team of banking specialists conducts thorough eligibility assessments and risk profiling to provide you with comprehensive, unbiased access across 16+ premier financial institutions.
+              Our dedicated team of banking specialists conducts thorough eligibility assessments and risk profiling to provide you with comprehensive, unbiased access across all premier financial institutions.
             </p>
 
             {/* 4. 2x2 Feature Checklist Grid (Simple & Neat matching FINVIEW reference) */}
@@ -140,16 +142,16 @@ export default function AboutWhyChooseUsSection() {
 
             {/* 5. Contact Us Button */}
             <div className="pt-3">
-              <a
-                href="/contact"
+              <Link
+                to="/contact"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 select-none cursor-pointer"
               >
                 <span>Contact Us</span>
                 <FiArrowUpRight className="w-4 h-4" />
-              </a>
+              </Link>
             </div>
 
-          </div>
+          </ScrollReveal>
 
         </div>
       </div>

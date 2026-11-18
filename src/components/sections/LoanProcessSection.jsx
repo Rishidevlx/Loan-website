@@ -15,8 +15,8 @@ import coinImg from '../../assets/Vectors/Coin.png';
 const defaultSteps = [
   {
     stepNumber: '01',
-    title: 'Check Eligibility & Compare 16+ Banks',
-    description: 'Tell us your funding requirement. We analyze your credit profile across 16+ top banks & NBFCs across India to secure the highest loan amount at lowest interest rates.',
+    title: 'Check Eligibility & Compare All Banks',
+    description: 'Tell us your funding requirement. We analyze your credit profile across all top banks & NBFCs across India to secure the highest loan amount at lowest interest rates.',
     icon: step1Icon,
   },
   {
@@ -111,7 +111,7 @@ export default function LoanProcessSection({ loan }) {
             className="text-base sm:text-[18.45px] font-light leading-relaxed max-w-2xl"
             style={{ color: themeConfig.colors.textBody }}
           >
-            Compare 16+ banks, get doorstep paperwork assistance, and secure fast approvals with zero upfront consultation charges.
+            Compare all banks, get doorstep paperwork assistance, and secure fast approvals with zero upfront consultation charges.
           </p>
 
         </div>

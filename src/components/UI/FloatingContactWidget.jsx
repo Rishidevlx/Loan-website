@@ -49,7 +49,7 @@ export default function FloatingContactWidget() {
             : 'opacity-0 invisible translate-y-4 scale-95 pointer-events-none'
         }`}
       >
-        {/* 1. WhatsApp Action Button */}
+        {/* 1. WhatsApp Action Button (Unchanged) */}
         <div className="flex items-center gap-2 group">
           <span className="hidden sm:inline-block px-2.5 py-1 text-xs font-medium text-slate-700 bg-white border border-slate-200/80 rounded-lg shadow-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
             WhatsApp Chat
@@ -65,17 +65,37 @@ export default function FloatingContactWidget() {
           </a>
         </div>
 
-        {/* 2. Direct Call Action Button */}
+        {/* 2. Business Call 1 Action Button (Primary: 99444 00022) */}
         <div className="flex items-center gap-2 group">
-          <span className="hidden sm:inline-block px-2.5 py-1 text-xs font-medium text-slate-700 bg-white border border-slate-200/80 rounded-lg shadow-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
-            Call: {siteConfig.phoneDisplay}
+          <span className="hidden sm:inline-block px-2.5 py-1 text-xs font-semibold text-slate-800 bg-white border border-slate-200/90 rounded-lg shadow-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+            Business Call 1
           </span>
           <a
             href={`tel:${siteConfig.phoneRaw}`}
-            aria-label="Direct Phone Call"
-            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+            aria-label={`Business Call 1: ${siteConfig.phoneDisplay}`}
+            className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
           >
             <FiPhoneCall className="w-4 h-4 sm:w-5 sm:h-5" />
+            <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-amber-400 text-slate-900 font-extrabold text-[10px] leading-none flex items-center justify-center border-2 border-white shadow-sm">
+              1
+            </span>
+          </a>
+        </div>
+
+        {/* 3. Business Call 2 Action Button (Secondary: 99444 71707) */}
+        <div className="flex items-center gap-2 group">
+          <span className="hidden sm:inline-block px-2.5 py-1 text-xs font-semibold text-slate-800 bg-white border border-slate-200/90 rounded-lg shadow-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+            Business Call 2
+          </span>
+          <a
+            href={`tel:${siteConfig.phone2Raw}`}
+            aria-label={`Business Call 2: ${siteConfig.phone2Display}`}
+            className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+          >
+            <FiPhoneCall className="w-4 h-4 sm:w-5 sm:h-5" />
+            <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-amber-400 text-slate-900 font-extrabold text-[10px] leading-none flex items-center justify-center border-2 border-white shadow-sm">
+              2
+            </span>
           </a>
         </div>
       </div>

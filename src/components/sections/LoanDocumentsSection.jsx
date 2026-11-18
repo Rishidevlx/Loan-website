@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { FiCheck, FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { themeConfig } from '../../config/themeconfig';
+import ScrollReveal from '../common/ScrollReveal';
 
 // User-specified 3 entity icons
 import solePropIcon from '../../assets/loans/loan-colun-3.png';
@@ -304,7 +305,7 @@ export default function LoanDocumentsSection({ loan }) {
         {/* ======================================================== */}
         {/* SECTION HEADER                                           */}
         {/* ======================================================== */}
-        <div className="space-y-3 mb-10 md:mb-14">
+        <ScrollReveal variant="fade-up" className="space-y-3 mb-10 md:mb-14">
           
           {/* Eyebrow Tagline with Spark Star SVG */}
           <div className="inline-flex items-center gap-2">
@@ -343,12 +344,12 @@ export default function LoanDocumentsSection({ loan }) {
             Simple paperwork requirements tailored to your business entity structure, with doorstep document verification across India.
           </p>
 
-        </div>
+        </ScrollReveal>
 
         {/* ======================================================== */}
         {/* 3-COLUMN ENTITY CHECKLIST GRID (Independent Card Heights) */}
         {/* ======================================================== */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-start">
+        <ScrollReveal variant="fade-up" delay={150} className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-start">
           {documentCategories.map((item) => (
             <DocumentEntityCard
               key={item.id}
@@ -357,7 +358,7 @@ export default function LoanDocumentsSection({ loan }) {
               onToggle={() => toggleExpand(item.id)}
             />
           ))}
-        </div>
+        </ScrollReveal>
 
       </div>
     </section>

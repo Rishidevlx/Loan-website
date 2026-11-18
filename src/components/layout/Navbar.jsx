@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { FiPhoneCall, FiPlus, FiArrowUpRight, FiMenu } from 'react-icons/fi';
 import { mainNavLinks, loansDropdownItems } from '../../config/navigation';
 import { siteConfig } from '../../config/siteConfig';
@@ -39,13 +40,13 @@ export default function Navbar({ currentPath = '/' }) {
           <div className="flex items-center justify-between gap-6 md:gap-10">
             
             {/* 1. Brand Logo */}
-            <a href="/" className="inline-block shrink-0 focus:outline-none">
+            <Link to="/" className="inline-block shrink-0 focus:outline-none">
               <img 
                 src={navLogoImg} 
                 alt={siteConfig.name} 
                 className="h-12 sm:h-14 md:h-15 w-auto object-contain" 
               />
-            </a>
+            </Link>
 
             {/* 2. Desktop Navigation Menu with Active Blue Underline */}
             <nav className="hidden lg:flex items-center gap-9">
@@ -89,9 +90,9 @@ export default function Navbar({ currentPath = '/' }) {
                         <div className="bg-white rounded-xl shadow-xl border border-slate-200/80 p-2 overflow-hidden ring-1 ring-black/5">
                           <div className="space-y-1">
                             {loansDropdownItems.map((item) => (
-                              <a
+                              <Link
                                 key={item.name}
-                                href={item.slug}
+                                to={item.slug}
                                 className="group/item flex items-center justify-between px-3 py-2 text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg transition-all duration-200"
                               >
                                 <div className="flex items-center gap-2.5 transition-transform duration-200 group-hover/item:translate-x-1">
@@ -105,7 +106,7 @@ export default function Navbar({ currentPath = '/' }) {
                                   <span>{item.name}</span>
                                 </div>
                                 <FiArrowUpRight className="w-3.5 h-3.5 text-blue-600 opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" />
-                              </a>
+                              </Link>
                             ))}
                           </div>
                         </div>
@@ -121,9 +122,9 @@ export default function Navbar({ currentPath = '/' }) {
                   : (normalizedPath === link.path || (link.path === '/about-us' && (decodedPath.startsWith('/about'))));
 
                 return (
-                  <a
+                  <Link
                     key={link.name}
-                    href={link.path}
+                    to={link.path}
                     className={`relative py-2 text-[15px] transition-colors ${isActive ? 'font-semibold' : 'font-medium'}`}
                     style={{ color: isActive ? themeConfig.colors.primary : themeConfig.colors.textHeading }}
                     onMouseEnter={(e) => e.currentTarget.style.color = themeConfig.colors.primary}
@@ -138,7 +139,7 @@ export default function Navbar({ currentPath = '/' }) {
                         aria-hidden="true"
                       />
                     )}
-                  </a>
+                  </Link>
                 );
               })}
             </nav>

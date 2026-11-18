@@ -11,16 +11,49 @@ import { faqsData as defaultFaqs } from './faqsData';
  * - Term Loan: ₹10 Lakhs to ₹25 Cr | 8.5% to 14% | 1 to 25 Years | 0.5%-1.5% fee
  */
 export const loansFaqData = {
+  'personal-loan': [
+    {
+      id: 'pl-1',
+      question: 'What is the loan amount range for a Personal Loan?',
+      answer: 'Through our network of all leading partner banks and NBFCs, you can secure collateral-free personal loans ranging from ₹1 Lakh up to ₹25 Lakhs based on your monthly salary or business income profile.'
+    },
+    {
+      id: 'pl-2',
+      question: 'What is the interest rate (ROI) for Personal Loans?',
+      answer: 'Personal loan interest rates start from 9.90% p.a. on a reducing balance basis, determined by your CIBIL score, monthly net income, employer profile, and lender terms.'
+    },
+    {
+      id: 'pl-3',
+      question: 'What is the repayment tenure for Personal Loans?',
+      answer: 'Repayment tenures range from 1 to 3 Years (12 to 36 months), giving you flexible monthly EMIs that comfortably match your household budget.'
+    },
+    {
+      id: 'pl-4',
+      question: 'What are the applicable charges for Personal Loans?',
+      answer: 'Standard lender charges include a minimal processing fee of 0.5% to 1.5% + Insurance + GST, documentation, and state stamp charges at actuals. Foreclosure charges may apply as per the lender’s policy.'
+    },
+    {
+      id: 'pl-5',
+      question: 'Do I need to provide any collateral or guarantor?',
+      answer: 'No. Personal loans provided through Bharath Finserv are 100% unsecured and collateral-free. You do not need to pledge property, gold, or arrange a guarantor.'
+    },
+    {
+      id: 'pl-6',
+      question: 'How fast can a Personal Loan be approved and disbursed?',
+      answer: 'Once basic KYC and income documents (last 3-6 months salary slips/bank statements) are collected from your doorstep, sanctions typically take just 24 to 48 hours with direct account credit.'
+    }
+  ],
+
   'business-loan': [
     {
       id: 'bl-1',
       question: 'What is the loan amount range for a Business Loan?',
-      answer: 'Through our network of 16+ banking and NBFC partners, you can secure business loans ranging from ₹5 Lakhs up to ₹10 Crores, tailored to your operating turnover, audited cash flows, and expansion requirements.'
+      answer: 'Through our network of all leading banking and NBFC partners, you can secure business loans ranging from ₹5 Lakhs up to ₹10 Crores, tailored to your operating turnover, audited cash flows, and expansion requirements.'
     },
     {
       id: 'bl-2',
       question: 'What is the interest rate (ROI) for Business Loans?',
-      answer: 'Business loan interest rates range from 13.5% to 26% p.a. on a reducing balance basis, based on your CIBIL score, annual turnover, financial health, and partner lender policy.'
+      answer: 'Business loan interest rates range from 13.5% p.a. on a reducing balance basis, based on your CIBIL score, annual turnover, financial health, and partner lender policy.'
     },
     {
       id: 'bl-3',

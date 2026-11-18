@@ -120,7 +120,7 @@ const termsSections = [
           <p><strong>Office:</strong> Bharath Finserv Legal & Compliance</p>
           <p><strong>Address:</strong> {siteConfig.address.full}</p>
           <p><strong>Email:</strong> <a href={`mailto:${siteConfig.email}`} className="text-blue-600 hover:underline">{siteConfig.email}</a></p>
-          <p><strong>Phone:</strong> <a href={`tel:${siteConfig.phoneRaw}`} className="text-blue-600 hover:underline">{siteConfig.phoneDisplay}</a></p>
+          <p><strong>Phone:</strong> <a href={`tel:${siteConfig.phoneRaw}`} className="text-blue-600 hover:underline">{siteConfig.phoneDisplay}</a> / <a href={`tel:${siteConfig.phone2Raw}`} className="text-blue-600 hover:underline">{siteConfig.phone2Display}</a></p>
         </div>
       </div>
     )

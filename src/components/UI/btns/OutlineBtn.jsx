@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { themeConfig } from '../../../config/themeconfig';
 
 export default function OutlineBtn({
@@ -85,6 +86,24 @@ export default function OutlineBtn({
   );
 
   if (href) {
+    const isInternal = href.startsWith('/') && !href.startsWith('//');
+    if (isInternal) {
+      return (
+        <Link
+          ref={btnRef}
+          to={href}
+          style={buttonStyle}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          className={`${baseStyles} ${className} text-inherit no-underline`}
+          {...props}
+        >
+          {ExpandingCircle}
+          {InnerContent}
+        </Link>
+      );
+    }
+
     return (
       <a
         ref={btnRef}

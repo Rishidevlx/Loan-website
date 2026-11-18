@@ -1,9 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FiPhoneCall, FiArrowRight, FiArrowUpRight } from 'react-icons/fi';
 import { themeConfig } from '../../config/themeconfig';
 import { siteConfig } from '../../config/siteConfig';
 import OutlineBtn from '../UI/btns/OutlineBtn';
 import OrangeRaysAccent from '../UI/OrangeRaysAccent';
+import ScrollReveal from '../common/ScrollReveal';
 
 /**
  * Rectangular CTA Banner Card
@@ -24,7 +26,9 @@ export default function LoanCtaBanner({ loan }) {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Rectangular Banner Card (#EDF0EC with subtle border & shadow) */}
-        <div 
+        <ScrollReveal
+          variant="zoom-in"
+          duration={700}
           className="relative rounded-2xl sm:rounded-3xl border border-slate-200/90 overflow-hidden shadow-xs"
           style={{ backgroundColor: themeConfig.colors.sectionProductsBg }} // #EDF0EC
         >
@@ -59,13 +63,13 @@ export default function LoanCtaBanner({ loan }) {
                 {/* 1. Primary Solid Blue Button with Orange Rays */}
                 <div className="relative inline-flex items-center">
                   <OrangeRaysAccent />
-                  <a
-                    href="/contact"
+                  <Link
+                    to="/contact"
                     className="inline-flex items-center justify-center gap-2 px-6 py-2.5 sm:py-3 rounded-full text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 select-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 relative z-0"
                   >
                     <span>Apply for {loanName}</span>
                     <FiArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
-                  </a>
+                  </Link>
                 </div>
 
                 {/* 2. Direct Call OutlineBtn with Mouse-aware Radial Expand */}
@@ -103,7 +107,7 @@ export default function LoanCtaBanner({ loan }) {
             )}
 
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

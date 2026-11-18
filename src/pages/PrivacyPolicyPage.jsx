@@ -14,7 +14,7 @@ const privacySections = [
           Bharath Finserv ("we", "us", or "our"), located at {siteConfig.address.full}, operates as a professional loan advisory and facilitation service. We are committed to protecting the privacy, accuracy, and security of your personal and financial information.
         </p>
         <p className="leading-relaxed text-slate-600">
-          This Privacy Policy outlines how we collect, handle, process, and protect your information when you browse our website, request a loan consultation, or submit documentation for business, mortgage, car, or personal loans across our network of 16+ partner banks and NBFCs.
+          This Privacy Policy outlines how we collect, handle, process, and protect your information when you browse our website, request a loan consultation, or submit documentation for business, mortgage, car, or personal loans across our network of all partner banks and NBFCs.
         </p>
       </>
     )
@@ -150,7 +150,7 @@ const privacySections = [
           <p><strong>Entity:</strong> Bharath Finserv</p>
           <p><strong>Address:</strong> {siteConfig.address.full}</p>
           <p><strong>Email:</strong> <a href={`mailto:${siteConfig.email}`} className="text-blue-600 hover:underline">{siteConfig.email}</a></p>
-          <p><strong>Phone:</strong> <a href={`tel:${siteConfig.phoneRaw}`} className="text-blue-600 hover:underline">{siteConfig.phoneDisplay}</a></p>
+          <p><strong>Phone:</strong> <a href={`tel:${siteConfig.phoneRaw}`} className="text-blue-600 hover:underline">{siteConfig.phoneDisplay}</a> / <a href={`tel:${siteConfig.phone2Raw}`} className="text-blue-600 hover:underline">{siteConfig.phone2Display}</a></p>
         </div>
       </div>
     )

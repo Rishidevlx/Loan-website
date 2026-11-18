@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { Routes, Route, Navigate, useLocation, useParams } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import ScrollToTopBtn from './components/UI/ScrollToTopBtn';
 import FloatingContactWidget from './components/UI/FloatingContactWidget';
 import ClickSparkEffect from './components/UI/ClickSparkEffect';
+import PageTransitionLoader from './components/UI/PageTransitionLoader';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
@@ -12,105 +14,45 @@ import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsPage from './pages/TermsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import { themeConfig } from './config/themeconfig';
-import { getLoanBySlug } from './data/loansDetailsData';
+import loansDetailsData, { getLoanBySlug } from './data/loansDetailsData';
 
-export default function App() {
-  const [currentPath, setCurrentPath] = useState(() => {
-    return typeof window !== 'undefined' ? window.location.pathname : '/';
-  });
+/**
+ * ScrollToTop helper: scrolls window to top on route change,
+ * or scrolls smoothly to hash element if a hash exists.
+ */
+function ScrollToTop() {
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    const handleLocationChange = () => {
-      setCurrentPath(window.location.pathname);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
-
-    window.addEventListener('popstate', handleLocationChange);
-
-    // Global delegated link interceptor for seamless client-side SPA routing
-    const handleLinkClick = (e) => {
-      const anchor = e.target.closest('a');
-      if (
-        anchor &&
-        anchor.target !== '_blank' &&
-        anchor.href &&
-        anchor.origin === window.location.origin &&
-        !anchor.hasAttribute('download')
-      ) {
-        const url = new URL(anchor.href);
-        const targetPath = url.pathname;
-        const hash = url.hash;
-
-        // If staying on the same path and only scrolling to a section hash
-        if (targetPath === window.location.pathname && hash) {
-          return;
-        }
-        
-        e.preventDefault();
-        if (targetPath !== window.location.pathname) {
-          window.history.pushState({}, '', targetPath + hash);
-          setCurrentPath(targetPath);
-          if (hash) {
-            const element = document.querySelector(hash);
-            if (element) {
-              element.scrollIntoView({ behavior: 'smooth' });
-              return;
-            }
-          }
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        return;
       }
-    };
-
-    document.addEventListener('click', handleLinkClick);
-
-    return () => {
-      window.removeEventListener('popstate', handleLocationChange);
-      document.removeEventListener('click', handleLinkClick);
-    };
-  }, []);
-
-  // Determine active view
-  const renderCurrentPage = () => {
-    let cleanPath = '';
-    try {
-      cleanPath = decodeURIComponent(currentPath).toLowerCase().trim().replace(/\/+$/, '') || '/';
-    } catch {
-      cleanPath = (currentPath || '/').toLowerCase().trim().replace(/\/+$/, '') || '/';
     }
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [pathname, hash]);
 
-    if (cleanPath === '/' || cleanPath === '' || cleanPath === '/loans') {
-      return <HomePage />;
-    }
-    
-    // About page handles all slug variations: /about, /about-us, /about us, /about%20us
-    if (
-      cleanPath === '/about' || 
-      cleanPath === '/about-us' || 
-      cleanPath === '/about us' ||
-      cleanPath.startsWith('/about')
-    ) {
-      return <AboutPage />;
-    }
+  return null;
+}
 
-    if (cleanPath === '/contact' || cleanPath.startsWith('/contact')) {
-      return <ContactPage />;
-    }
-    if (cleanPath === '/privacy-policy') {
-      return <PrivacyPolicyPage />;
-    }
-    if (cleanPath === '/terms-and-conditions' || cleanPath === '/terms') {
-      return <TermsPage />;
-    }
+/**
+ * Dynamic loan route wrapper for /:slug and /loans/:slug
+ */
+function DynamicLoanRoute() {
+  const { slug } = useParams();
+  const location = useLocation();
+  const loan = getLoanBySlug(location.pathname) || getLoanBySlug(slug);
 
-    // Check if the route matches any of the 6 Loan detail pages
-    const loan = getLoanBySlug(currentPath) || getLoanBySlug(cleanPath);
-    if (loan) {
-      return <LoanDetailPage loan={loan} />;
-    }
-
+  if (!loan) {
     return <NotFoundPage />;
-  };
+  }
+  return <LoanDetailPage loan={loan} />;
+}
+
+export default function App() {
+  const location = useLocation();
 
   return (
     <div 
@@ -119,16 +61,79 @@ export default function App() {
         fontFamily: themeConfig.typography.fontFamily 
       }}
     >
-      {/* 1. Header with Animated Loans Dropdown & Quick Call */}
-      <Navbar currentPath={currentPath} />
+      {/* Scroll restoration helper */}
+      <ScrollToTop />
 
-      {/* 2. Dynamic Main Content Area */}
+      {/* Cinematic Split Curtain Page Loader with loader.gif (Commented for future activation) */}
+      {/* <PageTransitionLoader /> */}
+
+      {/* 1. Header with Animated Loans Dropdown & Quick Call */}
+      <Navbar currentPath={location.pathname} />
+
+      {/* 2. Dynamic Main Content Area with React Router Routes */}
       <main className="flex-1">
-        {renderCurrentPage()}
+        <Routes>
+          {/* Home */}
+          <Route path="/" element={<HomePage />} />
+          <Route path="/loans" element={<HomePage />} />
+
+          {/* About Us (Single Canonical Route: /about-us; /about redirects to /about-us) */}
+          <Route path="/about-us" element={<AboutPage />} />
+          <Route path="/about" element={<Navigate to="/about-us" replace />} />
+          <Route path="/about%20us" element={<Navigate to="/about-us" replace />} />
+
+          {/* Contact & Application routes */}
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/contact-us" element={<Navigate to="/contact" replace />} />
+          <Route path="/apply-now" element={<Navigate to="/contact" replace />} />
+          <Route path="/apply" element={<Navigate to="/contact" replace />} />
+
+          {/* Legal Pages */}
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms-and-conditions" element={<TermsPage />} />
+          <Route path="/terms" element={<Navigate to="/terms-and-conditions" replace />} />
+
+          {/* 7 Explicit Primary Loan Routes */}
+          <Route 
+            path="/personal-loan-coimbatore" 
+            element={<LoanDetailPage loan={loansDetailsData['personal-loan']} />} 
+          />
+          <Route 
+            path="/business-loan-coimbatore" 
+            element={<LoanDetailPage loan={loansDetailsData['business-loan']} />} 
+          />
+          <Route 
+            path="/mortgage-loan-coimbatore" 
+            element={<LoanDetailPage loan={loansDetailsData['mortgage-loan']} />} 
+          />
+          <Route 
+            path="/car-loan-coimbatore" 
+            element={<LoanDetailPage loan={loansDetailsData['car-loan']} />} 
+          />
+          <Route 
+            path="/cc-loan-coimbatore" 
+            element={<LoanDetailPage loan={loansDetailsData['cc-loan']} />} 
+          />
+          <Route 
+            path="/term-loan-coimbatore" 
+            element={<LoanDetailPage loan={loansDetailsData['term-loan']} />} 
+          />
+          <Route 
+            path="/machinery-loan-coimbatore" 
+            element={<LoanDetailPage loan={loansDetailsData['machinery-loan']} />} 
+          />
+
+          {/* Fallback & Shorthand Loan Routes (/loans/:slug and /:slug) */}
+          <Route path="/loans/:slug" element={<DynamicLoanRoute />} />
+          <Route path="/:slug" element={<DynamicLoanRoute />} />
+
+          {/* 404 Catch-All */}
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
       </main>
 
       {/* 3. Contrast Footer */}
-      <Footer currentPath={currentPath} />
+      <Footer currentPath={location.pathname} />
 
       {/* 4. Floating Scroll-To-Top Button & Floating Contact Speed-Dial */}
       <ScrollToTopBtn />

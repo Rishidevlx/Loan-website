@@ -3,6 +3,7 @@ import { FaStar } from 'react-icons/fa6';
 import { themeConfig } from '../../config/themeconfig';
 import { testimonialsData } from '../../data/testimonialsData';
 import RoundArrowBtn from '../UI/btns/RoundArrowBtn';
+import ScrollReveal from '../common/ScrollReveal';
 
 /**
  * TestimonialsSection - Clean, elegant customer review slider inspired by LottoLend design
@@ -58,7 +59,7 @@ export default function TestimonialsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         
         {/* Main Review Stage with Left and Right Flanking Buttons */}
-        <div className="relative flex items-center justify-between max-w-5xl mx-auto">
+        <ScrollReveal variant="fade-up" className="relative flex items-center justify-between max-w-5xl mx-auto">
           
           {/* Desktop Left Round Arrow Button */}
           <div className="hidden sm:block shrink-0 z-20">
@@ -129,7 +130,7 @@ export default function TestimonialsSection() {
             />
           </div>
 
-        </div>
+        </ScrollReveal>
 
         {/* Mobile Navigation Buttons (Displayed side-by-side below review on small devices) */}
         <div className="flex sm:hidden items-center justify-center gap-6 mt-8">

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { themeConfig } from '../../config/themeconfig';
 import { faqsData as defaultFaqsData } from '../../data/faqsData';
 import { FiPlus, FiMinus } from 'react-icons/fi';
+import ScrollReveal from '../common/ScrollReveal';
 import msgIcon from '../../assets/Vectors/msg-icon.png';
 import questionIcon from '../../assets/Vectors/FAQs/icons8-question-mark-100.png';
 
@@ -145,7 +146,7 @@ export default function FaqSection({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3.5 mb-12 md:mb-16">
+        <ScrollReveal variant="fade-up" className="text-center max-w-3xl mx-auto space-y-3.5 mb-12 md:mb-16">
           
           {/* Eyebrow Tagline with Spark Icon - Separated onto its own top row */}
           <div className="flex justify-center">
@@ -199,23 +200,23 @@ export default function FaqSection({
             {subtitle}
           </p>
 
-        </div>
+        </ScrollReveal>
 
         {/* 2-Column Responsive Accordion Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-start">
           {/* Left Column (4 FAQs) */}
-          <div className="space-y-4 sm:space-y-5">
+          <ScrollReveal variant="fade-up" delay={100} className="space-y-4 sm:space-y-5">
             {leftColumnFaqs.map((faq) => 
               renderFaqCard(faq, openLeftId === faq.id, handleToggleLeft)
             )}
-          </div>
+          </ScrollReveal>
 
           {/* Right Column (4 FAQs) */}
-          <div className="space-y-4 sm:space-y-5">
+          <ScrollReveal variant="fade-up" delay={200} className="space-y-4 sm:space-y-5">
             {rightColumnFaqs.map((faq) => 
               renderFaqCard(faq, openRightId === faq.id, handleToggleRight)
             )}
-          </div>
+          </ScrollReveal>
         </div>
 
       </div>

@@ -1,9 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FiArrowUpRight, FiZap, FiFileText, FiShield, FiPhoneCall } from 'react-icons/fi';
 import { themeConfig } from '../../config/themeconfig';
 import { siteConfig } from '../../config/siteConfig';
 import OutlineBtn from '../UI/btns/OutlineBtn';
 import OrangeRaysAccent from '../UI/OrangeRaysAccent';
+import ScrollReveal from '../common/ScrollReveal';
 import msgIconImg from '../../assets/Vectors/msg-icon.png';
 
 /**
@@ -50,7 +52,7 @@ export default function LoanHeroSection({ loanData }) {
           {/* ======================================================== */}
           {/* LEFT COLUMN: Loan Content & Actions                      */}
           {/* ======================================================== */}
-          <div className="lg:col-span-7 flex flex-col justify-center text-left">
+          <ScrollReveal variant="fade-right" duration={700} className="lg:col-span-7 flex flex-col justify-center text-left">
             
             {/* 1. Tagline with Loan Spark Star SVG Icon (Identical to Homepage Hero) */}
             <div className="flex items-center gap-2.5 mb-4 sm:mb-5">
@@ -92,31 +94,32 @@ export default function LoanHeroSection({ loanData }) {
 
             {/* 4. Action Buttons (Identical to Homepage Hero Section) */}
             <div className="flex flex-wrap items-center gap-4 mb-8 sm:mb-10">
-              {/* Primary Filled CTA with Orange Rays */}
+              {/* Primary Filled CTA (Primary: 99444 00022) with Orange Rays */}
               <div className="relative inline-flex items-center">
                 <OrangeRaysAccent />
                 <a
-                  href={contactUrl}
+                  href={`tel:${siteConfig.phoneRaw}`}
                   className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold text-white shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 relative z-0"
                   style={{ backgroundColor: themeConfig.colors.primary }}
                 >
-                  <span>{primaryCtaText || `Apply for ${name}`}</span>
+                  <FiPhoneCall className="w-4 h-4" />
+                  <span>Call: {siteConfig.phoneDisplay}</span>
                   <FiArrowUpRight className="w-4 h-4" />
                 </a>
               </div>
 
-              {/* Secondary Outline CTA with Cursor-aware Radial Expansion (Direct Call matching Homepage) */}
+              {/* Secondary Outline CTA (Secondary: 99444 71707) with Cursor-aware Radial Expansion */}
               <OutlineBtn
-                href={`tel:${siteConfig.phoneRaw}`}
+                href={`tel:${siteConfig.phone2Raw}`}
                 icon={FiPhoneCall}
                 endIcon={FiArrowUpRight}
                 className="py-3.5 px-6"
               >
-                Call: {siteConfig.phoneDisplay}
+                Call: {siteConfig.phone2Display}
               </OutlineBtn>
             </div>
 
-            {/* 5. Trust / Feature Highlights Row (Clean React Icons & 16+ Banks) */}
+            {/* 5. Trust / Feature Highlights Row (Clean React Icons & All Banking Partners) */}
             <div className="pt-6 border-t border-slate-100 flex flex-wrap items-center gap-y-3 gap-x-6 sm:gap-x-8 text-xs sm:text-sm text-slate-700">
               {highlights.length > 0 ? (
                 highlights.map((item, idx) => (
@@ -137,7 +140,7 @@ export default function LoanHeroSection({ loanData }) {
                   </div>
                   <div className="flex items-center gap-2 font-medium">
                     <FiShield className="w-4 h-4 text-blue-600 shrink-0" />
-                    <span>16+ Banking Partners</span>
+                    <span>All Banking Partners</span>
                   </div>
                 </>
               )}
@@ -153,27 +156,25 @@ export default function LoanHeroSection({ loanData }) {
               />
             </div>
 
-          </div>
+          </ScrollReveal>
 
           {/* ======================================================== */}
-          {/* RIGHT COLUMN: Illustration / Image (No hover, non-draggable) */}
+          {/* RIGHT COLUMN: Illustration / Image (Clean Pure White Background, No Glow) */}
           {/* ======================================================== */}
-          <div className="lg:col-span-5 flex items-center justify-center lg:justify-end">
-            <div className="relative w-full max-w-[480px] lg:max-w-[540px]">
-              
-              {/* Subtle Ambient Glow Behind Image */}
-              <div 
-                className="absolute inset-0 bg-blue-50/50 rounded-3xl filter blur-2xl transform scale-95 -z-10"
-                aria-hidden="true"
-              />
-
-              {/* Main Illustration Image - Hover disabled & Drag disabled */}
+          <ScrollReveal 
+            variant="fade-left" 
+            duration={700}
+            delay={100}
+            className="lg:col-span-5 flex items-center justify-center lg:justify-end"
+          >
+            <div className="relative w-full max-w-[480px] lg:max-w-[540px] flex items-center justify-center bg-white">
+              {/* Main Illustration Image - Clean pure white background, hover & drag disabled */}
               <img 
                 src={image} 
                 alt={`${name} illustration`}
                 draggable="false"
                 onDragStart={(e) => e.preventDefault()}
-                className="w-full h-auto max-h-[440px] object-contain drop-shadow-md select-none pointer-events-auto"
+                className="w-full h-auto max-h-[440px] object-contain select-none pointer-events-auto"
                 style={{
                   userSelect: 'none',
                   WebkitUserDrag: 'none',
@@ -182,7 +183,7 @@ export default function LoanHeroSection({ loanData }) {
                 loading="eager"
               />
             </div>
-          </div>
+          </ScrollReveal>
 
         </div>
       </div>

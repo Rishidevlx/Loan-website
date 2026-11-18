@@ -4,12 +4,18 @@ import carIcon from '../assets/Vectors/icons8-car-100.png';
 import ccIcon from '../assets/Vectors/icons8-coins-100.png';
 import termIcon from '../assets/Vectors/icons8-loan-64.png';
 import machineryIcon from '../assets/Vectors/icons8-settings-100.png';
+import personalLoanIcon from '../assets/Vectors/personal-loan.png';
 
 /**
  * Navigation Configuration - Single Source of Truth
  */
 
 export const loansDropdownItems = [
+  { 
+    name: "Personal Loan", 
+    slug: "/personal-loan-coimbatore",
+    icon: personalLoanIcon
+  },
   { 
     name: "Business Loan", 
     slug: "/business-loan-coimbatore",

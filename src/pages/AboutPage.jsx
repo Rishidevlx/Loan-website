@@ -11,7 +11,7 @@ import { themeConfig } from '../config/themeconfig';
  * 1. About Hero Section (White)
  * 2. Why Choose Us Section (#EDF0EC - inspired by FINVIEW reference with 3D Spinning Coin)
  * 3. Connected Trust Stats Section (Pure White background)
- * 4. Our Lending Partners Grid Section (Pure White background - 16+ Bank Logos)
+ * 4. Our Lending Partners Grid Section (Pure White background - All Bank Logos)
  */
 export default function AboutPage() {
   useEffect(() => {

@@ -7,7 +7,7 @@ export const faqsData = [
   {
     id: "faq-2",
     question: "Are you a bank or direct lender?",
-    answer: "No, Bharath Finserv is an authorized loan advisory and facilitation consultancy headquartered in Coimbatore, serving borrowers across India. We connect you directly with 16+ premier scheduled commercial banks and RBI-registered NBFCs who sanction and disburse your funds."
+    answer: "No, Bharath Finserv is an authorized loan advisory and facilitation consultancy headquartered in Coimbatore, serving borrowers across India. We connect you directly with all premier scheduled commercial banks and RBI-registered NBFCs who sanction and disburse your funds."
   },
   {
     id: "faq-3",

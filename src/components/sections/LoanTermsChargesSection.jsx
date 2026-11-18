@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { 
   FiArrowUpRight, 
   FiInfo, 
@@ -7,6 +8,7 @@ import {
 import { themeConfig } from '../../config/themeconfig';
 import { getLoanTerms } from '../../data/loanTermsData';
 import OrangeRaysAccent from '../UI/OrangeRaysAccent';
+import ScrollReveal from '../common/ScrollReveal';
 
 // User-specified 3 icons from assets/Vectors
 import coinsIcon from '../../assets/Vectors/icons8-coins-100.png';
@@ -82,7 +84,7 @@ export default function LoanTermsChargesSection({ loan }) {
           {/* ======================================================== */}
           {/* LEFT COLUMN: Headings, Charges Breakdown & CTA Action    */}
           {/* ======================================================== */}
-          <div className="lg:col-span-5 flex flex-col justify-between">
+          <ScrollReveal variant="fade-right" className="lg:col-span-5 flex flex-col justify-between">
             
             {/* 1. Eyebrow Tagline with Spark Star SVG (Matching LoanDocumentsSection) */}
             <div className="inline-flex items-center gap-2 mb-3">
@@ -116,7 +118,7 @@ export default function LoanTermsChargesSection({ loan }) {
 
             {/* 3. Sub-text Description (2 Lines max) */}
             <p className="text-sm sm:text-base font-light leading-relaxed text-[#666666] mb-6 max-w-lg">
-              Transparent loan terms with zero hidden fees. Compare commercial rates and fee parameters across 16+ partner lenders.
+              Transparent loan terms with zero hidden fees. Compare commercial rates and fee parameters across all partner lenders.
             </p>
 
             {/* 4. Applicable Charges (Simple clean checklist with green ticks, no colon split) */}
@@ -149,25 +151,29 @@ export default function LoanTermsChargesSection({ loan }) {
               {/* 4 Radiating Orange Accent Rays (Top-Left Doodle hugging curve) */}
               <OrangeRaysAccent />
 
-              <a
-                href="/contact"
+              <Link
+                to="/contact"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 select-none cursor-pointer relative z-0"
               >
                 <span>Apply for {loanName}</span>
                 <FiArrowUpRight className="w-4 h-4" />
-              </a>
+              </Link>
             </div>
 
-          </div>
+          </ScrollReveal>
 
 
           {/* ======================================================== */}
           {/* RIGHT COLUMN: 3 Staggered FINVIEW Double-Framed Cards     */}
+          {/* Each card links directly to the Contact page             */}
           {/* ======================================================== */}
-          <div className="lg:col-span-7 flex flex-col space-y-4 sm:space-y-5 lg:pl-8 lg:translate-x-3">
+          <ScrollReveal variant="fade-left" delay={150} className="lg:col-span-7 flex flex-col space-y-4 sm:space-y-5 lg:pl-8 lg:translate-x-3">
             
-            {/* Card 1: Loan Amount Range (Shifted Right via lg:self-end) */}
-            <div className="w-full max-w-[500px] lg:self-end bg-white rounded-2xl p-2 sm:p-2.5 border border-slate-200/90 shadow-2xs hover:shadow-md transition-all duration-300 group cursor-pointer animate-float-slow-r1">
+            {/* Card 1: Loan Amount Range (Links to Contact Page) */}
+            <Link 
+              to="/contact"
+              className="w-full max-w-[500px] block lg:self-end bg-white rounded-2xl p-2 sm:p-2.5 border border-slate-200/90 shadow-2xs hover:shadow-md transition-all duration-300 group cursor-pointer animate-float-slow-r1 text-inherit no-underline"
+            >
               {/* Inner Tinted Card with Smooth Brand Blue Hover */}
               <div className="bg-[#F4F6F5] group-hover:bg-blue-600 rounded-xl p-4 sm:p-5 transition-all duration-300">
                 <div className="flex items-center justify-between gap-4">
@@ -200,11 +206,14 @@ export default function LoanTermsChargesSection({ loan }) {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
 
 
-            {/* Card 2: Rate of Interest (ROI) (Shifted Left via lg:self-start) */}
-            <div className="w-full max-w-[500px] lg:self-start bg-white rounded-2xl p-2 sm:p-2.5 border border-slate-200/90 shadow-2xs hover:shadow-md transition-all duration-300 group cursor-pointer animate-float-slow-l">
+            {/* Card 2: Rate of Interest (ROI) (Links to Contact Page) */}
+            <Link 
+              to="/contact"
+              className="w-full max-w-[500px] block lg:self-start bg-white rounded-2xl p-2 sm:p-2.5 border border-slate-200/90 shadow-2xs hover:shadow-md transition-all duration-300 group cursor-pointer animate-float-slow-l text-inherit no-underline"
+            >
               {/* Inner Tinted Card with Smooth Brand Blue Hover */}
               <div className="bg-[#F4F6F5] group-hover:bg-blue-600 rounded-xl p-4 sm:p-5 transition-all duration-300">
                 <div className="flex items-center justify-between gap-4">
@@ -268,11 +277,14 @@ export default function LoanTermsChargesSection({ loan }) {
                   </div>
                 )}
               </div>
-            </div>
+            </Link>
 
 
-            {/* Card 3: Repayment Tenure (Shifted Right via lg:self-end) */}
-            <div className="w-full max-w-[500px] lg:self-end bg-white rounded-2xl p-2 sm:p-2.5 border border-slate-200/90 shadow-2xs hover:shadow-md transition-all duration-300 group cursor-pointer animate-float-slow-r2">
+            {/* Card 3: Repayment Tenure (Links to Contact Page) */}
+            <Link 
+              to="/contact"
+              className="w-full max-w-[500px] block lg:self-end bg-white rounded-2xl p-2 sm:p-2.5 border border-slate-200/90 shadow-2xs hover:shadow-md transition-all duration-300 group cursor-pointer animate-float-slow-r2 text-inherit no-underline"
+            >
               {/* Inner Tinted Card with Smooth Brand Blue Hover */}
               <div className="bg-[#F4F6F5] group-hover:bg-blue-600 rounded-xl p-4 sm:p-5 transition-all duration-300">
                 <div className="flex items-center justify-between gap-4">
@@ -305,9 +317,9 @@ export default function LoanTermsChargesSection({ loan }) {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
 
-          </div>
+          </ScrollReveal>
 
         </div>
 

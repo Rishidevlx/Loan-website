@@ -4,26 +4,63 @@ import carLoanImg from '../assets/loans/car-loan.png';
 import ccLoanImg from '../assets/loans/cc-loan.png';
 import termLoanImg from '../assets/loans/Term-loan.png';
 import machineryLoanImg from '../assets/loans/machinery-loan.png';
+import personalLoanHeroImg from '../assets/loans/personal-loan-hero.png';
 
 /**
  * Comprehensive Data Store for all 6 Loan Pages
  * Single source of truth for dynamic loan hero sections, details, and future modules.
  */
 export const loansDetailsData = {
+  'personal-loan': {
+    id: 'personal-loan',
+    name: 'Personal Loan',
+    slugs: ['/personal-loan-coimbatore', '/loans/personal-loan', '/personal-loan'],
+    badge: '₹1 LAKH TO ₹25 LAKHS • INSTANT DISBURSAL',
+    headline: "Fast & Flexible Personal Loans for Life's Immediate Needs",
+    subtitle: 'Fulfill emergency cash needs, medical expenses, weddings, or family milestones with hassle-free, collateral-free personal loans from all leading banks & NBFCs.',
+    image: personalLoanHeroImg,
+    primaryCtaText: 'Apply for Personal Loan',
+    secondaryCtaText: 'Check Eligibility',
+    highlights: [
+      { text: 'Fast 24-48 Hr Disbursal', iconType: 'zap' },
+      { text: 'Minimal Documentation', iconType: 'file' },
+      { text: 'All Banking Partners', iconType: 'bank' }
+    ],
+    stats: [
+      { label: 'Loan Amount Range', value: '₹1 Lakh to ₹25 Lakhs' },
+      { label: 'Interest Rate', value: 'From 9.90% p.a.' },
+      { label: 'Flexible Tenure', value: '1 to 3 Years' }
+    ],
+    processSteps: [
+      {
+        title: 'Share Requirement & Compare All Banks',
+        description: 'Tell us your funding requirement and monthly income. We evaluate all leading banks & NBFCs to secure you the lowest interest rates starting from 9.90%.'
+      },
+      {
+        title: 'Doorstep KYC & Income Verification',
+        description: 'Our team collects basic salary slips, bank statements, and KYC documents directly from your doorstep with zero branch visits.'
+      },
+      {
+        title: 'Instant Sanction & Direct Bank Disbursal',
+        description: 'Enjoy fast approval within 24 to 48 hours with flexible tenure from 1 to 3 years and immediate funds transfer to your bank account.'
+      }
+    ]
+  },
+
   'business-loan': {
     id: 'business-loan',
     name: 'Business Loan',
     slugs: ['/business-loan-coimbatore', '/loans/business-loan', '/business-loan'],
     badge: 'GET UP TO ₹5 CRORES • UNSECURED & SECURED',
     headline: 'Fast & Tailored Business Loans for Your Growth',
-    subtitle: 'Empower your enterprise with collateral-free working capital, trade finance, and expansion funding. Compare 16+ leading banks & NBFCs with interest rates starting from minimum % p.a.',
+    subtitle: 'Empower your enterprise with collateral-free working capital, trade finance, and expansion funding. Compare all leading banks & NBFCs with interest rates starting from minimum % p.a.',
     image: businessLoanImg,
     primaryCtaText: 'Apply for Business Loan',
     secondaryCtaText: 'Check Eligibility',
     highlights: [
       { text: 'Fast 24-48 Hr Disbursal', iconType: 'zap' },
       { text: 'Minimal Documentation', iconType: 'file' },
-      { text: '16+ Banking Partners', iconType: 'bank' }
+      { text: 'All Banking Partners', iconType: 'bank' }
     ],
     stats: [
       { label: 'Max Loan Amount', value: 'Up to ₹5 Cr' },
@@ -32,8 +69,8 @@ export const loansDetailsData = {
     ],
     processSteps: [
       {
-        title: 'Check Eligibility & Compare 16+ Banks',
-        description: 'Tell us your business requirement. We evaluate 16+ top banks & NBFCs to secure you the highest loan amount at the lowest commercial rates.'
+        title: 'Check Eligibility & Compare All Banks',
+        description: 'Tell us your business requirement. We evaluate all top banks & NBFCs to secure you the highest loan amount at the lowest commercial rates.'
       },
       {
         title: 'Hassle-Free Doorstep Documentation',
@@ -59,7 +96,7 @@ export const loansDetailsData = {
     highlights: [
       { text: 'Fast 24-48 Hr Disbursal', iconType: 'zap' },
       { text: 'Minimal Documentation', iconType: 'file' },
-      { text: '16+ Banking Partners', iconType: 'bank' }
+      { text: 'All Banking Partners', iconType: 'bank' }
     ],
     stats: [
       { label: 'Max Loan Amount', value: 'Up to ₹25 Cr' },
@@ -69,7 +106,7 @@ export const loansDetailsData = {
     processSteps: [
       {
         title: 'Property Valuation & Bank Comparison',
-        description: 'Share your property details. We evaluate 16+ leading lenders to maximize your loan-to-value ratio and find the lowest interest margin.'
+        description: 'Share your property details. We evaluate all leading lenders to maximize your loan-to-value ratio and find the lowest interest margin.'
       },
       {
         title: 'Doorstep Legal & Paperwork Support',
@@ -95,7 +132,7 @@ export const loansDetailsData = {
     highlights: [
       { text: 'Fast 24-48 Hr Disbursal', iconType: 'zap' },
       { text: 'Minimal Documentation', iconType: 'file' },
-      { text: '16+ Banking Partners', iconType: 'bank' }
+      { text: 'All Banking Partners', iconType: 'bank' }
     ],
     stats: [
       { label: 'Financing Limit', value: 'Up to 100%' },
@@ -104,8 +141,8 @@ export const loansDetailsData = {
     ],
     processSteps: [
       {
-        title: 'Choose Vehicle & Compare 16+ Banks',
-        description: 'Select your preferred new or pre-owned car. We compare vehicle loan rates and processing charges across 16+ lenders for maximum on-road funding.'
+        title: 'Choose Vehicle & Compare All Banks',
+        description: 'Select your preferred new or pre-owned car. We compare vehicle loan rates and processing charges across all partner lenders for maximum on-road funding.'
       },
       {
         title: 'Doorstep Paperwork & Fast Processing',
@@ -131,7 +168,7 @@ export const loansDetailsData = {
     highlights: [
       { text: 'Fast 24-48 Hr Disbursal', iconType: 'zap' },
       { text: 'Minimal Documentation', iconType: 'file' },
-      { text: '16+ Banking Partners', iconType: 'bank' }
+      { text: 'All Banking Partners', iconType: 'bank' }
     ],
     stats: [
       { label: 'Credit Limit', value: '₹10 Lakh - ₹15 Cr' },
@@ -141,7 +178,7 @@ export const loansDetailsData = {
     processSteps: [
       {
         title: 'Working Capital Assessment',
-        description: 'Tell us your business turnover and stock needs. We compare revolving credit limits across 16+ banks to minimize your margin requirements.'
+        description: 'Tell us your business turnover and stock needs. We compare revolving credit limits across all top banks to minimize your margin requirements.'
       },
       {
         title: 'Doorstep Financial & Stock Audit Support',
@@ -167,7 +204,7 @@ export const loansDetailsData = {
     highlights: [
       { text: 'Fast 24-48 Hr Disbursal', iconType: 'zap' },
       { text: 'Minimal Documentation', iconType: 'file' },
-      { text: '16+ Banking Partners', iconType: 'bank' }
+      { text: 'All Banking Partners', iconType: 'bank' }
     ],
     stats: [
       { label: 'Max Loan Amount', value: 'Up to ₹10 Cr' },
@@ -177,7 +214,7 @@ export const loansDetailsData = {
     processSteps: [
       {
         title: 'Capital Planning & Multi-Bank Matching',
-        description: 'Define your long-term capital expenditure or expansion goals. We source customized repayment schedules and rates across 16+ financial institutions.'
+        description: 'Define your long-term capital expenditure or expansion goals. We source customized repayment schedules and rates across all premier financial institutions.'
       },
       {
         title: 'Hassle-Free Doorstep Document Pickup',
@@ -203,7 +240,7 @@ export const loansDetailsData = {
     highlights: [
       { text: 'Fast 24-48 Hr Disbursal', iconType: 'zap' },
       { text: 'Minimal Documentation', iconType: 'file' },
-      { text: '16+ Banking Partners', iconType: 'bank' }
+      { text: 'All Banking Partners', iconType: 'bank' }
     ],
     stats: [
       { label: 'Funding Coverage', value: 'Up to 90%' },
@@ -213,7 +250,7 @@ export const loansDetailsData = {
     processSteps: [
       {
         title: 'Invoice Review & Lender Comparison',
-        description: 'Share your machinery quotation or proforma invoice. We compare equipment financing terms across 16+ banks to fund up to 90% of equipment cost.'
+        description: 'Share your machinery quotation or proforma invoice. We compare equipment financing terms across all partner banks to fund up to 90% of equipment cost.'
       },
       {
         title: 'Doorstep Technical & Paperwork Coordination',

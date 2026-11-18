@@ -1,9 +1,11 @@
 import React from 'react';
-import { FiPhoneCall, FiArrowUpRight, FiMapPin, FiClock, FiShield, FiCheckCircle, FiPercent } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
+import { FiPhoneCall, FiArrowUpRight, FiShield, FiCheckCircle, FiPercent } from 'react-icons/fi';
 import { siteConfig } from '../../config/siteConfig';
 import { themeConfig } from '../../config/themeconfig';
 import OutlineBtn from '../UI/btns/OutlineBtn';
 import OrangeRaysAccent from '../UI/OrangeRaysAccent';
+import ScrollReveal from '../common/ScrollReveal';
 import aboutUsImg from '../../assets/Vectors/about-us.png';
 import msgIconImg from '../../assets/Vectors/msg-icon.png';
 
@@ -22,7 +24,7 @@ export default function AboutHeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
           
           {/* Left Column: Content (6 cols on lg) */}
-          <div className="lg:col-span-6 space-y-6">
+          <ScrollReveal variant="fade-right" duration={700} className="lg:col-span-6 space-y-6">
             
             {/* 1. Tagline with Loan Spark SVG Icon */}
             <div className="flex items-center gap-2.5">
@@ -58,53 +60,41 @@ export default function AboutHeroSection() {
             <p 
               className="text-base sm:text-[18px] font-light leading-relaxed max-w-xl text-[#666666]"
             >
-              Headquartered in Coimbatore and serving clients nationwide, we bridge borrowers with 16+ top banks & NBFCs through doorstep documentation, expert credit appraisal, and zero upfront consultation fees.
+              Headquartered in Coimbatore and serving clients nationwide, we bridge borrowers with all top banks & NBFCs through doorstep documentation, expert credit appraisal, and zero upfront consultation fees.
             </p>
 
             {/* 4. Action Buttons */}
             <div className="flex flex-wrap items-center gap-4 pt-1">
-              {/* Primary Filled CTA with Orange Rays */}
+              {/* Primary Filled CTA (Primary: 99444 00022) with Orange Rays */}
               <div className="relative inline-flex items-center">
                 <OrangeRaysAccent />
                 <a
-                  href="/contact"
+                  href={`tel:${siteConfig.phoneRaw}`}
                   className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold text-white shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 relative z-0"
                   style={{ backgroundColor: themeConfig.colors.primary }}
                 >
-                  <span>Apply for Loan Now</span>
+                  <FiPhoneCall className="w-4 h-4" />
+                  <span>Call: {siteConfig.phoneDisplay}</span>
                   <FiArrowUpRight className="w-4 h-4" />
                 </a>
               </div>
 
-              {/* Secondary Outline CTA with Cursor-aware Radial Expansion */}
+              {/* Secondary Outline CTA (Secondary: 99444 71707) with Cursor-aware Radial Expansion */}
               <OutlineBtn
-                href={`tel:${siteConfig.phoneRaw}`}
+                href={`tel:${siteConfig.phone2Raw}`}
                 icon={FiPhoneCall}
                 endIcon={FiArrowUpRight}
                 className="py-3.5 px-6"
               >
-                Call: {siteConfig.phoneDisplay}
+                Call: {siteConfig.phone2Display}
               </OutlineBtn>
             </div>
 
-            {/* 5. Info Bar (NAP & Timings consistency for Local SEO) */}
-            <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 text-xs text-slate-500">
-              <div className="flex items-center gap-2">
-                <FiMapPin className="w-4 h-4 text-blue-600 shrink-0" />
-                <span>{siteConfig.address.full}</span>
-              </div>
-              <div className="hidden sm:block text-slate-300">•</div>
-              <div className="flex items-center gap-2 shrink-0">
-                <FiClock className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>{siteConfig.timings}</span>
-              </div>
-            </div>
-
-            {/* 6. Trust Badges Strip */}
-            <div className="pt-3 grid grid-cols-3 gap-4 border-t border-slate-100 text-xs text-slate-600">
+            {/* 5. Trust Badges Strip */}
+            <div className="pt-6 grid grid-cols-3 gap-4 border-t border-slate-100 text-xs text-slate-600">
               <div className="flex items-center gap-2">
                 <FiShield className="w-4 h-4 text-blue-600 shrink-0" />
-                <span className="font-medium">16+ Banks & NBFCs</span>
+                <span className="font-medium">All Banks & NBFCs</span>
               </div>
               <div className="flex items-center gap-2">
                 <FiCheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
@@ -116,7 +106,7 @@ export default function AboutHeroSection() {
               </div>
             </div>
 
-            {/* 7. Floating Message Icon below Trust Badges (Desktop only, hidden on mobile) */}
+            {/* 6. Floating Message Icon below Trust Badges (Desktop only, hidden on mobile) */}
             <div className="hidden lg:block pt-2">
               <img
                 src={msgIconImg}
@@ -126,19 +116,24 @@ export default function AboutHeroSection() {
               />
             </div>
 
-          </div>
+          </ScrollReveal>
 
           {/* Right Column: Proportional & Neat About Us Illustration */}
-          <div className="lg:col-span-6 flex justify-center lg:justify-end items-center -mt-8 sm:-mt-8 lg:-mt-16 xl:-mt-22">
+          <ScrollReveal 
+            variant="fade-left" 
+            duration={700}
+            delay={100}
+            className="lg:col-span-6 flex justify-center lg:justify-end items-center -mt-8 sm:-mt-8 lg:-mt-16 xl:-mt-22"
+          >
             <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-[390px] xl:max-w-[420px] flex justify-center items-center">
               <img
                 src={aboutUsImg}
                 alt="About Bharath Finserv Loan Consultation Across India"
                 draggable={false}
                 className="w-full h-auto max-h-[300px] sm:max-h-[340px] md:max-h-[370px] lg:max-h-[390px] object-contain select-none pointer-events-none drop-shadow-sm"
-              />
+              />  
             </div>
-          </div>
+          </ScrollReveal>
 
         </div>
       </div>

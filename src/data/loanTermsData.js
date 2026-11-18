@@ -5,6 +5,36 @@
  */
 
 export const loanTermsData = {
+  'personal-loan': {
+    id: 'personal-loan',
+    loanName: 'Personal Loan',
+    amount: {
+      min: '1 Lakh',
+      max: '25 Lakhs',
+      display: '₹1 Lakh to ₹25 Lakhs',
+      description: 'Collateral-free personal funding tailored to your income profile.',
+    },
+    roi: {
+      min: '9.9%',
+      max: '18%',
+      display: 'Starting 9.9% p.a.',
+      description: 'Lowest interest rates starting from 9.9% across top lenders.',
+    },
+    tenure: {
+      min: '1 Year',
+      max: '5 Years',
+      display: '1 to 5 Years',
+      description: 'Comfortable monthly EMIs suited to your monthly income.',
+    },
+    charges: [
+      'Processing fee',
+      // 'Insurance + GST',
+      'Documents charge',
+      'Stamp charges',
+    ],
+    note: "Foreclosure charges may apply as per the lender’s policy.",
+  },
+
   'business-loan': {
     id: 'business-loan',
     loanName: 'Business Loan',
@@ -17,8 +47,8 @@ export const loanTermsData = {
     roi: {
       min: '13.5%',
       max: '26%',
-      display: '13.5% to 26% p.a.',
-      description: 'Reducing balance rates from 16+ partner lenders.',
+      display: 'From 13.5% p.a.',
+      description: 'Reducing balance rates from all partner lenders.',
     },
     tenure: {
       min: '1 Year',

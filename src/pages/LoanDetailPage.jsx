@@ -60,8 +60,10 @@ export default function LoanDetailPage({ loan }) {
       {/* 3. Typical Loan Workflow Process Section (Pure White Background) */}
       <LoanTypicalProcessSection loan={loan} />
 
-      {/* 4. 3-Column Entity Document Section (#EDF0EC Background) */}
-      <LoanDocumentsSection loan={loan} />
+      {/* 4. 3-Column Entity Document Section (#EDF0EC Background) - Business Loan ONLY */}
+      {loan.id === 'business-loan' && (
+        <LoanDocumentsSection loan={loan} />
+      )}
 
       {/* 5. FINVIEW-Style 2-Column Loan Terms & Charges Section (Pure White Background) */}
       <LoanTermsChargesSection loan={loan} />
