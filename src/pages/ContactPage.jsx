@@ -5,6 +5,8 @@ import { siteConfig } from '../config/siteConfig';
 import ContactForm from '../components/UI/forms/ContactForm';
 import OutlineBtn from '../components/UI/btns/OutlineBtn';
 import ScrollReveal from '../components/common/ScrollReveal';
+import SEO from '../components/common/SEO';
+import { getSEOData } from '../data/seoData';
 import stairsImg from '../assets/contact/stairs.webp';
 import phoneIcon from '../assets/contact/icons8-phone-100.png';
 import mailIcon from '../assets/contact/icons8-mail-100.png';
@@ -219,20 +221,28 @@ export default function ContactPage() {
       className="min-h-screen bg-white"
       style={{ fontFamily: themeConfig.typography.fontFamily }}
     >
+      {/* Page SEO Meta Tags, Canonical, Open Graph & LocalBusiness Schema */}
+      <SEO {...getSEOData('/contact')} />
+
       {/* ========================================================= */}
       {/* 1. HERO SECTION (Flush Stairs to Screen Edge, Theme Fonts)*/}
       {/* ========================================================= */}
       <section className="relative overflow-hidden bg-white pt-10 pb-0 sm:py-16 lg:py-24 border-b border-slate-100">
         
         {/* Stairs graphic pinned flush against the right display/screen edge (Hanging directly on the right screen edge) */}
-        <div className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 w-[52%] xl:w-[54%] justify-end pointer-events-none select-none z-10 overflow-hidden">
+        <ScrollReveal 
+          variant="fade-left" 
+          duration={750} 
+          delay={150}
+          className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 w-[52%] xl:w-[54%] justify-end pointer-events-none select-none z-10 overflow-hidden"
+        >
           <img
             src={stairsImg}
             alt="Financial Progress Stairs - Bharath Finserv"
             draggable={false}
             className="w-full max-w-2xl xl:max-w-3xl h-auto object-contain select-none pointer-events-none translate-x-[2%]"
           />
-        </div>
+        </ScrollReveal>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -293,14 +303,19 @@ export default function ContactPage() {
             </ScrollReveal>
 
             {/* Mobile/Tablet Stairs Display (Hanging on the right edge, flush to bottom) */}
-            <div className="lg:hidden flex justify-end mt-4 -mr-4 sm:-mr-6 pointer-events-none select-none overflow-hidden -mb-px">
+            <ScrollReveal 
+              variant="fade-up" 
+              duration={650} 
+              delay={150}
+              className="lg:hidden flex justify-end mt-4 -mr-4 sm:-mr-6 pointer-events-none select-none overflow-hidden -mb-px"
+            >
               <img
                 src={stairsImg}
                 alt="Financial Progress Stairs - Bharath Finserv"
                 draggable={false}
                 className="w-full max-w-sm sm:max-w-md h-auto object-contain select-none pointer-events-none translate-x-[2%] block"
               />
-            </div>
+            </ScrollReveal>
 
           </div>
         </div>

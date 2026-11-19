@@ -12,6 +12,7 @@ import ScrollReveal from '../common/ScrollReveal';
  * Positioned on all loan detail pages right above the FAQ section.
  * Features:
  * - #EDF0EC background with rounded-3xl borders providing a clean visual break between White sections.
+ * - Entire card and inner contents fade in smoothly from the bottom (variant="fade-up").
  * - Left side: Clean high-impact headline + Option 2 buttons (Solid Blue Primary + Cursor-aware OutlineBtn).
  * - Right side: Static compact loan hero image ("kutty ah") with soft glow.
  */
@@ -25,16 +26,16 @@ export default function LoanCtaBanner({ loan }) {
       style={{ fontFamily: themeConfig.typography.fontFamily }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Rectangular Banner Card (#EDF0EC with subtle border & shadow) */}
+        {/* Rectangular Banner Card (#EDF0EC with bottom-to-top entrance) */}
         <ScrollReveal
-          variant="zoom-in"
-          duration={700}
+          variant="fade-up"
+          duration={650}
           className="relative rounded-2xl sm:rounded-3xl border border-slate-200/90 overflow-hidden shadow-xs"
           style={{ backgroundColor: themeConfig.colors.sectionProductsBg }} // #EDF0EC
         >
           {/* Subtle Ambient Decorative Glows */}
           <div 
-            className="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-blue-400/10 blur-3xl pointer-events-none"
+            className="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-blue-400/10 blur-3xl pointer-events-none" 
             aria-hidden="true" 
           />
           <div 
@@ -46,9 +47,14 @@ export default function LoanCtaBanner({ loan }) {
             
             {/* ======================================================== */}
             {/* LEFT COLUMN: Clean Headline & Action Buttons             */}
+            {/* Fades in smoothly from the bottom (variant="fade-up")    */}
             {/* ======================================================== */}
-            <div className="w-full lg:max-w-2xl text-center lg:text-left">
-              
+            <ScrollReveal 
+              variant="fade-up" 
+              duration={650} 
+              delay={120} 
+              className="w-full lg:max-w-2xl text-center lg:text-left"
+            >
               {/* Main Headline */}
               <h3 
                 className="text-2xl sm:text-3xl md:text-[28px] lg:text-[30px] font-normal tracking-tight leading-tight mb-6"
@@ -82,17 +88,23 @@ export default function LoanCtaBanner({ loan }) {
                 </OutlineBtn>
 
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* ======================================================== */}
             {/* RIGHT COLUMN: Static Compact Hero Image ("Kutty ah")     */}
+            {/* Fades in smoothly from the bottom (variant="fade-up")    */}
             {/* ======================================================== */}
             {loanImage && (
-              <div className="relative shrink-0 flex items-center justify-center">
+              <ScrollReveal 
+                variant="fade-up" 
+                duration={650} 
+                delay={220} 
+                className="relative shrink-0 flex items-center justify-center"
+              >
                 {/* Subtle soft backdrop halo */}
                 <div 
                   className="absolute w-36 h-36 sm:w-44 sm:h-44 bg-blue-200/40 rounded-full blur-2xl -z-10 pointer-events-none" 
-                  aria-hidden="true"
+                  aria-hidden="true" 
                 />
 
                 {/* Compact Loan Image (Clean, Static, Zero Animation) */}
@@ -103,7 +115,7 @@ export default function LoanCtaBanner({ loan }) {
                   onDragStart={(e) => e.preventDefault()}
                   className="w-44 sm:w-52 md:w-60 lg:w-64 max-h-36 sm:max-h-44 object-contain drop-shadow-sm select-none pointer-events-none"
                 />
-              </div>
+              </ScrollReveal>
             )}
 
           </div>

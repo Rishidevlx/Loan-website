@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { FiList, FiChevronRight, FiShield } from 'react-icons/fi';
+import SEO from '../components/common/SEO';
+import { getSEOData } from '../data/seoData';
 import { themeConfig } from '../config/themeconfig';
 import { siteConfig } from '../config/siteConfig';
 
@@ -175,6 +177,9 @@ export default function PrivacyPolicyPage() {
       className="min-h-screen bg-white"
       style={{ fontFamily: themeConfig.typography.fontFamily }}
     >
+      {/* Page SEO Meta Tags, Canonical & Open Graph */}
+      <SEO {...getSEOData('/privacy-policy')} />
+
       {/* Header Banner */}
       <section className="bg-white py-12 sm:py-16 border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">

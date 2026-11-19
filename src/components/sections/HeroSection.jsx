@@ -60,8 +60,7 @@ export default function HeroSection() {
               className="text-base sm:text-[18.45px] font-light leading-relaxed max-w-xl"
               style={{ color: themeConfig.colors.textBody }}
             >
-              Business, property, car and personal loans from all leading banks and NBFCs. 
-              One application, honest guidance, transparent process.
+              Every loan you need, one trusted partner. Call us for honest guidance and quick approvals.
             </p>
 
             {/* 4. Action Buttons */}

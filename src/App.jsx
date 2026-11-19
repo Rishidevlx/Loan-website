@@ -75,7 +75,7 @@ export default function App() {
 
       {/* 2. Dynamic Main Content Area with React Router Routes */}
       <main className="flex-1">
-        <Routes>
+        <Routes location={location} key={location.pathname}>
           {/* Home */}
           <Route path="/" element={<HomePage />} />
           <Route path="/loans" element={<HomePage />} />

@@ -308,8 +308,8 @@ export const loansFaqData = {
  */
 export function getLoanFaqs(loanOrSlug) {
   if (!loanOrSlug) return defaultFaqs;
-  
-  const key = typeof loanOrSlug === 'string' 
+
+  const key = typeof loanOrSlug === 'string'
     ? loanOrSlug.toLowerCase().trim().replace(/^\/loans\//, '').replace(/^\//, '').replace(/-coimbatore$/, '')
     : loanOrSlug.id;
 

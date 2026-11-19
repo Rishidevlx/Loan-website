@@ -2,6 +2,7 @@ import React from 'react';
 import { FiArrowUpRight } from 'react-icons/fi';
 import { themeConfig } from '../../config/themeconfig';
 import OutlineBtn from '../UI/btns/OutlineBtn';
+import ScrollReveal from '../common/ScrollReveal';
 
 // User-specified 3-column process icons from assets/loans
 import step1Icon from '../../assets/loans/loan-coln-1.png';
@@ -36,8 +37,8 @@ const defaultSteps = [
 /**
  * 3-Column "How We Help You" Process Section
  * Displayed on #EDF0EC background immediately below the Loan Hero Section.
- * Features user-provided loan-coln-1, loan-coln-2, and loan-colun-3 icons.
- * Includes spinning rupee coin animation in the top-right matching Our Loan Products.
+ * Features top-to-bottom entrance animations (variant="fade-down") across header,
+ * cards, and CTA button.
  */
 export default function LoanProcessSection({ loan }) {
   const loanName = loan?.name || 'Loan';
@@ -72,9 +73,9 @@ export default function LoanProcessSection({ loan }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
         
         {/* ======================================================== */}
-        {/* SECTION HEADER (Strictly matched to "Our Loan Products") */}
+        {/* SECTION HEADER: Top-to-Bottom Entrance (variant="fade-down") */}
         {/* ======================================================== */}
-        <div className="space-y-3 mb-10 md:mb-14">
+        <ScrollReveal variant="fade-down" duration={650} className="space-y-3 mb-10 md:mb-14">
           
           {/* Eyebrow Tagline with Spark Star SVG - Text in Normal Heading Color #262626 */}
           <div className="inline-flex items-center gap-2">
@@ -114,15 +115,18 @@ export default function LoanProcessSection({ loan }) {
             Compare all banks, get doorstep paperwork assistance, and secure fast approvals with zero upfront consultation charges.
           </p>
 
-        </div>
+        </ScrollReveal>
 
         {/* ======================================================== */}
-        {/* 3-COLUMN PROCESS GRID (Exact same starting height & line) */}
+        {/* 3-COLUMN PROCESS GRID (Staggered top-to-bottom entrance)  */}
         {/* ======================================================== */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-10 md:mb-14 items-start">
           {steps.map((step, idx) => (
-            <div 
+            <ScrollReveal 
               key={idx}
+              variant="fade-down"
+              duration={650}
+              delay={idx * 120}
               className="flex flex-col text-left h-full"
             >
               {/* Icon in Clean White Tile (Zero hover effect as requested) */}
@@ -138,7 +142,7 @@ export default function LoanProcessSection({ loan }) {
                 />
               </div>
 
-              {/* Step Title: Standardized min-height ensures all 3 descriptions start on the exact same horizontal line */}
+              {/* Step Title */}
               <h3 
                 className="text-xl sm:text-[23px] font-normal mb-2.5 tracking-tight min-h-[58px] sm:min-h-[64px] flex items-start"
                 style={{ color: themeConfig.colors.textHeading }}
@@ -152,14 +156,14 @@ export default function LoanProcessSection({ loan }) {
               >
                 {step.description}
               </p>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
 
         {/* ======================================================== */}
-        {/* BOTTOM ACTION BUTTON: Outlined Hover Effect Button       */}
+        {/* BOTTOM ACTION BUTTON: Top-to-Bottom Entrance             */}
         {/* ======================================================== */}
-        <div className="flex flex-wrap items-center gap-4">
+        <ScrollReveal variant="fade-down" duration={650} delay={360} className="flex flex-wrap items-center gap-4">
           <OutlineBtn
             href={contactUrl}
             endIcon={FiArrowUpRight}
@@ -167,7 +171,7 @@ export default function LoanProcessSection({ loan }) {
           >
             Apply for {loanName} Now
           </OutlineBtn>
-        </div>
+        </ScrollReveal>
 
       </div>
     </section>

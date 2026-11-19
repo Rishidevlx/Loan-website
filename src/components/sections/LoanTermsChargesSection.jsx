@@ -165,161 +165,167 @@ export default function LoanTermsChargesSection({ loan }) {
 
           {/* ======================================================== */}
           {/* RIGHT COLUMN: 3 Staggered FINVIEW Double-Framed Cards     */}
-          {/* Each card links directly to the Contact page             */}
+          {/* Each card enters from the left (variant="fade-right")     */}
           {/* ======================================================== */}
-          <ScrollReveal variant="fade-left" delay={150} className="lg:col-span-7 flex flex-col space-y-4 sm:space-y-5 lg:pl-8 lg:translate-x-3">
+          <div className="lg:col-span-7 flex flex-col space-y-4 sm:space-y-5 lg:pl-8 lg:translate-x-3">
             
             {/* Card 1: Loan Amount Range (Links to Contact Page) */}
-            <Link 
-              to="/contact"
-              className="w-full max-w-[500px] block lg:self-end bg-white rounded-2xl p-2 sm:p-2.5 border border-slate-200/90 shadow-2xs hover:shadow-md transition-all duration-300 group cursor-pointer animate-float-slow-r1 text-inherit no-underline"
-            >
-              {/* Inner Tinted Card with Smooth Brand Blue Hover */}
-              <div className="bg-[#F4F6F5] group-hover:bg-blue-600 rounded-xl p-4 sm:p-5 transition-all duration-300">
-                <div className="flex items-center justify-between gap-4">
-                  <div className="flex items-center gap-3.5 sm:gap-4">
-                    {/* Enlarged Clean White Circular Icon Container */}
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white border border-slate-200/80 shadow-2xs flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105">
-                      <img 
-                        src={coinsIcon} 
-                        alt="Loan Amount"
-                        className="w-9 h-9 sm:w-10 sm:h-10 object-contain"
-                      />
+            <ScrollReveal variant="fade-right" duration={650} delay={100} className="w-full flex lg:justify-end">
+              <Link 
+                to="/contact"
+                className="w-full max-w-[500px] block bg-white rounded-2xl p-2 sm:p-2.5 border border-slate-200/90 shadow-2xs hover:shadow-md transition-all duration-300 group cursor-pointer animate-float-slow-r1 text-inherit no-underline"
+              >
+                {/* Inner Tinted Card with Smooth Brand Blue Hover */}
+                <div className="bg-[#F4F6F5] group-hover:bg-blue-600 rounded-xl p-4 sm:p-5 transition-all duration-300">
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex items-center gap-3.5 sm:gap-4">
+                      {/* Enlarged Clean White Circular Icon Container */}
+                      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white border border-slate-200/80 shadow-2xs flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105">
+                        <img 
+                          src={coinsIcon} 
+                          alt="Loan Amount"
+                          className="w-9 h-9 sm:w-10 sm:h-10 object-contain"
+                        />
+                      </div>
+                      {/* Content */}
+                      <div>
+                        <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500 group-hover:text-blue-100 transition-colors duration-300 block mb-0.5">
+                          Loan Amount Range
+                        </span>
+                        <h3 className="text-xl sm:text-2xl font-normal tracking-tight text-[#262626] group-hover:text-white transition-colors duration-300 mb-0.5">
+                          {loanTerms.amount.display}
+                        </h3>
+                        <p className="text-xs sm:text-sm font-light text-[#666666] group-hover:text-white/90 transition-colors duration-300 leading-relaxed">
+                          {loanTerms.amount.description}
+                        </p>
+                      </div>
                     </div>
-                    {/* Content */}
-                    <div>
-                      <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500 group-hover:text-blue-100 transition-colors duration-300 block mb-0.5">
-                        Loan Amount Range
-                      </span>
-                      <h3 className="text-xl sm:text-2xl font-normal tracking-tight text-[#262626] group-hover:text-white transition-colors duration-300 mb-0.5">
-                        {loanTerms.amount.display}
-                      </h3>
-                      <p className="text-xs sm:text-sm font-light text-[#666666] group-hover:text-white/90 transition-colors duration-300 leading-relaxed">
-                        {loanTerms.amount.description}
-                      </p>
-                    </div>
-                  </div>
 
-                  {/* Y-axis Centered Round Arrow Badge */}
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-slate-200/80 bg-white text-slate-500 group-hover:text-blue-600 flex items-center justify-center transition-all duration-300 shadow-2xs shrink-0">
-                    <FiArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    {/* Y-axis Centered Round Arrow Badge */}
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-slate-200/80 bg-white text-slate-500 group-hover:text-blue-600 flex items-center justify-center transition-all duration-300 shadow-2xs shrink-0">
+                      <FiArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </ScrollReveal>
 
 
             {/* Card 2: Rate of Interest (ROI) (Links to Contact Page) */}
-            <Link 
-              to="/contact"
-              className="w-full max-w-[500px] block lg:self-start bg-white rounded-2xl p-2 sm:p-2.5 border border-slate-200/90 shadow-2xs hover:shadow-md transition-all duration-300 group cursor-pointer animate-float-slow-l text-inherit no-underline"
-            >
-              {/* Inner Tinted Card with Smooth Brand Blue Hover */}
-              <div className="bg-[#F4F6F5] group-hover:bg-blue-600 rounded-xl p-4 sm:p-5 transition-all duration-300">
-                <div className="flex items-center justify-between gap-4">
-                  <div className="flex items-center gap-3.5 sm:gap-4">
-                    {/* Enlarged Clean White Circular Icon Container */}
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white border border-slate-200/80 shadow-2xs flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105">
-                      <img 
-                        src={interestIcon} 
-                        alt="Interest Rate"
-                        className="w-9 h-9 sm:w-10 sm:h-10 object-contain"
-                      />
+            <ScrollReveal variant="fade-right" duration={650} delay={200} className="w-full flex lg:justify-start">
+              <Link 
+                to="/contact"
+                className="w-full max-w-[500px] block bg-white rounded-2xl p-2 sm:p-2.5 border border-slate-200/90 shadow-2xs hover:shadow-md transition-all duration-300 group cursor-pointer animate-float-slow-l text-inherit no-underline"
+              >
+                {/* Inner Tinted Card with Smooth Brand Blue Hover */}
+                <div className="bg-[#F4F6F5] group-hover:bg-blue-600 rounded-xl p-4 sm:p-5 transition-all duration-300">
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex items-center gap-3.5 sm:gap-4">
+                      {/* Enlarged Clean White Circular Icon Container */}
+                      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white border border-slate-200/80 shadow-2xs flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105">
+                        <img 
+                          src={interestIcon} 
+                          alt="Interest Rate"
+                          className="w-9 h-9 sm:w-10 sm:h-10 object-contain"
+                        />
+                      </div>
+
+                      {/* Content */}
+                      <div>
+                        <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500 group-hover:text-blue-100 transition-colors duration-300 block mb-0.5">
+                          Interest Rate (ROI)
+                        </span>
+                        <h3 className="text-xl sm:text-2xl font-normal tracking-tight text-[#262626] group-hover:text-white transition-colors duration-300 mb-0.5">
+                          {loanTerms.roi.display}
+                        </h3>
+                        <p className="text-xs sm:text-sm font-light text-[#666666] group-hover:text-white/90 transition-colors duration-300 leading-relaxed">
+                          {loanTerms.roi.description}
+                        </p>
+                      </div>
                     </div>
 
-                    {/* Content */}
-                    <div>
-                      <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500 group-hover:text-blue-100 transition-colors duration-300 block mb-0.5">
-                        Interest Rate (ROI)
-                      </span>
-                      <h3 className="text-xl sm:text-2xl font-normal tracking-tight text-[#262626] group-hover:text-white transition-colors duration-300 mb-0.5">
-                        {loanTerms.roi.display}
-                      </h3>
-                      <p className="text-xs sm:text-sm font-light text-[#666666] group-hover:text-white/90 transition-colors duration-300 leading-relaxed">
-                        {loanTerms.roi.description}
-                      </p>
+                    {/* Y-axis Centered Round Arrow Badge */}
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-slate-200/80 bg-white text-slate-500 group-hover:text-blue-600 flex items-center justify-center transition-all duration-300 shadow-2xs shrink-0">
+                      <FiArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </div>
                   </div>
 
-                  {/* Y-axis Centered Round Arrow Badge */}
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-slate-200/80 bg-white text-slate-500 group-hover:text-blue-600 flex items-center justify-center transition-all duration-300 shadow-2xs shrink-0">
-                    <FiArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </div>
-                </div>
-
-                {/* Special Multi-Tier Breakdown for Car Loans (New, Used, Refinance) */}
-                {loanTerms.carVariants && (
-                  <div className="mt-3.5 pt-3 border-t border-slate-200/80 group-hover:border-white/20 flex flex-col sm:flex-row items-stretch sm:divide-x divide-slate-200/80 group-hover:divide-white/20 transition-colors duration-300">
-                    {loanTerms.carVariants.map((variant, vIdx) => (
-                      <div 
-                        key={vIdx} 
-                        className={`flex-1 py-1.5 sm:py-0 ${
-                          vIdx === 0 
-                            ? 'sm:pr-3.5 sm:pl-0' 
-                            : vIdx === loanTerms.carVariants.length - 1 
-                            ? 'sm:pl-3.5 sm:pr-0' 
-                            : 'sm:px-3.5'
-                        } flex flex-col justify-between`}
-                      >
-                        <div>
-                          <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-500 group-hover:text-blue-100 block mb-0.5 transition-colors duration-300">
-                            {variant.type}
-                          </span>
-                          <span className="text-xs sm:text-[13px] font-semibold text-[#262626] group-hover:text-white transition-colors duration-300">
-                            {variant.roi}
+                  {/* Special Multi-Tier Breakdown for Car Loans (New, Used, Refinance) */}
+                  {loanTerms.carVariants && (
+                    <div className="mt-3.5 pt-3 border-t border-slate-200/80 group-hover:border-white/20 flex flex-col sm:flex-row items-stretch sm:divide-x divide-slate-200/80 group-hover:divide-white/20 transition-colors duration-300">
+                      {loanTerms.carVariants.map((variant, vIdx) => (
+                        <div 
+                          key={vIdx} 
+                          className={`flex-1 py-1.5 sm:py-0 ${
+                            vIdx === 0 
+                              ? 'sm:pr-3.5 sm:pl-0' 
+                              : vIdx === loanTerms.carVariants.length - 1 
+                              ? 'sm:pl-3.5 sm:pr-0' 
+                              : 'sm:px-3.5'
+                          } flex flex-col justify-between`}
+                        >
+                          <div>
+                            <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-500 group-hover:text-blue-100 block mb-0.5 transition-colors duration-300">
+                              {variant.type}
+                            </span>
+                            <span className="text-xs sm:text-[13px] font-semibold text-[#262626] group-hover:text-white transition-colors duration-300">
+                              {variant.roi}
+                            </span>
+                          </div>
+                          <span className="text-[10px] sm:text-[11px] text-slate-500 group-hover:text-white/80 mt-1 block transition-colors duration-300">
+                            Tenure: {variant.tenure}
                           </span>
                         </div>
-                        <span className="text-[10px] sm:text-[11px] text-slate-500 group-hover:text-white/80 mt-1 block transition-colors duration-300">
-                          Tenure: {variant.tenure}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </Link>
+            </ScrollReveal>
 
 
             {/* Card 3: Repayment Tenure (Links to Contact Page) */}
-            <Link 
-              to="/contact"
-              className="w-full max-w-[500px] block lg:self-end bg-white rounded-2xl p-2 sm:p-2.5 border border-slate-200/90 shadow-2xs hover:shadow-md transition-all duration-300 group cursor-pointer animate-float-slow-r2 text-inherit no-underline"
-            >
-              {/* Inner Tinted Card with Smooth Brand Blue Hover */}
-              <div className="bg-[#F4F6F5] group-hover:bg-blue-600 rounded-xl p-4 sm:p-5 transition-all duration-300">
-                <div className="flex items-center justify-between gap-4">
-                  <div className="flex items-center gap-3.5 sm:gap-4">
-                    {/* Enlarged Clean White Circular Icon Container */}
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white border border-slate-200/80 shadow-2xs flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105">
-                      <img 
-                        src={hourglassIcon} 
-                        alt="Repayment Tenure"
-                        className="w-9 h-9 sm:w-10 sm:h-10 object-contain"
-                      />
+            <ScrollReveal variant="fade-right" duration={650} delay={300} className="w-full flex lg:justify-end">
+              <Link 
+                to="/contact"
+                className="w-full max-w-[500px] block bg-white rounded-2xl p-2 sm:p-2.5 border border-slate-200/90 shadow-2xs hover:shadow-md transition-all duration-300 group cursor-pointer animate-float-slow-r2 text-inherit no-underline"
+              >
+                {/* Inner Tinted Card with Smooth Brand Blue Hover */}
+                <div className="bg-[#F4F6F5] group-hover:bg-blue-600 rounded-xl p-4 sm:p-5 transition-all duration-300">
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex items-center gap-3.5 sm:gap-4">
+                      {/* Enlarged Clean White Circular Icon Container */}
+                      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white border border-slate-200/80 shadow-2xs flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105">
+                        <img 
+                          src={hourglassIcon} 
+                          alt="Repayment Tenure"
+                          className="w-9 h-9 sm:w-10 sm:h-10 object-contain"
+                        />
+                      </div>
+                      {/* Content */}
+                      <div>
+                        <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500 group-hover:text-blue-100 transition-colors duration-300 block mb-0.5">
+                          Repayment Tenure
+                        </span>
+                        <h3 className="text-xl sm:text-2xl font-normal tracking-tight text-[#262626] group-hover:text-white transition-colors duration-300 mb-0.5">
+                          {loanTerms.tenure.display}
+                        </h3>
+                        <p className="text-xs sm:text-sm font-light text-[#666666] group-hover:text-white/90 transition-colors duration-300 leading-relaxed">
+                          {loanTerms.tenure.description}
+                        </p>
+                      </div>
                     </div>
-                    {/* Content */}
-                    <div>
-                      <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500 group-hover:text-blue-100 transition-colors duration-300 block mb-0.5">
-                        Repayment Tenure
-                      </span>
-                      <h3 className="text-xl sm:text-2xl font-normal tracking-tight text-[#262626] group-hover:text-white transition-colors duration-300 mb-0.5">
-                        {loanTerms.tenure.display}
-                      </h3>
-                      <p className="text-xs sm:text-sm font-light text-[#666666] group-hover:text-white/90 transition-colors duration-300 leading-relaxed">
-                        {loanTerms.tenure.description}
-                      </p>
-                    </div>
-                  </div>
 
-                  {/* Y-axis Centered Round Arrow Badge */}
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-slate-200/80 bg-white text-slate-500 group-hover:text-blue-600 flex items-center justify-center transition-all duration-300 shadow-2xs shrink-0">
-                    <FiArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    {/* Y-axis Centered Round Arrow Badge */}
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-slate-200/80 bg-white text-slate-500 group-hover:text-blue-600 flex items-center justify-center transition-all duration-300 shadow-2xs shrink-0">
+                      <FiArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </ScrollReveal>
 
-          </ScrollReveal>
+          </div>
 
         </div>
 

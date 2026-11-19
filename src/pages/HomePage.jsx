@@ -5,10 +5,15 @@ import StatsSection from '../components/sections/StatsSection';
 import PartnersSection from '../components/sections/PartnersSection';
 import TestimonialsSection from '../components/sections/TestimonialsSection';
 import FaqSection from '../components/sections/FaqSection';
+import SEO from '../components/common/SEO';
+import { getSEOData } from '../data/seoData';
 
 export default function HomePage() {
   return (
     <>
+      {/* Page SEO Meta Tags, Canonical & Open Graph */}
+      <SEO {...getSEOData('/')} />
+
       {/* 1. Hero Section */}
       <HeroSection />
 

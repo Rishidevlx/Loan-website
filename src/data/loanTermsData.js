@@ -47,7 +47,7 @@ export const loanTermsData = {
     roi: {
       min: '13.5%',
       max: '26%',
-      display: 'From 13.5% p.a.',
+      display: 'From Competitive Rates',
       description: 'Reducing balance rates from all partner lenders.',
     },
     tenure: {

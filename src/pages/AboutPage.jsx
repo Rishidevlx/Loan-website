@@ -3,6 +3,8 @@ import AboutHeroSection from '../components/sections/AboutHeroSection';
 import AboutWhyChooseUsSection from '../components/sections/AboutWhyChooseUsSection';
 import StatsSection from '../components/sections/StatsSection';
 import AboutPartnersGridSection from '../components/sections/AboutPartnersGridSection';
+import SEO from '../components/common/SEO';
+import { getSEOData } from '../data/seoData';
 import { themeConfig } from '../config/themeconfig';
 
 /**
@@ -15,7 +17,6 @@ import { themeConfig } from '../config/themeconfig';
  */
 export default function AboutPage() {
   useEffect(() => {
-    document.title = 'About Us | Bharath Finserv - Trusted Loan Partner Across India';
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
@@ -24,6 +25,9 @@ export default function AboutPage() {
       className="bg-white min-h-[70vh]"
       style={{ fontFamily: themeConfig.typography.fontFamily }}
     >
+      {/* Page SEO Meta Tags, Canonical & Open Graph */}
+      <SEO {...getSEOData('/about-us')} />
+
       {/* 1. About Hero Section (Pure White) */}
       <AboutHeroSection />
 
