@@ -4,8 +4,12 @@ import React, { useState, useEffect, useRef } from 'react';
  * ScrollReveal - Production-grade Global Scroll Reveal Component
  * Uses native IntersectionObserver with GPU-accelerated CSS transforms for 60fps animations.
  * 
+ * Synchronized with PageTransitionLoader:
+ * If the page loader overlay is actively running during page navigation, reveal animations
+ * wait for the loader to finish before animating in smoothly.
+ * 
  * Props:
- * - variant: 'fade-up' (default) | 'fade-down' | 'fade-left' | 'fade-right' | 'zoom-in' | 'fade'
+ * - variant: 'fade-up' (default) | 'fade-down' | 'fade-left' | 'fade-right' | 'zoom-in' | 'zoom-out' | 'fade'
  * - delay: number (milliseconds, e.g. 150)
  * - duration: number (milliseconds, default 650)
  * - distance: string (default '28px')
@@ -45,12 +49,37 @@ export default function ScrollReveal({
       return;
     }
 
+    let loaderListenerCleanup = null;
+    let safetyTimer = null;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true);
-          if (once && elementRef.current) {
-            observer.unobserve(elementRef.current);
+          const trigger = () => {
+            setIsVisible(true);
+            if (once && elementRef.current) {
+              observer.unobserve(elementRef.current);
+            }
+          };
+
+          // If the page transition loader is active, pause reveal until the loader finishes
+          if (window.__IS_PAGE_LOADER_ACTIVE__) {
+            const onLoaderDone = () => {
+              trigger();
+              window.removeEventListener('page-loader-finished', onLoaderDone);
+            };
+
+            window.addEventListener('page-loader-finished', onLoaderDone);
+            loaderListenerCleanup = () => {
+              window.removeEventListener('page-loader-finished', onLoaderDone);
+            };
+
+            // Safety timeout: ensure visibility after 2.5s even if loader event missed
+            safetyTimer = setTimeout(() => {
+              trigger();
+            }, 2500);
+          } else {
+            trigger();
           }
         } else if (!once) {
           setIsVisible(false);
@@ -58,7 +87,7 @@ export default function ScrollReveal({
       },
       {
         threshold,
-        rootMargin: '0px 0px -40px 0px', // triggers slightly before scrolling fully into view
+        rootMargin: '0px 0px -40px 0px',
       }
     );
 
@@ -68,6 +97,8 @@ export default function ScrollReveal({
     }
 
     return () => {
+      if (loaderListenerCleanup) loaderListenerCleanup();
+      if (safetyTimer) clearTimeout(safetyTimer);
       if (currentElem) {
         observer.unobserve(currentElem);
       }

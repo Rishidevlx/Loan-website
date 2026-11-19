@@ -5,8 +5,6 @@ import { loansDropdownItems, footerQuickLinks, footerLegalLinks } from '../../co
 import { siteConfig } from '../../config/siteConfig';
 import { themeConfig } from '../../config/themeconfig';
 import logoImg from '../../assets/logo/logo.jpeg';
-import footerDesktopImg from '../../assets/footer.png';
-import footerMobileImg from '../../assets/mobile-footer.png';
 
 export default function Footer() {
   return (
@@ -18,7 +16,7 @@ export default function Footer() {
       }}
     >
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-10 pb-2 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-12 pb-10 sm:pb-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8 items-start">
           
           {/* Column 1: Brand & Overview (Reduced border radius to rounded-lg) */}
@@ -144,8 +142,8 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Copyright & Shadow Arrow Credit (Placed Above Image matching reference layout) */}
-        <div className="mt-4 pt-2 flex flex-col sm:flex-row items-center justify-between gap-2.5 text-xs text-slate-400">
+        {/* Copyright & Shadow Arrow Credit */}
+        <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2.5 text-xs text-slate-400">
           <p>{siteConfig.copyright}</p>
           <div className="text-slate-400 text-xs text-center sm:text-right">
             <span>This Website is Designed & Developed By - </span>
@@ -160,28 +158,6 @@ export default function Footer() {
           </div>
         </div>
 
-      </div>
-
-      {/* ======================================================== */}
-      {/* LANDSCAPE ILLUSTRATION BANNER                            */}
-      {/* Positioned at the very bottom edge of the footer,        */}
-      {/* below the copyright and developer credits.               */}
-      {/* ======================================================== */}
-      <div className="w-full relative select-none pointer-events-none overflow-hidden -mb-1 -mt-12 sm:-mt-18 md:-mt-28 lg:-mt-40 xl:-mt-[240px]">
-        {/* Desktop / System View Landscape: Edge-to-edge panoramic */}
-        <img 
-          src={footerDesktopImg} 
-          alt="Bharath Finserv Landscape"
-          draggable={false}
-          className="hidden md:block w-full h-auto object-cover object-bottom select-none pointer-events-none opacity-95"
-        />
-        {/* Mobile View Landscape: Tailored layout for phone viewport without excessive gap */}
-        <img 
-          src={footerMobileImg} 
-          alt="Bharath Finserv Landscape"
-          draggable={false}
-          className="block md:hidden w-full max-w-[460px] mx-auto h-auto object-contain select-none pointer-events-none px-3"
-        />
       </div>
     </footer>
   );

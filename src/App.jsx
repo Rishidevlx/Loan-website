@@ -24,6 +24,9 @@ function ScrollToTop() {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.__IS_PAGE_LOADER_ACTIVE__ = true;
+    }
     if (hash) {
       const element = document.querySelector(hash);
       if (element) {
@@ -64,8 +67,8 @@ export default function App() {
       {/* Scroll restoration helper */}
       <ScrollToTop />
 
-      {/* Cinematic Split Curtain Page Loader with loader.gif (Commented for future activation) */}
-      {/* <PageTransitionLoader /> */}
+      {/* Cinematic Split Curtain Page Loader with loader.gif */}
+      <PageTransitionLoader />
 
       {/* 1. Header with Animated Loans Dropdown & Quick Call */}
       <Navbar currentPath={location.pathname} />

@@ -117,21 +117,14 @@ export default function MobileNav({ isOpen, onClose, currentPath = '/' }) {
           </div>
         </div>
 
-        {/* Quick Call Action at bottom (Both Numbers) */}
-        <div className="p-4 border-t border-slate-100 bg-slate-50/60 grid grid-cols-2 gap-2">
+        {/* Quick Call Action at bottom (Primary Number Only) */}
+        <div className="p-4 border-t border-slate-100 bg-slate-50/60">
           <OutlineBtn
             href={`tel:${siteConfig.phoneRaw}`}
             icon={FiPhoneCall}
-            className="w-full py-2.5 text-xs font-semibold justify-center"
+            className="w-full py-3 text-sm font-semibold justify-center"
           >
-            Call • {siteConfig.phoneDisplay}
-          </OutlineBtn>
-          <OutlineBtn
-            href={`tel:${siteConfig.phone2Raw}`}
-            icon={FiPhoneCall}
-            className="w-full py-2.5 text-xs font-semibold justify-center"
-          >
-            Call • {siteConfig.phone2Display}
+            Call: {siteConfig.phoneDisplay}
           </OutlineBtn>
         </div>
 

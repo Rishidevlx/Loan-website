@@ -4,39 +4,62 @@ import loaderGif from '../../assets/loader.gif';
 import { siteConfig } from '../../config/siteConfig';
 import { themeConfig } from '../../config/themeconfig';
 
+// Initialize global loader flag on first load
+if (typeof window !== 'undefined') {
+  window.__IS_PAGE_LOADER_ACTIVE__ = true;
+}
+
 /**
- * PageTransitionLoader - Split-Screen White Curtain Page Transition
- * - Clean pure white background (#FFFFFF)
- * - Zero center vertical seam lines
- * - loader.gif centered with Company Name below it
- * - Left and Right white screens part smoothly outward to reveal the webpage
- * - Safe against React StrictMode and guaranteed to dismiss after 1.2s
+ * PageTransitionLoader - Deep Dark Layer Page Transition Overlay
+ * - Deep dark black/navy overlay (rgba(5, 10, 20, 0.92)) without blur
+ * - Centered loader.gif with subtle luminous aura + clean white typography
+ * - Coordinates with ScrollReveal: page animations trigger cleanly after the loader finishes
+ * - Plays quick smooth animation (~1300ms) then quickly fades out to reveal the next page
+ * - Locks body scroll during transition
  */
 export default function PageTransitionLoader() {
   const { pathname } = useLocation();
   const [isAnimating, setIsAnimating] = useState(true);
-  const [isOpening, setIsOpening] = useState(false);
+  const [isFadingOut, setIsFadingOut] = useState(false);
+  const [animationKey, setAnimationKey] = useState(() => Date.now());
 
   useEffect(() => {
-    // Reset to closed state at the start of page load / navigation
+    // Flag loader as active at the start of page load / navigation
+    window.__IS_PAGE_LOADER_ACTIVE__ = true;
     setIsAnimating(true);
-    setIsOpening(false);
+    setIsFadingOut(false);
+    setAnimationKey(Date.now());
 
-    // Phase 1: Hold the loader so the user sees the logo and animation (600ms)
-    const openTimer = setTimeout(() => {
-      setIsOpening(true);
-    }, 600);
+    // Phase 1: Show GIF and let it animate smoothly (1300ms)
+    const fadeTimer = setTimeout(() => {
+      setIsFadingOut(true);
+      // Dispatch completion event so ScrollReveal triggers page reveal animations
+      window.__IS_PAGE_LOADER_ACTIVE__ = false;
+      window.dispatchEvent(new CustomEvent('page-loader-finished'));
+    }, 1300);
 
-    // Phase 2: Complete the slide-out curtain animation and remove from DOM (1250ms)
+    // Phase 2: Fade out dark overlay quickly (250ms) and unmount (1550ms total)
     const completeTimer = setTimeout(() => {
       setIsAnimating(false);
-    }, 1250);
+    }, 1550);
 
     return () => {
-      clearTimeout(openTimer);
+      clearTimeout(fadeTimer);
       clearTimeout(completeTimer);
     };
   }, [pathname]);
+
+  // Lock body scroll while overlay is active
+  useEffect(() => {
+    if (isAnimating) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isAnimating]);
 
   if (!isAnimating) {
     return null;
@@ -44,70 +67,44 @@ export default function PageTransitionLoader() {
 
   return (
     <div 
-      className="fixed inset-0 z-[99999] pointer-events-auto select-none overflow-hidden"
+      className="fixed inset-0 z-[99999] pointer-events-auto select-none flex flex-col items-center justify-center p-4 transition-opacity duration-250 ease-out"
+      style={{
+        opacity: isFadingOut ? 0 : 1,
+        backgroundColor: 'rgba(5, 10, 20, 0.80)', // Slightly lightened dark layer (reduced from 0.92 to 0.80)
+      }}
       aria-hidden="true"
     >
-      {/* ======================================================== */}
-      {/* 1. LEFT WHITE CURTAIN PANEL (Zero Lines, Pure White)      */}
-      {/* Slides completely to the left (-100%)                    */}
-      {/* ======================================================== */}
+      {/* Center Content: Animated GIF + Brand Details */}
       <div 
-        className="absolute top-0 left-0 w-1/2 h-full bg-white z-10 will-change-transform"
+        className="relative flex flex-col items-center justify-center text-center transition-all duration-300"
         style={{
-          transform: isOpening ? 'translate3d(-100%, 0, 0)' : 'translate3d(0, 0, 0)',
-          transition: 'transform 650ms cubic-bezier(0.77, 0, 0.175, 1)',
-        }}
-      />
-
-      {/* ======================================================== */}
-      {/* 2. RIGHT WHITE CURTAIN PANEL (Zero Lines, Pure White)     */}
-      {/* Slides completely to the right (+100%)                   */}
-      {/* ======================================================== */}
-      <div 
-        className="absolute top-0 right-0 w-1/2 h-full bg-white z-10 will-change-transform"
-        style={{
-          transform: isOpening ? 'translate3d(100%, 0, 0)' : 'translate3d(0, 0, 0)',
-          transition: 'transform 650ms cubic-bezier(0.77, 0, 0.175, 1)',
-        }}
-      />
-
-      {/* ======================================================== */}
-      {/* 3. CENTER CONTENT: LOADER GIF + COMPANY NAME             */}
-      {/* ======================================================== */}
-      <div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center justify-center text-center will-change-transform"
-        style={{
-          opacity: isOpening ? 0 : 1,
-          transform: isOpening 
-            ? 'translate(-50%, -50%) scale(0.92)' 
-            : 'translate(-50%, -50%) scale(1)',
-          transition: 'opacity 350ms ease-out, transform 350ms ease-out',
-          pointerEvents: 'none',
+          transform: isFadingOut ? 'scale(0.95)' : 'scale(1)',
         }}
       >
+        {/* Subtle luminous ambient aura behind the logo */}
+        <div className="absolute w-36 h-36 bg-blue-500/15 rounded-full blur-2xl pointer-events-none" />
+
         {/* Animated loader.gif */}
         <div className="relative mb-3 flex items-center justify-center">
           <img 
-            src={loaderGif} 
+            key={animationKey}
+            src={`${loaderGif}?v=${animationKey}`} 
             alt={siteConfig.name} 
             draggable={false}
-            className="w-28 sm:w-36 md:w-40 h-auto object-contain select-none drop-shadow-sm"
+            className="w-28 sm:w-36 md:w-40 h-auto object-contain select-none drop-shadow-lg"
           />
         </div>
 
-        {/* Company Name below loader.gif */}
+        {/* Company Name in clean white */}
         <h2 
-          className="text-xl sm:text-2xl md:text-[26px] font-bold tracking-wider uppercase leading-tight"
-          style={{ 
-            color: themeConfig.colors.navy,
-            fontFamily: themeConfig.typography.fontFamily 
-          }}
+          className="text-xl sm:text-2xl md:text-[26px] font-bold tracking-wider uppercase leading-tight text-white drop-shadow-sm"
+          style={{ fontFamily: themeConfig.typography.fontFamily }}
         >
           {siteConfig.name}
         </h2>
 
-        {/* Tagline below Company Name */}
-        <p className="text-xs sm:text-sm font-medium tracking-widest text-slate-500 uppercase mt-1">
+        {/* Tagline in soft light-blue */}
+        <p className="text-xs sm:text-sm font-medium tracking-widest text-blue-200/90 uppercase mt-1">
           {siteConfig.tagline}
         </p>
       </div>
